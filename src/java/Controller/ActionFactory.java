@@ -10,6 +10,7 @@ package Controller;
  * @author rwspa
  */
 public class ActionFactory {
+
     public static Action create(String action) {
         Action actionObject = null;
         String nomeClasse = "Action." + action + "Action";
