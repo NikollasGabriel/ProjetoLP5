@@ -5,37 +5,35 @@
  */
 package Model.Professores;
 
-import Model.Professores.ProfessorEstado;
-
 /**
  *
- * @author rwspa
+ * @author matheus.fregulia
  */
-public class ProfessorEstadoContratado implements ProfessorEstado{
-
+public class ProfessorEstadoEfetivado implements ProfessorEstado{
+    
     @Override
     public String getEstado() {
-        return "Contratado";
+        return "Efetivado";
     }
 
     @Override
     public String contratado(Professor a) {
-        return "Professor não pode ser contratado se for contratado";
+        return "Professor não pode ser contratado se for efetivado";
     }
 
     @Override
     public String efetivar(Professor a) {
-        return "Professor pode ser efetivado se for contratado";
+        return "Professor pode ser efetivado se for efetivado";
     }
 
     @Override
     public String demitido(Professor a) {
-        return "Professor pode ser demitido se for contratado";
+        return "Professor pode ser demitido se for efetivado";    
     }
 
     @Override
     public String demissao(Professor a) {
-        return "Professor pode pedir demissão se for contratado";
+        return "Professor pode pedir demissão se for efetivado";
     }
     
 }
