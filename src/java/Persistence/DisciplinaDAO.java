@@ -30,13 +30,12 @@ public class DisciplinaDAO {
         try {
             conn = connector.getConnection();
 
-            String sql = "INSERT INTO Disciplina (idDisciplina, nomeDisciplina, numeroCreditos, numeroVagas) VALUES (?, ?, ?, ?)";
+            String sql = "INSERT INTO Disciplina (nomeDisciplina, numeroCreditos, numeroVagas) VALUES (?, ?, ?)";
             pstm = conn.prepareStatement(sql);
 
-            pstm.setInt(1, disciplina.getIdDisciplina());
-            pstm.setString(2, disciplina.getNomeDisciplina());
-            pstm.setInt(3, disciplina.getNumeroCreditos());
-            pstm.setInt(4, disciplina.getNumeroVagas());
+            pstm.setString(1, disciplina.getNomeDisciplina());
+            pstm.setInt(2, disciplina.getNumeroCreditos());
+            pstm.setInt(3, disciplina.getNumeroVagas());
 
             pstm.execute();
 

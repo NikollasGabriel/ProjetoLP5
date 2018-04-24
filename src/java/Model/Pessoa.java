@@ -1,31 +1,45 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 package Model;
 
-/**
- *
- * @author rwspa
- */
 public abstract class Pessoa {
 
-    private String nome;
-
-    public String getNome() {
-        return nome;
-    }
-
-    public void setNome(String nome) {
-        this.nome = nome;
-    }
-
-    public Pessoa(String nome) {
-        this.nome = nome;
-    }
+    private Integer idPessoa;
+    private String nomePessoa;
+    private Integer idadePessoa;
 
     public Pessoa() {
     }
-        
+
+    public Pessoa(Integer idPessoa) {
+        this.idPessoa = idPessoa;
+    }
+
+    public Pessoa(Integer idPessoa, String nomePessoa, Integer idadePessoa) {
+        this.idPessoa = idPessoa;
+        this.nomePessoa = nomePessoa;
+        this.idadePessoa = idadePessoa;                        
+    }
+
+    public Integer getIdPessoa() {
+        return idPessoa;
+    }
+
+    public void setIdPessoa(Integer idPessoa) {
+        this.idPessoa = idPessoa;
+    }
+
+    public String getNomePessoa() {
+        return nomePessoa;
+    }
+
+    public void setNomePessoa(String nomePessoa) {
+        this.nomePessoa = nomePessoa;
+    }
+
+    public Integer getIdadePessoa() {
+        return idadePessoa;
+    }
+
+    public void setIdadePessoa(Integer idadePessoa) {
+        this.idadePessoa = idadePessoa;
+    }
 }

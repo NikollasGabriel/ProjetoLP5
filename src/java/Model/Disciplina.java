@@ -22,6 +22,12 @@ public class Disciplina {
         this.numeroCreditos = numeroCreditos;
         this.numeroVagas = numeroVagas;
     }
+
+    public Disciplina(String nomeDisciplina, Integer numeroCreditos, Integer numeroVagas) {
+        this.nomeDisciplina = nomeDisciplina;
+        this.numeroCreditos = numeroCreditos;
+        this.numeroVagas = numeroVagas;
+    }        
        
     public String getNomeDisciplina() {
         return nomeDisciplina;
