@@ -13,7 +13,7 @@ public class ActionFactory {
 
     public static Action create(String action) {
         Action actionObject = null;
-        String nomeClasse = "Action." + action + "Action";
+        String nomeClasse = "action." + action + "Action";
         Class classe = null;
         Object objeto = null;
         try {
