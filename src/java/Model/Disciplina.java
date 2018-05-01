@@ -7,6 +7,7 @@ public class Disciplina {
     private String nomeDisciplina;
     private Integer numeroCreditos;
     private Integer numeroVagas;
+    private Prova p1;
     
     public Disciplina(){
         
@@ -59,6 +60,20 @@ public class Disciplina {
 
     public void setIdDisciplina(Integer idDisciplina) {
         this.idDisciplina = idDisciplina;
+    }
+
+    /**
+     * @return the p1
+     */
+    public Prova getP1() {
+        return p1;
+    }
+
+    /**
+     * @param p1 the p1 to set
+     */
+    public void setP1(Prova p1) {
+        this.p1 = p1;
     }
         
 }
