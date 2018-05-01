@@ -3,6 +3,7 @@
     <editor-bookmarks xmlns="http://www.netbeans.org/ns/editor-bookmarks/2" lastBookmarkId="0"/>
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
         <group>
+<<<<<<< Updated upstream
 <<<<<<< HEAD
             <file>file:/C:/Users/asus%20note/Desktop/ProjetoLP5/src/java/Model/Alunos/AlunoEstado.java</file>
             <file>file:/C:/Users/asus%20note/Desktop/ProjetoLP5/src/java/Model/Alunos/AlunoEstadoEvadido.java</file>
@@ -11,6 +12,9 @@
             <file>file:/C:/Users/asus%20note/Desktop/ProjetoLP5/src/java/Persistence/DisciplinaDAO.java</file>
             <file>file:/C:/Users/asus%20note/Desktop/ProjetoLP5/web/Disciplina/gravar.jsp</file>
 >>>>>>> master
+=======
+            <file>file:/D:/Documentos/NetBeansProjects/ProjetoLP5/src/java/Model/Disciplina.java</file>
+>>>>>>> Stashed changes
         </group>
     </open-files>
 </project-private>
