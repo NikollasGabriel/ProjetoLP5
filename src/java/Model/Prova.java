@@ -5,51 +5,24 @@
  */
 package Model;
 
-import Memento.ProvaMemento;
-import Model.Alunos.Aluno;
-import java.util.Observable;
-
 /**
  *
  * @author rwspa
  */
-public class Prova extends Observable{
+public class Prova{
+    private int idProva;
     private float Valor;
-    private Aluno aluno;
+    private String aluno;
     private Disciplina disciplina;
 
-    public float getValor() {
-        return Valor;
-    }
-
-    public void setValor(float Valor) {
+    public Prova(int idProva, float Valor, String aluno, Disciplina disciplina) {
+        this.idProva = idProva;
         this.Valor = Valor;
-        setChanged();
-        notifyObservers();
-    }
-    
-    public ProvaMemento saveToMemento() {
-        return new ProvaMemento(this);
-    }
-
-    public void restoreFromMemento(ProvaMemento memento) {
-        this.Valor = memento.getProvaSalva().getValor();
-    }
-
-    /**
-     * @return the aluno
-     */
-    public Aluno getAluno() {
-        return aluno;
-    }
-
-    /**
-     * @param aluno the aluno to set
-     */
-    public void setAluno(Aluno aluno) {
         this.aluno = aluno;
+        this.disciplina = disciplina;
     }
 
+    
     /**
      * @return the disciplina
      */
@@ -62,5 +35,47 @@ public class Prova extends Observable{
      */
     public void setDisciplina(Disciplina disciplina) {
         this.disciplina = disciplina;
+    }
+
+    /**
+     * @return the Valor
+     */
+    public float getValor() {
+        return Valor;
+    }
+
+    /**
+     * @param Valor the Valor to set
+     */
+    public void setValor(float Valor) {
+        this.Valor = Valor;
+    }
+
+    /**
+     * @return the aluno
+     */
+    public String getAluno() {
+        return aluno;
+    }
+
+    /**
+     * @param aluno the aluno to set
+     */
+    public void setAluno(String aluno) {
+        this.aluno = aluno;
+    }
+
+    /**
+     * @return the idProva
+     */
+    public int getIdProva() {
+        return idProva;
+    }
+
+    /**
+     * @param idProva the idProva to set
+     */
+    public void setIdProva(int idProva) {
+        this.idProva = idProva;
     }
 }

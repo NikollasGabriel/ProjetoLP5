@@ -3,7 +3,7 @@ package Model;
 public class Turma {
 
     private Integer idTurma;
-    private String nomeTurma;
+    private String periodoTurma;
     private Integer tamanhoTurma;
 
     public Turma() {
@@ -15,7 +15,7 @@ public class Turma {
 
     public Turma(Integer idTurma, String nomeTurma, Integer tamanhoTurma) {
         this.idTurma = idTurma;
-        this.nomeTurma = nomeTurma;
+        this.periodoTurma = nomeTurma;
         this.tamanhoTurma = tamanhoTurma;
     }
 
@@ -27,12 +27,12 @@ public class Turma {
         this.idTurma = idTurma;
     }
 
-    public String getNomeTurma() {
-        return nomeTurma;
+    public String getPeriodoTurma() {
+        return periodoTurma;
     }
 
-    public void setNomeTurma(String nomeTurma) {
-        this.nomeTurma = nomeTurma;
+    public void setPeriodoTurma(String nomeTurma) {
+        this.periodoTurma = nomeTurma;
     }
 
     public Integer getTamanhoTurma() {
