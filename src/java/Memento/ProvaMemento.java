@@ -1,16 +1,16 @@
 package Memento;
 
-import Model.Nota;
+import Model.Prova;
 
-public class NotaMemento {
+public class ProvaMemento {
 
-    private Nota estado;
+    private Prova estado;
 
-    public NotaMemento(Nota notaSalvar) {
+    public ProvaMemento(Prova notaSalvar) {
         estado = notaSalvar;
     }
 
-    public Nota getNotaSalva() {
+    public Prova getProvaSalva() {
         return estado;
     }
 

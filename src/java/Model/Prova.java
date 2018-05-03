@@ -5,54 +5,62 @@
  */
 package Model;
 
+import Memento.ProvaMemento;
+import Model.Alunos.Aluno;
+import java.util.Observable;
+
 /**
  *
  * @author rwspa
  */
-public class Prova {
-    private Nota valorProva;
-    private Nota media;
-    private Nota notaTirada;
+public class Prova extends Observable{
+    private float Valor;
+    private Aluno aluno;
+    private Disciplina disciplina;
 
-    /**
-     * @return the valorProva
-     */
-    public Nota getValorProva() {
-        return valorProva;
+    public float getValor() {
+        return Valor;
+    }
+
+    public void setValor(float Valor) {
+        this.Valor = Valor;
+        setChanged();
+        notifyObservers();
+    }
+    
+    public ProvaMemento saveToMemento() {
+        return new ProvaMemento(this);
+    }
+
+    public void restoreFromMemento(ProvaMemento memento) {
+        this.Valor = memento.getProvaSalva().getValor();
     }
 
     /**
-     * @param valorProva the valorProva to set
+     * @return the aluno
      */
-    public void setValorProva(Nota valorProva) {
-        this.valorProva = valorProva;
+    public Aluno getAluno() {
+        return aluno;
     }
 
     /**
-     * @return the media
+     * @param aluno the aluno to set
      */
-    public Nota getMedia() {
-        return media;
+    public void setAluno(Aluno aluno) {
+        this.aluno = aluno;
     }
 
     /**
-     * @param media the media to set
+     * @return the disciplina
      */
-    public void setMedia(Nota media) {
-        this.media = media;
+    public Disciplina getDisciplina() {
+        return disciplina;
     }
 
     /**
-     * @return the notaTirada
+     * @param disciplina the disciplina to set
      */
-    public Nota getNotaTirada() {
-        return notaTirada;
-    }
-
-    /**
-     * @param notaTirada the notaTirada to set
-     */
-    public void setNotaTirada(Nota notaTirada) {
-        this.notaTirada = notaTirada;
+    public void setDisciplina(Disciplina disciplina) {
+        this.disciplina = disciplina;
     }
 }

@@ -6,7 +6,7 @@
 package action;
 
 import Controller.Action;
-import Model.Nota;
+import Model.Prova;
 import java.io.IOException;
 import java.util.Observable;
 import java.util.Observer;
@@ -21,9 +21,9 @@ public class NotificarObserversAction implements Action, Observer{
     }
 
     @Override
-    public void update(Observable notaSubject, Object arg) {
-        if ( notaSubject instanceof Nota) {
-            Nota nota = (Nota) notaSubject;
+    public void update(Observable provaSubject, Object arg) {
+        if ( provaSubject instanceof Prova) {
+            Prova prova = (Prova) provaSubject;
                         
 
         }

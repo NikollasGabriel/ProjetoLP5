@@ -8,7 +8,7 @@ package Model.Alunos;
 
 import Model.Alunos.AlunoEstado;
 import Model.Alunos.AlunoEstadoMatriculado;
-import Model.Nota;
+import Model.Prova;
 import java.util.Observable;
 import java.util.Observer;
 import Model.Pessoa;
@@ -19,28 +19,28 @@ import Model.Pessoa;
 public class Aluno extends Pessoa implements Observer{
     private AlunoEstado estado;
     
-    private Observable nota;
-    private float novaNota;
+    private Observable prova;
+    private float novaProva;
     
     public Aluno(){
         this.estado = new AlunoEstadoMatriculado();
     }
     
-    public Aluno(Observable nota){
-        this.nota = nota;
-        nota.addObserver(this);
+    public Aluno(Observable prova){
+        this.prova = prova;
+        prova.addObserver(this);
     }
 
     
-    //A intenção aqui seria avisar essa nova nota para o aluno, mas seria interessante vincular com disciplina
+    //A intenção aqui seria avisar essa nova prova para o aluno, mas seria interessante vincular com disciplina
     //por isso dei uma modificada nas classes
     //tenta dar uma arrumada
     //poderiamos usar essa logica de estar matriculado e tals para receber o aviso ou não
     @Override
-    public void update(Observable notaSubject, Object arg1) {
-        if(notaSubject instanceof Nota){
-            Nota nota = (Nota) notaSubject;
-            setNovaNota(nota.getValor());
+    public void update(Observable provaSubject, Object arg1) {
+        if(provaSubject instanceof Prova){
+            Prova prova = (Prova) provaSubject;
+            setNovaProva(prova.getValor());
             
         }
     }
@@ -75,30 +75,30 @@ public class Aluno extends Pessoa implements Observer{
     }
 
     /**
-     * @return the nota
+     * @return the prova
      */
-    public Observable getNota() {
-        return nota;
+    public Observable getProva() {
+        return prova;
     }
 
     /**
-     * @param nota the nota to set
+     * @param prova the prova to set
      */
-    public void setNota(Observable nota) {
-        this.nota = nota;
+    public void setProva(Observable prova) {
+        this.prova = prova;
     }
 
     /**
-     * @return the novaNota
+     * @return the novaProva
      */
-    public float getNovaNota() {
-        return novaNota;
+    public float getNovaProva() {
+        return novaProva;
     }
 
     /**
-     * @param novaNota the novaNota to set
+     * @param novaProva the novaProva to set
      */
-    public void setNovaNota(float novaNota) {
-        this.novaNota = novaNota;
+    public void setNovaProva(float novaProva) {
+        this.novaProva = novaProva;
     }
 }
