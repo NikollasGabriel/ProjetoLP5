@@ -8,27 +8,23 @@ public class Disciplina {
     private Integer numeroCreditos;
     private Integer numeroVagas;
     private Prova p1;
+
+    public Disciplina(Integer idDisciplina, String nomeDisciplina, Integer numeroCreditos, Integer numeroVagas, Prova p1) {
+        this.idDisciplina = idDisciplina;
+        this.nomeDisciplina = nomeDisciplina;
+        this.numeroCreditos = numeroCreditos;
+        this.numeroVagas = numeroVagas;
+        this.p1 = p1;
+    }
+    
+    public Disciplina(Integer idDisciplina) {
+        this.idDisciplina = idDisciplina;
+    }
     
     public Disciplina(){
         
     }
 
-    public Disciplina(Integer idDisciplina) {
-        this.idDisciplina = idDisciplina;
-    }
-        
-    public Disciplina(Integer idDisciplina, String nomeDisciplina, Integer numeroCreditos, Integer numeroVagas) {
-        this.idDisciplina = idDisciplina;
-        this.nomeDisciplina = nomeDisciplina;
-        this.numeroCreditos = numeroCreditos;
-        this.numeroVagas = numeroVagas;
-    }
-
-    public Disciplina(String nomeDisciplina, Integer numeroCreditos, Integer numeroVagas) {
-        this.nomeDisciplina = nomeDisciplina;
-        this.numeroCreditos = numeroCreditos;
-        this.numeroVagas = numeroVagas;
-    }        
        
     public String getNomeDisciplina() {
         return nomeDisciplina;

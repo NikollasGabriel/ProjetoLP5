@@ -38,7 +38,7 @@ public class PessoaDAO {
         try {
             conn = connector.getConnection();
 
-            String sql = "INSERT INTO Pessoa (nomePessoa, idadePessoa) VALUES (?, ?)";
+            String sql = "INSERT INTO Pessoa (nome, idade) VALUES (?, ?)";
             pstm = conn.prepareStatement(sql);
 
             pstm.setString(1, pessoa.getNomePessoa());
@@ -62,7 +62,7 @@ public class PessoaDAO {
         try {
             conn = connector.getConnection();
 
-            String sql = "DELETE FROM Pessoa WHERE idPessoa = ?";
+            String sql = "DELETE FROM Pessoa WHERE idpessoa = ?";
             pstm = conn.prepareStatement(sql);
 
             pstm.setInt(1, pessoa.getIdPessoa());
@@ -86,13 +86,13 @@ public class PessoaDAO {
             conn = connector.getConnection();
             st = conn.createStatement();
 
-            ResultSet rs = st.executeQuery("SELECT * FROM Pessoa WHERE idPessoa =" + idPessoa);
+            ResultSet rs = st.executeQuery("SELECT * FROM Pessoa WHERE idpessoa =" + idPessoa);
             rs.first();
 
             pessoa = new Pessoa(
-                        rs.getInt("idPessoa"),
-                        rs.getString("nomePessoa"),
-                        rs.getInt("idadePessoa"));
+                        rs.getInt("idpessoa"),
+                        rs.getString("nome"),
+                        rs.getInt("idade"));
 
         } catch (SQLException ex) {
             throw ex;
@@ -119,9 +119,9 @@ public class PessoaDAO {
             while (rs.next()) {
 
                 Pessoa pessoa = new Pessoa(
-                        rs.getInt("idPessoa"),
-                        rs.getString("nomePessoa"),
-                        rs.getInt("idadePessoa"));
+                        rs.getInt("idpessoa"),
+                        rs.getString("nome"),
+                        rs.getInt("idade"));
 
                 pessoas.add(pessoa);
             }
@@ -143,8 +143,8 @@ public class PessoaDAO {
         try {
             conn = connector.getConnection();
 
-            String sql = "UPDATE Pessoa AS c SET idPessoa = ?,"
-                    + " nomePessoa = ?, idadePessoa = ?,";
+            String sql = "UPDATE Pessoa AS c SET idpessoa = ?,"
+                    + " nome = ?, idade = ?,";
             pstm = conn.prepareStatement(sql);
 
             pstm.setInt(1, pessoa.getIdPessoa());

@@ -11,43 +11,30 @@ package Model;
  */
 public class Prova{
     private int idProva;
-    private float Valor;
+    private int Valor;
     private String aluno;
-    private Disciplina disciplina;
 
-    public Prova(int idProva, float Valor, String aluno, Disciplina disciplina) {
+    public Prova(int idProva, int Valor, String aluno) {
         this.idProva = idProva;
         this.Valor = Valor;
         this.aluno = aluno;
-        this.disciplina = disciplina;
     }
-
     
-    /**
-     * @return the disciplina
-     */
-    public Disciplina getDisciplina() {
-        return disciplina;
+    public Prova(int idProva) {
+        this.idProva = idProva;
     }
-
-    /**
-     * @param disciplina the disciplina to set
-     */
-    public void setDisciplina(Disciplina disciplina) {
-        this.disciplina = disciplina;
-    }
-
+//////////////////
     /**
      * @return the Valor
      */
-    public float getValor() {
+    public int getValor() {
         return Valor;
     }
 
     /**
      * @param Valor the Valor to set
      */
-    public void setValor(float Valor) {
+    public void setValor(int Valor) {
         this.Valor = Valor;
     }
 

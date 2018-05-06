@@ -5,6 +5,9 @@
  */
 package Persistence;
 
+import Model.Disciplina;
+import Model.Pessoa;
+import Model.Prova;
 import Model.Turma;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
@@ -38,11 +41,13 @@ public class TurmaDAO {
         try {
             conn = connector.getConnection();
 
-            String sql = "INSERT INTO Turma (periodoTurma, tamanhoTurma) VALUES (?, ?)";
+            String sql = "INSERT INTO Turma (periodo, tamanho, idpessoa, iddisciplina) VALUES (?, ?, ?, ?)";
             pstm = conn.prepareStatement(sql);
 
             pstm.setString(1, turma.getPeriodoTurma());
             pstm.setInt(2, turma.getTamanhoTurma());
+            pstm.setInt(3, turma.getPessoa().getIdPessoa());
+            pstm.setInt(3, turma.getDisciplina().getIdDisciplina());
 
             pstm.execute();
 
@@ -62,7 +67,7 @@ public class TurmaDAO {
         try {
             conn = connector.getConnection();
 
-            String sql = "DELETE FROM Turma WHERE idTurma = ?";
+            String sql = "DELETE FROM Turma WHERE idturma = ?";
             pstm = conn.prepareStatement(sql);
 
             pstm.setInt(1, turma.getIdTurma());
@@ -86,13 +91,19 @@ public class TurmaDAO {
             conn = connector.getConnection();
             st = conn.createStatement();
 
-            ResultSet rs = st.executeQuery("SELECT * FROM Turma WHERE idTurma =" + idTurma);
+            ResultSet rs = st.executeQuery("SELECT * FROM Turma join Pessoa on Pessoa.idpessoa = Turma.idpessoa join Disciplina on Disciplina.iddisciplina = Turma.iddisciplina WHERE idturma =" + idTurma);
             rs.first();
-
+            Pessoa pessoa = new Pessoa(rs.getInt("idpessoa"),rs.getString("nome"),0);
+            Prova prova = new Prova(rs.getInt("idprova"),0,null);
+            Disciplina disciplina = new Disciplina(rs.getInt("iddisciplina"),null,0,0,prova);
+            
             turma = new Turma(
-                    rs.getInt("idTurma"),
-                    rs.getString("periodoTurma"),
-                    rs.getInt("tamanhoTurma"));
+                    rs.getInt("idturma"),
+                    rs.getString("periodo"),
+                    rs.getInt("tamanho"),
+                    pessoa,
+                    disciplina
+            );
 
         } catch (SQLException ex) {
             throw ex;
@@ -116,12 +127,19 @@ public class TurmaDAO {
 
             ResultSet rs = st.executeQuery("SELECT = FROM Turma");
 
+            Pessoa pessoa = new Pessoa(rs.getInt("idpessoa"),rs.getString("nome"),0);
+            Prova prova = new Prova(rs.getInt("idprova"),0,null);
+            Disciplina disciplina = new Disciplina(rs.getInt("iddisciplina"),null,0,0,prova);
+            
             while (rs.next()) {
 
                 Turma turma = new Turma(
-                        rs.getInt("idTurma"),
-                        rs.getString("periodoTurma"),
-                        rs.getInt("tamanhoTurma"));
+                    rs.getInt("idturma"),
+                    rs.getString("periodo"),
+                    rs.getInt("tamanho"),
+                    pessoa,
+                    disciplina
+            );
 
                 turmas.add(turma);
             }
@@ -143,13 +161,16 @@ public class TurmaDAO {
         try {
             conn = connector.getConnection();
 
-            String sql = "UPDATE Turma AS c SET idTurma = ?,"
-                    + " periodoTurma = ?, tamanhoTurma = ?,";
+            String sql = "UPDATE Turma AS c SET idturma = ?,"
+                    + " periodo = ?, tamanho = ?,"
+                    +" idpessoa =?, iddisciplina =?";
             pstm = conn.prepareStatement(sql);
 
             pstm.setInt(1, turma.getIdTurma());
             pstm.setString(2, turma.getPeriodoTurma());
             pstm.setInt(3, turma.getTamanhoTurma());
+            pstm.setInt(4, turma.getPessoa().getIdPessoa());
+            pstm.setInt(5, turma.getDisciplina().getIdDisciplina());
 
             pstm.execute();
 

@@ -39,12 +39,11 @@ public class ProvaDAO {
         try {
             conn = connector.getConnection();
 
-            String sql = "INSERT INTO Prova (valor, aluno, iddisciplina) VALUES (?, ?, ?)";
+            String sql = "INSERT INTO Prova (valor, aluno) VALUES (?, ?)";
             pstm = conn.prepareStatement(sql);
 
-            pstm.setFloat(1, prova.getValor());
+            pstm.setInt(1, prova.getValor());
             pstm.setString(2, prova.getAluno());
-            pstm.setInt(3, prova.getDisciplina().getIdDisciplina());
 
             pstm.execute();
 
@@ -64,7 +63,7 @@ public class ProvaDAO {
         try {
             conn = connector.getConnection();
 
-            String sql = "DELETE FROM Prova WHERE idProva = ?";
+            String sql = "DELETE FROM Prova WHERE idprova = ?";
             pstm = conn.prepareStatement(sql);
 
             pstm.setInt(1, prova.getIdProva());
@@ -88,15 +87,13 @@ public class ProvaDAO {
             conn = connector.getConnection();
             st = conn.createStatement();
 
-            ResultSet rs = st.executeQuery("select * from provs join disciplina on disciplina.iddisciplina=prova.iddisciplina where idprova ="+idProva);
+            ResultSet rs = st.executeQuery("select * from Prova where idprova ="+idProva);
             rs.first();
-            Disciplina disciplina = new Disciplina(rs.getInt("idDisciplina"),rs.getString("nome"),0,0);
             
             prova = new Prova(
-                    rs.getInt("idProva"),
-                    rs.getFloat("valor"),
-                    rs.getString("aluno"),
-                    disciplina
+                    rs.getInt("idprova"),
+                    rs.getInt("valor"),
+                    rs.getString("aluno")
             );
 
         } catch (SQLException ex) {
@@ -120,15 +117,13 @@ public class ProvaDAO {
             st = conn.createStatement();
 
             ResultSet rs = st.executeQuery("SELECT = FROM Prova");
-            Disciplina disciplina = new Disciplina(rs.getInt("idDisciplina"),rs.getString("nome"),0,0);
             
             while (rs.next()) {
 
                 Prova prova = new Prova(
-                    rs.getInt("idProva"),
-                    rs.getFloat("valor"),
-                    rs.getString("aluno"),
-                    disciplina
+                    rs.getInt("idprova"),
+                    rs.getInt("valor"),
+                    rs.getString("aluno")
                 );
                 provas.add(prova);
             }
@@ -150,15 +145,14 @@ public class ProvaDAO {
         try {
             conn = connector.getConnection();
 
-            String sql = "UPDATE Prova AS c SET idProva = ?,"
+            String sql = "UPDATE Prova AS c SET"
                     + " valor = ?, aluno = ?,"
-                    + " idDisciplina = ? WHERE c.idProva = ?";
+                    + " iddisciplina = ? WHERE c.idprova = ?";
             pstm = conn.prepareStatement(sql);
 
             pstm.setInt(1, prova.getIdProva());
-            pstm.setFloat(2, prova.getValor());
+            pstm.setInt(2, prova.getValor());
             pstm.setString(3, prova.getAluno());
-            pstm.setInt(4, prova.getDisciplina().getIdDisciplina());
 
             pstm.execute();
 

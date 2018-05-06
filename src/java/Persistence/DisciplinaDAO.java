@@ -1,6 +1,7 @@
 package Persistence;
 
 import Model.Disciplina;
+import Model.Prova;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
@@ -30,12 +31,13 @@ public class DisciplinaDAO {
         try {
             conn = connector.getConnection();
 
-            String sql = "INSERT INTO Disciplina (nomeDisciplina, numeroCreditos, numeroVagas) VALUES (?, ?, ?)";
+            String sql = "INSERT INTO Disciplina (nome, numerocreditos, numerovagas, idprova) VALUES (?, ?, ?, ?)";
             pstm = conn.prepareStatement(sql);
 
             pstm.setString(1, disciplina.getNomeDisciplina());
             pstm.setInt(2, disciplina.getNumeroCreditos());
             pstm.setInt(3, disciplina.getNumeroVagas());
+            pstm.setInt(4, disciplina.getP1().getIdProva());
 
             pstm.execute();
 
@@ -55,7 +57,7 @@ public class DisciplinaDAO {
         try {
             conn = connector.getConnection();
 
-            String sql = "DELETE FROM Disciplina WHERE idDisciplina = ?";
+            String sql = "DELETE FROM Disciplina WHERE iddisciplina = ?";
             pstm = conn.prepareStatement(sql);
 
             pstm.setInt(1, disciplina.getIdDisciplina());
@@ -79,14 +81,17 @@ public class DisciplinaDAO {
             conn = connector.getConnection();
             st = conn.createStatement();
 
-            ResultSet rs = st.executeQuery("SELECT * FROM Disciplina WHERE idDisciplina =" + idDisciplina);
+            ResultSet rs = st.executeQuery("SELECT * FROM Disciplina join Prova on Prova.idprova=Disciplina.idprova WHERE iddisciplina =" + idDisciplina);
             rs.first();
 
+            Prova prova = new Prova(rs.getInt("idprova"),rs.getInt("valor"),rs.getString("aluno"));
+            
             disciplina = new Disciplina(
-                    rs.getInt("idDisciplina"),
-                    rs.getString("nomeDisciplina"),
-                    rs.getInt("numeroCreditos"),
-                    rs.getInt("numeroVagas"));
+                    rs.getInt("iddisciplina"),
+                    rs.getString("nome"),
+                    rs.getInt("numerocreditos"),
+                    rs.getInt("numerovagas"),
+                    prova);
 
         } catch (SQLException ex) {
             throw ex;
@@ -109,14 +114,17 @@ public class DisciplinaDAO {
             st = conn.createStatement();
 
             ResultSet rs = st.executeQuery("SELECT = FROM Disciplina");
+            Prova prova = new Prova(rs.getInt("idprova"),rs.getInt("valor"),rs.getString("aluno"));
 
             while (rs.next()) {
 
                 Disciplina disciplina = new Disciplina(
-                        rs.getInt("idDisciplina"),
-                        rs.getString("nomeDisciplina"),
-                        rs.getInt("numeroCreditos"),
-                        rs.getInt("numeroVagas"));
+                    rs.getInt("iddisciplina"),
+                    rs.getString("nome"),
+                    rs.getInt("numerocreditos"),
+                    rs.getInt("numerovagas"),
+                    prova
+                );
 
                 disciplinas.add(disciplina);
             }
@@ -138,16 +146,16 @@ public class DisciplinaDAO {
         try {
             conn = connector.getConnection();
 
-            String sql = "UPDATE Disciplina AS c SET idDisciplina = ?,"
-                    + " nomeDisciplina = ?, numeroCreditos = ?,"
-                    + " numeroVagas = ? WHERE c.idDisciplina = ?";
+            String sql = "UPDATE Disciplina AS c SET iddisciplina = ?,"
+                    + " nome = ?, numerocreditos = ?,"
+                    + " numerovagas = ?, idprova = ? WHERE c.iddisciplina = ?";
             pstm = conn.prepareStatement(sql);
 
             pstm.setInt(1, disciplina.getIdDisciplina());
             pstm.setString(2, disciplina.getNomeDisciplina());
             pstm.setInt(3, disciplina.getNumeroCreditos());
             pstm.setInt(4, disciplina.getNumeroVagas());
-            pstm.setInt(5, disciplina.getIdDisciplina());
+            pstm.setInt(5, disciplina.getP1().getIdProva());
 
             pstm.execute();
 
