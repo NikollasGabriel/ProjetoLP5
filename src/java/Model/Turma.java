@@ -2,16 +2,16 @@ package Model;
 
 public class Turma {
 
-    private Integer idTurma;
+    private int idTurma;
     private String periodoTurma;
-    private Integer tamanhoTurma;
+    private int tamanhoTurma;
     private Pessoa pessoa;
     private Disciplina disciplina;
 
     public Turma() {
     }
 
-    public Turma(Integer idTurma, String periodoTurma, Integer tamanhoTurma, Pessoa pessoa, Disciplina disciplina) {
+    public Turma(int idTurma, String periodoTurma, int tamanhoTurma, Pessoa pessoa, Disciplina disciplina) {
         this.idTurma = idTurma;
         this.periodoTurma = periodoTurma;
         this.tamanhoTurma = tamanhoTurma;
@@ -19,15 +19,23 @@ public class Turma {
         this.disciplina = disciplina;
     }
     
-    public Turma(Integer idTurma) {
+    public Turma(String periodoTurma, int tamanhoTurma, Pessoa pessoa, Disciplina disciplina) {
+        this.idTurma = idTurma;
+        this.periodoTurma = periodoTurma;
+        this.tamanhoTurma = tamanhoTurma;
+        this.pessoa = pessoa;
+        this.disciplina = disciplina;
+    }
+    
+    public Turma(int idTurma) {
         this.idTurma = idTurma;
     }
 
-    public Integer getIdTurma() {
+    public int getIdTurma() {
         return idTurma;
     }
 
-    public void setIdTurma(Integer idTurma) {
+    public void setIdTurma(int idTurma) {
         this.idTurma = idTurma;
     }
 
@@ -39,11 +47,11 @@ public class Turma {
         this.periodoTurma = nomeTurma;
     }
 
-    public Integer getTamanhoTurma() {
+    public int getTamanhoTurma() {
         return tamanhoTurma;
     }
 
-    public void setTamanhoTurma(Integer tamanhoTurma) {
+    public void setTamanhoTurma(int tamanhoTurma) {
         this.tamanhoTurma = tamanhoTurma;
     }
 

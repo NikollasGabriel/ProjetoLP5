@@ -6,8 +6,8 @@
 package action;
 
 import Controller.Action;
-import Model.Disciplina;
-import Persistence.DisciplinaDAO;
+import Model.Pessoa;
+import Persistence.PessoaDAO;
 import java.io.IOException;
 import java.sql.SQLException;
 import java.util.ArrayList;
@@ -23,16 +23,16 @@ import javax.servlet.http.HttpServletResponse;
  *
  * @author asus note
  */
-public class LerDisciplinaAction implements Action {
+public class LerPessoaAction implements Action {
 
     @Override
     public void execute(HttpServletRequest request,
             HttpServletResponse response) throws IOException{
             try{
-                List<Disciplina> disciplinas = new ArrayList<Disciplina>();
-                disciplinas = DisciplinaDAO.getInstancia().obterDisciplinas();
-                request.setAttribute("disciplinas", disciplinas);
-                RequestDispatcher view = request.getRequestDispatcher("disciplinaConsulta.jsp");
+                List<Pessoa> pessoas = new ArrayList<Pessoa>();
+                pessoas = PessoaDAO.getInstancia().obterPessoas();
+                request.setAttribute("pessoas", pessoas);
+                RequestDispatcher view = request.getRequestDispatcher("pessoaConsulta.jsp");
                 view.forward(request, response);
             } catch(SQLException ex)
             {
@@ -41,7 +41,7 @@ public class LerDisciplinaAction implements Action {
             } catch (ClassNotFoundException ex) {
             ex.printStackTrace();
         } catch (ServletException ex) {
-            Logger.getLogger(LerDisciplinaAction.class.getName()).log(Level.SEVERE, null, ex);
+            Logger.getLogger(LerPessoaAction.class.getName()).log(Level.SEVERE, null, ex);
         }
     }
 

@@ -2,28 +2,34 @@ package Model;
 
 public class Pessoa {
 
-    private Integer idPessoa;
+    private int idPessoa;
     private String nomePessoa;
-    private Integer idadePessoa;
+    private int idadePessoa;
 
     public Pessoa() {
     }
 
-    public Pessoa(Integer idPessoa) {
+    public Pessoa(int idPessoa) {
         this.idPessoa = idPessoa;
     }
 
-    public Pessoa(Integer idPessoa, String nomePessoa, Integer idadePessoa) {
+    public Pessoa(int idPessoa, String nomePessoa, int idadePessoa) {
+        this.idPessoa = idPessoa;
+        this.nomePessoa = nomePessoa;
+        this.idadePessoa = idadePessoa;                        
+    }
+    
+    public Pessoa(String nomePessoa, int idadePessoa) {
         this.idPessoa = idPessoa;
         this.nomePessoa = nomePessoa;
         this.idadePessoa = idadePessoa;                        
     }
 
-    public Integer getIdPessoa() {
+    public int getIdPessoa() {
         return idPessoa;
     }
 
-    public void setIdPessoa(Integer idPessoa) {
+    public void setIdPessoa(int idPessoa) {
         this.idPessoa = idPessoa;
     }
 
@@ -35,11 +41,11 @@ public class Pessoa {
         this.nomePessoa = nomePessoa;
     }
 
-    public Integer getIdadePessoa() {
+    public int getIdadePessoa() {
         return idadePessoa;
     }
 
-    public void setIdadePessoa(Integer idadePessoa) {
+    public void setIdadePessoa(int idadePessoa) {
         this.idadePessoa = idadePessoa;
     }
 }

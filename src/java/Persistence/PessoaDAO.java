@@ -103,7 +103,7 @@ public class PessoaDAO {
         return pessoa;
     }
 
-    public List<Pessoa> obter() throws ClassNotFoundException, SQLException {
+    public List<Pessoa> obterPessoas() throws ClassNotFoundException, SQLException {
 
         Connection conn = null;
         Statement st = null;
@@ -135,7 +135,7 @@ public class PessoaDAO {
         return pessoas;
     }
 
-    public void editar(Pessoa pessoa) throws SQLException, ClassNotFoundException {
+    public void editar(Pessoa pessoa, String nome, int idade) throws SQLException, ClassNotFoundException {
         Connection conn = null;
         PreparedStatement pstm = null;
         DatabaseLocator connector = DatabaseLocator.getInstance();
@@ -143,13 +143,13 @@ public class PessoaDAO {
         try {
             conn = connector.getConnection();
 
-            String sql = "UPDATE Pessoa AS c SET idpessoa = ?,"
-                    + " nome = ?, idade = ?,";
+            String sql = "UPDATE Pessoa AS p SET"
+                    + " nome = ?, idade = ? WHERE p.idpessoa = ?";
             pstm = conn.prepareStatement(sql);
 
-            pstm.setInt(1, pessoa.getIdPessoa());
-            pstm.setString(2, pessoa.getNomePessoa());
-            pstm.setInt(3, pessoa.getIdadePessoa());
+            pstm.setString(1, nome);
+            pstm.setInt(2, idade);
+            pstm.setInt(3, pessoa.getIdPessoa());
             
             pstm.execute();
 

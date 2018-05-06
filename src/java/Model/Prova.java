@@ -14,7 +14,15 @@ public class Prova{
     private int Valor;
     private String aluno;
 
+    public Prova(){}
+    
     public Prova(int idProva, int Valor, String aluno) {
+        this.idProva = idProva;
+        this.Valor = Valor;
+        this.aluno = aluno;
+    }
+    
+    public Prova(int Valor, String aluno) {
         this.idProva = idProva;
         this.Valor = Valor;
         this.aluno = aluno;

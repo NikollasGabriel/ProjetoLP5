@@ -6,9 +6,8 @@
 package action;
 
 import Controller.Action;
-import Model.Disciplina;
 import Model.Prova;
-import Persistence.DisciplinaDAO;
+import Persistence.ProvaDAO;
 import java.io.IOException;
 import java.sql.SQLException;
 import javax.servlet.http.HttpServletRequest;
@@ -18,28 +17,27 @@ import javax.servlet.http.HttpServletResponse;
  *
  * @author asus note
  */
-public class EditarDisciplinaAction implements Action {
+public class EditarProvaAction implements Action {
 
-    public EditarDisciplinaAction() {
+    public EditarProvaAction() {
     }
 
     @Override
     public void execute(HttpServletRequest request,
         HttpServletResponse response) throws IOException {
         int id = Integer.parseInt(request.getParameter("txtId"));
-        String nome = request.getParameter("txtNome");
-        int numerocreditos = Integer.parseInt(request.getParameter("txtNumeroCreditos"));
-        int numerovagas = Integer.parseInt(request.getParameter("txtNumeroVagas"));
-        Prova prova = new Prova(Integer.parseInt(request.getParameter("txtNumeroCreditos")));
+        String aluno = request.getParameter("txtAluno");
+        int valor = Integer.parseInt(request.getParameter("txtValor"));
         
-        if (nome.equals("")) {
+        
+        if (aluno.equals("")) {
             response.sendRedirect("index.jsp");
         } else {
             try {
-                DisciplinaDAO disciplinaDAO = new DisciplinaDAO();
-                Disciplina disciplina = new Disciplina();
-                disciplina = disciplinaDAO.obter(id);
-                disciplinaDAO.editar(disciplina, nome, numerocreditos, numerovagas, prova.getIdProva());
+                ProvaDAO provaDAO = new ProvaDAO();
+                Prova prova = new Prova();
+                prova = provaDAO.obter(id);
+                provaDAO.editar(prova, valor, aluno);
                 response.sendRedirect("sucesso.jsp");
             } catch (SQLException ex) {
                 response.sendRedirect("erro.jsp");

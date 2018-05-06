@@ -105,7 +105,7 @@ public class ProvaDAO {
         return prova;
     }
 
-    public List<Prova> obter() throws ClassNotFoundException, SQLException {
+    public List<Prova> obterProvas() throws ClassNotFoundException, SQLException {
 
         Connection conn = null;
         Statement st = null;
@@ -137,7 +137,7 @@ public class ProvaDAO {
         return provas;
     }
 
-    public void editar(Prova prova) throws SQLException, ClassNotFoundException {
+    public void editar(Prova prova, int valor, String aluno) throws SQLException, ClassNotFoundException {
         Connection conn = null;
         PreparedStatement pstm = null;
         DatabaseLocator connector = DatabaseLocator.getInstance();
@@ -145,14 +145,14 @@ public class ProvaDAO {
         try {
             conn = connector.getConnection();
 
-            String sql = "UPDATE Prova AS c SET"
-                    + " valor = ?, aluno = ?,"
-                    + " iddisciplina = ? WHERE c.idprova = ?";
+            String sql = "UPDATE Prova AS p SET"
+                    + " valor = ?, aluno = ?"
+                    + " WHERE p.idprova = ?";
             pstm = conn.prepareStatement(sql);
 
-            pstm.setInt(1, prova.getIdProva());
-            pstm.setInt(2, prova.getValor());
-            pstm.setString(3, prova.getAluno());
+            pstm.setInt(1, valor);
+            pstm.setString(2, aluno);
+            pstm.setInt(3, prova.getIdProva());
 
             pstm.execute();
 

@@ -114,7 +114,7 @@ public class TurmaDAO {
         return turma;
     }
 
-    public List<Turma> obter() throws ClassNotFoundException, SQLException {
+    public List<Turma> obterTurmas() throws ClassNotFoundException, SQLException {
 
         Connection conn = null;
         Statement st = null;
@@ -153,7 +153,7 @@ public class TurmaDAO {
         return turmas;
     }
 
-    public void editar(Turma turma) throws SQLException, ClassNotFoundException {
+    public void editar(Turma turma, String periodo, int tamanho, int idpessoa, int iddisciplina) throws SQLException, ClassNotFoundException {
         Connection conn = null;
         PreparedStatement pstm = null;
         DatabaseLocator connector = DatabaseLocator.getInstance();
@@ -161,16 +161,16 @@ public class TurmaDAO {
         try {
             conn = connector.getConnection();
 
-            String sql = "UPDATE Turma AS c SET idturma = ?,"
+            String sql = "UPDATE Turma AS t SET"
                     + " periodo = ?, tamanho = ?,"
-                    +" idpessoa =?, iddisciplina =?";
+                    +" idpessoa =?, iddisciplina =? WHERE t.idturma = ?";
             pstm = conn.prepareStatement(sql);
 
-            pstm.setInt(1, turma.getIdTurma());
-            pstm.setString(2, turma.getPeriodoTurma());
-            pstm.setInt(3, turma.getTamanhoTurma());
-            pstm.setInt(4, turma.getPessoa().getIdPessoa());
-            pstm.setInt(5, turma.getDisciplina().getIdDisciplina());
+            pstm.setString(1, periodo);
+            pstm.setInt(2, tamanho);
+            pstm.setInt(3, idpessoa);
+            pstm.setInt(4, iddisciplina);
+            pstm.setInt(5, turma.getIdTurma());
 
             pstm.execute();
 
