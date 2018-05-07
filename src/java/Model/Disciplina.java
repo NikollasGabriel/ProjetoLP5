@@ -3,32 +3,33 @@ package Model;
 
 public class Disciplina {
     
-    private Integer idDisciplina;
+    private int idDisciplina;
     private String nomeDisciplina;
-    private Integer numeroCreditos;
-    private Integer numeroVagas;
-    private Prova p1;
+    private int numeroCreditos;
+    private int numeroVagas;
+
+    public Disciplina(int idDisciplina, String nomeDisciplina, int numeroCreditos, int numeroVagas) {
+        this.idDisciplina = idDisciplina;
+        this.nomeDisciplina = nomeDisciplina;
+        this.numeroCreditos = numeroCreditos;
+        this.numeroVagas = numeroVagas;
+    }
+    
+    public Disciplina(String nomeDisciplina, int numeroCreditos, int numeroVagas) {
+        this.idDisciplina = idDisciplina;
+        this.nomeDisciplina = nomeDisciplina;
+        this.numeroCreditos = numeroCreditos;
+        this.numeroVagas = numeroVagas;
+    }
+    
+    public Disciplina(int idDisciplina) {
+        this.idDisciplina = idDisciplina;
+    }
     
     public Disciplina(){
         
     }
 
-    public Disciplina(Integer idDisciplina) {
-        this.idDisciplina = idDisciplina;
-    }
-        
-    public Disciplina(Integer idDisciplina, String nomeDisciplina, Integer numeroCreditos, Integer numeroVagas) {
-        this.idDisciplina = idDisciplina;
-        this.nomeDisciplina = nomeDisciplina;
-        this.numeroCreditos = numeroCreditos;
-        this.numeroVagas = numeroVagas;
-    }
-
-    public Disciplina(String nomeDisciplina, Integer numeroCreditos, Integer numeroVagas) {
-        this.nomeDisciplina = nomeDisciplina;
-        this.numeroCreditos = numeroCreditos;
-        this.numeroVagas = numeroVagas;
-    }        
        
     public String getNomeDisciplina() {
         return nomeDisciplina;
@@ -38,42 +39,27 @@ public class Disciplina {
         this.nomeDisciplina = nomeDisciplina;
     }
 
-    public Integer getNumeroCreditos() {
+    public int getNumeroCreditos() {
         return numeroCreditos;
     }
 
-    public void setNumeroCreditos(Integer numeroCreditos) {
+    public void setNumeroCreditos(int numeroCreditos) {
         this.numeroCreditos = numeroCreditos;
     }
 
-    public Integer getNumeroVagas() {
+    public int getNumeroVagas() {
         return numeroVagas;
     }
 
-    public void setNumeroVagas(Integer numeroVagas) {
+    public void setNumeroVagas(int numeroVagas) {
         this.numeroVagas = numeroVagas;
     }
 
-    public Integer getIdDisciplina() {
+    public int getIdDisciplina() {
         return idDisciplina;
     }
 
-    public void setIdDisciplina(Integer idDisciplina) {
+    public void setIdDisciplina(int idDisciplina) {
         this.idDisciplina = idDisciplina;
-    }
-
-    /**
-     * @return the p1
-     */
-    public Prova getP1() {
-        return p1;
-    }
-
-    /**
-     * @param p1 the p1 to set
-     */
-    public void setP1(Prova p1) {
-        this.p1 = p1;
-    }
-        
+    }        
 }

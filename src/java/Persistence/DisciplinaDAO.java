@@ -30,12 +30,12 @@ public class DisciplinaDAO {
         try {
             conn = connector.getConnection();
 
-            String sql = "INSERT INTO Disciplina (nomeDisciplina, numeroCreditos, numeroVagas) VALUES (?, ?, ?)";
+            String sql = "INSERT INTO Disciplina (nome, numeroCreditos, numeroVagas) VALUES (?, ?, ?)";
             pstm = conn.prepareStatement(sql);
 
             pstm.setString(1, disciplina.getNomeDisciplina());
             pstm.setInt(2, disciplina.getNumeroCreditos());
-            pstm.setInt(3, disciplina.getNumeroVagas());
+            pstm.setInt(3, disciplina.getNumeroVagas());            
 
             pstm.execute();
 
@@ -82,11 +82,12 @@ public class DisciplinaDAO {
             ResultSet rs = st.executeQuery("SELECT * FROM Disciplina WHERE idDisciplina =" + idDisciplina);
             rs.first();
 
+            
             disciplina = new Disciplina(
-                    rs.getInt("idDisciplina"),
-                    rs.getString("nomeDisciplina"),
-                    rs.getInt("numeroCreditos"),
-                    rs.getInt("numeroVagas"));
+                    rs.getInt("iddisciplina"),
+                    rs.getString("nome"),
+                    rs.getInt("numerocreditos"),
+                    rs.getInt("numerovagas"));
 
         } catch (SQLException ex) {
             throw ex;
@@ -97,7 +98,7 @@ public class DisciplinaDAO {
         return disciplina;
     }
 
-    public List<Disciplina> obter() throws ClassNotFoundException, SQLException {
+    public List<Disciplina> obterDisciplinas() throws ClassNotFoundException, SQLException {
 
         Connection conn = null;
         Statement st = null;
@@ -108,15 +109,15 @@ public class DisciplinaDAO {
             conn = connector.getConnection();
             st = conn.createStatement();
 
-            ResultSet rs = st.executeQuery("SELECT = FROM Disciplina");
+            ResultSet rs = st.executeQuery("SELECT * FROM disciplina");
 
             while (rs.next()) {
 
                 Disciplina disciplina = new Disciplina(
-                        rs.getInt("idDisciplina"),
-                        rs.getString("nomeDisciplina"),
-                        rs.getInt("numeroCreditos"),
-                        rs.getInt("numeroVagas"));
+                    rs.getInt("idDisciplina"),
+                    rs.getString("nome"),
+                    rs.getInt("numeroCreditos"),
+                    rs.getInt("numeroVagas"));
 
                 disciplinas.add(disciplina);
             }
@@ -138,16 +139,15 @@ public class DisciplinaDAO {
         try {
             conn = connector.getConnection();
 
-            String sql = "UPDATE Disciplina AS c SET idDisciplina = ?,"
-                    + " nomeDisciplina = ?, numeroCreditos = ?,"
-                    + " numeroVagas = ? WHERE c.idDisciplina = ?";
+            String sql = "UPDATE Disciplina AS d SET"
+                    + " nome = ?, numerocreditos = ?,"
+                    + " numerovagas = ? WHERE d.iddisciplina = ?";
             pstm = conn.prepareStatement(sql);
 
-            pstm.setInt(1, disciplina.getIdDisciplina());
-            pstm.setString(2, disciplina.getNomeDisciplina());
-            pstm.setInt(3, disciplina.getNumeroCreditos());
-            pstm.setInt(4, disciplina.getNumeroVagas());
-            pstm.setInt(5, disciplina.getIdDisciplina());
+            pstm.setString(1, disciplina.getNomeDisciplina());
+            pstm.setInt(2, disciplina.getNumeroCreditos());
+            pstm.setInt(3, disciplina.getNumeroVagas());
+            pstm.setInt(4, disciplina.getIdDisciplina());
 
             pstm.execute();
 

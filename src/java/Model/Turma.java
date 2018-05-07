@@ -2,45 +2,67 @@ package Model;
 
 public class Turma {
 
-    private Integer idTurma;
-    private String nomeTurma;
-    private Integer tamanhoTurma;
+    private int idTurma;
+    private String periodoTurma;
+    private int tamanhoTurma;
+    private Disciplina disciplina;
 
     public Turma() {
     }
 
-    public Turma(Integer idTurma) {
+    public Turma(int idTurma, String periodoTurma, int tamanhoTurma, Disciplina disciplina) {
         this.idTurma = idTurma;
-    }
-
-    public Turma(Integer idTurma, String nomeTurma, Integer tamanhoTurma) {
-        this.idTurma = idTurma;
-        this.nomeTurma = nomeTurma;
+        this.periodoTurma = periodoTurma;
         this.tamanhoTurma = tamanhoTurma;
+        this.disciplina = disciplina;
     }
 
-    public Integer getIdTurma() {
+    public Turma(String periodoTurma, int tamanhoTurma, Disciplina disciplina) {
+        this.periodoTurma = periodoTurma;
+        this.tamanhoTurma = tamanhoTurma;
+        this.disciplina = disciplina;
+    }
+
+    public Turma(int idTurma) {
+        this.idTurma = idTurma;
+    }
+
+    public int getIdTurma() {
         return idTurma;
     }
 
-    public void setIdTurma(Integer idTurma) {
+    public void setIdTurma(int idTurma) {
         this.idTurma = idTurma;
     }
 
-    public String getNomeTurma() {
-        return nomeTurma;
+    public String getPeriodoTurma() {
+        return periodoTurma;
     }
 
-    public void setNomeTurma(String nomeTurma) {
-        this.nomeTurma = nomeTurma;
+    public void setPeriodoTurma(String nomeTurma) {
+        this.periodoTurma = nomeTurma;
     }
 
-    public Integer getTamanhoTurma() {
+    public int getTamanhoTurma() {
         return tamanhoTurma;
     }
 
-    public void setTamanhoTurma(Integer tamanhoTurma) {
+    public void setTamanhoTurma(int tamanhoTurma) {
         this.tamanhoTurma = tamanhoTurma;
+    }
+
+    /**
+     * @return the disciplina
+     */
+    public Disciplina getDisciplina() {
+        return disciplina;
+    }
+
+    /**
+     * @param disciplina the disciplina to set
+     */
+    public void setDisciplina(Disciplina disciplina) {
+        this.disciplina = disciplina;
     }
 
 }

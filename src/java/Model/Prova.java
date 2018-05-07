@@ -1,58 +1,62 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 package Model;
 
-/**
- *
- * @author rwspa
- */
 public class Prova {
-    private Nota valorProva;
-    private Nota media;
-    private Nota notaTirada;
 
-    /**
-     * @return the valorProva
-     */
-    public Nota getValorProva() {
-        return valorProva;
+    private int idProva;
+    private float valor;
+    private String aluno;
+    private Disciplina disciplina;
+
+    public Prova() {
     }
 
-    /**
-     * @param valorProva the valorProva to set
-     */
-    public void setValorProva(Nota valorProva) {
-        this.valorProva = valorProva;
+    public Prova(int idProva) {
+        this.idProva = idProva;
     }
 
-    /**
-     * @return the media
-     */
-    public Nota getMedia() {
-        return media;
+    public Prova(int idProva, float valor, String aluno, Disciplina disciplina) {
+        this.idProva = idProva;
+        this.valor = valor;
+        this.aluno = aluno;
+        this.disciplina = disciplina;
     }
 
-    /**
-     * @param media the media to set
-     */
-    public void setMedia(Nota media) {
-        this.media = media;
+    public Prova(float valor, String aluno, Disciplina disciplina) {
+        this.valor = valor;
+        this.aluno = aluno;
+        this.disciplina = disciplina;
     }
 
-    /**
-     * @return the notaTirada
-     */
-    public Nota getNotaTirada() {
-        return notaTirada;
+    public int getIdProva() {
+        return idProva;
     }
 
-    /**
-     * @param notaTirada the notaTirada to set
-     */
-    public void setNotaTirada(Nota notaTirada) {
-        this.notaTirada = notaTirada;
+    public void setIdProva(int idProva) {
+        this.idProva = idProva;
     }
+
+    public float getValor() {
+        return valor;
+    }
+
+    public void setValor(float valor) {
+        this.valor = valor;
+    }
+
+    public String getAluno() {
+        return aluno;
+    }
+
+    public void setAluno(String aluno) {
+        this.aluno = aluno;
+    }
+
+    public Disciplina getDisciplina() {
+        return disciplina;
+    }
+
+    public void setDisciplina(Disciplina disciplina) {
+        this.disciplina = disciplina;
+    }
+
 }

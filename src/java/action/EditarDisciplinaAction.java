@@ -1,8 +1,3 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 package action;
 
 import Controller.Action;
@@ -13,34 +8,33 @@ import java.sql.SQLException;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-/**
- *
- * @author asus note
- */
 public class EditarDisciplinaAction implements Action {
+
+    public EditarDisciplinaAction() {
+    }
 
     @Override
     public void execute(HttpServletRequest request, HttpServletResponse response) throws IOException {
 
-        String id = request.getParameter("textId");
-        String nome = request.getParameter("textNome");
+        int id = Integer.parseInt(request.getParameter("txtIdDisciplina"));
+        String nome = request.getParameter("txtNomeDisciplina");
+        int numerocreditos = Integer.parseInt(request.getParameter("txtNumeroCreditos"));
+        int numerovagas = Integer.parseInt(request.getParameter("txtNumeroVagas"));
 
-        Disciplina disciplina = new Disciplina();
-
-        if (id.equals("") || nome.equals("")) {
-            response.sendRedirect("Departamento/editar.jsp");
+        if (nome.equals("")) {
+            response.sendRedirect("FrontController?action=LerDisciplina");
         } else {
-            //Disciplina disciplina = new Disciplina();
             try {
+
+                Disciplina disciplina = new Disciplina(id, nome, numerocreditos, numerovagas);
                 DisciplinaDAO.getInstancia().editar(disciplina);
-            } catch (ClassNotFoundException ex) {
-                ex.printStackTrace();
-            } catch (SQLException ex) {
-                response.sendRedirect("erro.jsp?erro=" + ex);
+                response.sendRedirect("FrontController?action=LerDisciplina");
+
+            } catch (SQLException | ClassNotFoundException ex) {
+                //response.sendRedirect("erro.jsp");
                 ex.printStackTrace();
             }
         }
-
     }
 
 }

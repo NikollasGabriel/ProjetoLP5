@@ -24,13 +24,17 @@ public class GravarDisciplinaAction implements Action {
             Disciplina disciplina = new Disciplina(nome, creditos, vagas);
 
             try {
+                
                 DisciplinaDAO.getInstancia().save(disciplina);
+                response.sendRedirect("FrontController?action=LerDisciplina");
+                
             } catch (ClassNotFoundException ex) {
                 ex.printStackTrace();
             } catch (SQLException ex) {
                 //response.sendRedirect("../erro.jsp?erro=" + ex);
                 ex.printStackTrace();
             }
+
         }
     }
 
