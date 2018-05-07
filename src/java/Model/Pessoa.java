@@ -5,6 +5,7 @@ public class Pessoa {
     private int idPessoa;
     private String nomePessoa;
     private int idadePessoa;
+    private Turma turma;
 
     public Pessoa() {
     }
@@ -13,18 +14,19 @@ public class Pessoa {
         this.idPessoa = idPessoa;
     }
 
-    public Pessoa(int idPessoa, String nomePessoa, int idadePessoa) {
-        this.idPessoa = idPessoa;
+    public Pessoa(String nomePessoa, int idadePessoa, Turma turma) {
         this.nomePessoa = nomePessoa;
-        this.idadePessoa = idadePessoa;                        
-    }
-    
-    public Pessoa(String nomePessoa, int idadePessoa) {
-        this.idPessoa = idPessoa;
-        this.nomePessoa = nomePessoa;
-        this.idadePessoa = idadePessoa;                        
+        this.idadePessoa = idadePessoa;
+        this.turma = turma;
     }
 
+    public Pessoa(int idPessoa, String nomePessoa, int idadePessoa, Turma turma) {
+        this.idPessoa = idPessoa;
+        this.nomePessoa = nomePessoa;
+        this.idadePessoa = idadePessoa;
+        this.turma = turma;
+    }
+        
     public int getIdPessoa() {
         return idPessoa;
     }
@@ -47,5 +49,13 @@ public class Pessoa {
 
     public void setIdadePessoa(int idadePessoa) {
         this.idadePessoa = idadePessoa;
+    }
+
+    public Turma getTurma() {
+        return turma;
+    }
+
+    public void setTurma(Turma turma) {
+        this.turma = turma;
     }
 }

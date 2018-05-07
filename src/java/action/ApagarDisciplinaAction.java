@@ -13,23 +13,18 @@ public class ApagarDisciplinaAction implements Action {
     @Override
     public void execute(HttpServletRequest request, HttpServletResponse response) throws IOException {
 
-        String id = request.getParameter("");
+        int id = Integer.parseInt(request.getParameter("txtIdDisciplina"));
 
-        if (id.equals("")) {
-            response.sendRedirect("");
-        } else {
+        Disciplina disciplina = new Disciplina(id);
 
-            Disciplina disciplina = new Disciplina(Integer.parseInt(id));
-
-            try {
-                DisciplinaDAO.getInstancia().delete(disciplina);
-            } catch (ClassNotFoundException ex) {
-                ex.printStackTrace();
-            } catch (SQLException ex) {
-                response.sendRedirect("erro.jsp?erro=" + ex);
-                ex.printStackTrace();
-            }
+        try {
+            
+            DisciplinaDAO.getInstancia().delete(disciplina);
+            response.sendRedirect("FrontController?action=LerDisciplina");
+            
+        } catch (ClassNotFoundException | SQLException ex) {
+            //response.sendRedirect("erro.jsp?erro=" + ex);
+            ex.printStackTrace();
         }
     }
-
 }

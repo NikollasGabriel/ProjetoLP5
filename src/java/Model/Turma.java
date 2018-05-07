@@ -5,28 +5,24 @@ public class Turma {
     private int idTurma;
     private String periodoTurma;
     private int tamanhoTurma;
-    private Pessoa pessoa;
     private Disciplina disciplina;
 
     public Turma() {
     }
 
-    public Turma(int idTurma, String periodoTurma, int tamanhoTurma, Pessoa pessoa, Disciplina disciplina) {
+    public Turma(int idTurma, String periodoTurma, int tamanhoTurma, Disciplina disciplina) {
         this.idTurma = idTurma;
         this.periodoTurma = periodoTurma;
         this.tamanhoTurma = tamanhoTurma;
-        this.pessoa = pessoa;
         this.disciplina = disciplina;
     }
-    
-    public Turma(String periodoTurma, int tamanhoTurma, Pessoa pessoa, Disciplina disciplina) {
-        this.idTurma = idTurma;
+
+    public Turma(String periodoTurma, int tamanhoTurma, Disciplina disciplina) {
         this.periodoTurma = periodoTurma;
         this.tamanhoTurma = tamanhoTurma;
-        this.pessoa = pessoa;
         this.disciplina = disciplina;
     }
-    
+
     public Turma(int idTurma) {
         this.idTurma = idTurma;
     }
@@ -53,20 +49,6 @@ public class Turma {
 
     public void setTamanhoTurma(int tamanhoTurma) {
         this.tamanhoTurma = tamanhoTurma;
-    }
-
-    /**
-     * @return the pessoa
-     */
-    public Pessoa getPessoa() {
-        return pessoa;
-    }
-
-    /**
-     * @param pessoa the pessoa to set
-     */
-    public void setPessoa(Pessoa pessoa) {
-        this.pessoa = pessoa;
     }
 
     /**

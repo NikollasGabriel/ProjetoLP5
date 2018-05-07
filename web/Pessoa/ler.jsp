@@ -12,39 +12,39 @@
         <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
         <script src="js/bootstrap.min.js"></script>
 
-        <title>Consulta Disciplina</title>
+        <title>Consultar Pessoas</title>
     </head>
     <body align="center">
         <nav>
             <object width="100%" height="65px" data="./menu.jsp"></object>
         </nav>
         <div class="container">
-            <h1>Consultar Disiciplinas</h1>
+            <h1>Consultar Pessoas</h1>
             <table class="table table-hover">
                 <thead>
                     <tr>
                         <th>Id</th>
-                        <th>Titulo</th>
-                        <th>Creditos</th>
-                        <th>Vagas</th>
+                        <th>Nome</th>
+                        <th>Idade</th>
+                        <th>Turma</th>
                         <th colspan=2>Ação:</th>
 
                     </tr>
                 </thead>
                 <tbody>
-                    <c:forEach items="${disciplinas}" var="disciplina">
+                    <c:forEach items="${pessoas}" var="pessoa">
                         <tr>
-                            <td><c:out value="${disciplina.idDisciplina}"></c:out></td>
-                            <td><c:out value="${disciplina.nomeDisciplina}"></c:out></td>
-                            <td><c:out value="${disciplina.numeroCreditos}"></c:out></td>
-                            <td><c:out value="${disciplina.numeroVagas}"></c:out></td>
-                            <td><a href="FrontController?action=PrepararEditarDisciplina&txtIdDisciplina=<c:out value="${disciplina.idDisciplina}"/>"><i class="icon-edit"></i>Editar</a> </td>
-                            <td><a href="FrontController?action=PrepararApagarDisciplina&txtIdDisciplina=<c:out value="${disciplina.idDisciplina}"/>"><i class="icon-remove"></i>Excluir</a> </td>
+                            <td><c:out value="${pessoa.idPessoa}"></c:out></td>
+                            <td><c:out value="${pessoa.nomePessoa}"></c:out></td>
+                            <td><c:out value="${pessoa.idadePessoa}"></c:out></td>
+                            <td><c:out value="${pessoa.turma.idTurma}"></c:out></td>
+                            <td><a href="FrontController?action=PrepararEditarPessoa&txtIdPessoa=<c:out value="${pessoa.idPessoa}"/>"><i class="icon-edit"></i>Editar</a> </td>
+                            <td><a href="FrontController?action=PrepararApagarPessoa&txtIdPessoa=<c:out value="${pessoa.idPessoa}"/>"><i class="icon-remove"></i>Excluir</a> </td>
                         </tr>
                     </c:forEach>
                 </tbody>
-            </table>     
-            <form action="FrontController?action=PrepararGravarDisciplina" method="post" name="frmManterDisciplina" onsubmit="">
+            </table>            
+            <form action="FrontController?action=PrepararGravarPessoa" method="post" name="frmManterPessoa" onsubmit="">
                 <input type="submit" class="btn btn-default" value="Gravar">
             </form>
         </div>

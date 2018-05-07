@@ -1,13 +1,6 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 package Persistence;
 
 import Model.Disciplina;
-import Model.Pessoa;
-import Model.Prova;
 import Model.Turma;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
@@ -17,11 +10,8 @@ import java.sql.Statement;
 import java.util.ArrayList;
 import java.util.List;
 
-/**
- *
- * @author rwspa
- */
 public class TurmaDAO {
+
     private static TurmaDAO instancia = new TurmaDAO();
 
     public TurmaDAO() {
@@ -41,12 +31,11 @@ public class TurmaDAO {
         try {
             conn = connector.getConnection();
 
-            String sql = "INSERT INTO Turma (periodo, tamanho, idpessoa, iddisciplina) VALUES (?, ?, ?, ?)";
+            String sql = "INSERT INTO Turma (periodo, tamanho, Disciplina_idDisciplina) VALUES (?, ?, ?)";
             pstm = conn.prepareStatement(sql);
 
             pstm.setString(1, turma.getPeriodoTurma());
             pstm.setInt(2, turma.getTamanhoTurma());
-            pstm.setInt(3, turma.getPessoa().getIdPessoa());
             pstm.setInt(3, turma.getDisciplina().getIdDisciplina());
 
             pstm.execute();
@@ -91,17 +80,19 @@ public class TurmaDAO {
             conn = connector.getConnection();
             st = conn.createStatement();
 
-            ResultSet rs = st.executeQuery("SELECT * FROM Turma join Pessoa on Pessoa.idpessoa = Turma.idpessoa join Disciplina on Disciplina.iddisciplina = Turma.iddisciplina WHERE idturma =" + idTurma);
+            ResultSet rs = st.executeQuery("SELECT * FROM Turma join Disciplina on Disciplina.idDisciplina = Turma.Disciplina_idDisciplina WHERE idTurma =" + idTurma);
             rs.first();
-            Pessoa pessoa = new Pessoa(rs.getInt("idpessoa"),rs.getString("nome"),0);
-            Prova prova = new Prova(rs.getInt("idprova"),0,null);
-            Disciplina disciplina = new Disciplina(rs.getInt("iddisciplina"),null,0,0,prova);
-            
+
+            Disciplina disciplina = new Disciplina(
+                    rs.getInt("iddisciplina"),
+                    rs.getString("nome"),
+                    rs.getInt("numerocreditos"),
+                    rs.getInt("numerovagas"));
+
             turma = new Turma(
                     rs.getInt("idturma"),
                     rs.getString("periodo"),
                     rs.getInt("tamanho"),
-                    pessoa,
                     disciplina
             );
 
@@ -125,21 +116,27 @@ public class TurmaDAO {
             conn = connector.getConnection();
             st = conn.createStatement();
 
-            ResultSet rs = st.executeQuery("SELECT = FROM Turma");
+            ResultSet rs = st.executeQuery("SELECT * FROM Turma join Disciplina on Disciplina.idDisciplina = Turma.Disciplina_idDisciplina");
 
-            Pessoa pessoa = new Pessoa(rs.getInt("idpessoa"),rs.getString("nome"),0);
-            Prova prova = new Prova(rs.getInt("idprova"),0,null);
-            Disciplina disciplina = new Disciplina(rs.getInt("iddisciplina"),null,0,0,prova);
-            
+            /*Disciplina disciplina = new Disciplina(
+                    rs.getInt("idDisciplina"),
+                    rs.getString("nome"),
+                    rs.getInt("numeroCreditos"),
+                    rs.getInt("numeroVagas"));*/
             while (rs.next()) {
 
+                Disciplina disciplina = new Disciplina(
+                        rs.getInt("idDisciplina"),
+                        rs.getString("nome"),
+                        rs.getInt("numeroCreditos"),
+                        rs.getInt("numeroVagas"));
+
                 Turma turma = new Turma(
-                    rs.getInt("idturma"),
-                    rs.getString("periodo"),
-                    rs.getInt("tamanho"),
-                    pessoa,
-                    disciplina
-            );
+                        rs.getInt("idTurma"),
+                        rs.getString("periodo"),
+                        rs.getInt("tamanho"),
+                        disciplina
+                );
 
                 turmas.add(turma);
             }
@@ -153,7 +150,7 @@ public class TurmaDAO {
         return turmas;
     }
 
-    public void editar(Turma turma, String periodo, int tamanho, int idpessoa, int iddisciplina) throws SQLException, ClassNotFoundException {
+    public void editar(Turma turma) throws SQLException, ClassNotFoundException {
         Connection conn = null;
         PreparedStatement pstm = null;
         DatabaseLocator connector = DatabaseLocator.getInstance();
@@ -163,14 +160,13 @@ public class TurmaDAO {
 
             String sql = "UPDATE Turma AS t SET"
                     + " periodo = ?, tamanho = ?,"
-                    +" idpessoa =?, iddisciplina =? WHERE t.idturma = ?";
+                    + " Disciplina_idDisciplina =? WHERE t.idturma = ?";
             pstm = conn.prepareStatement(sql);
 
-            pstm.setString(1, periodo);
-            pstm.setInt(2, tamanho);
-            pstm.setInt(3, idpessoa);
-            pstm.setInt(4, iddisciplina);
-            pstm.setInt(5, turma.getIdTurma());
+            pstm.setString(1, turma.getPeriodoTurma());
+            pstm.setInt(2, turma.getTamanhoTurma());
+            pstm.setInt(3, turma.getDisciplina().getIdDisciplina());
+            pstm.setInt(4, turma.getIdTurma());
 
             pstm.execute();
 

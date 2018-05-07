@@ -13,22 +13,15 @@ public class ApagarPessoaAction implements Action {
     @Override
     public void execute(HttpServletRequest request, HttpServletResponse response) throws IOException {
 
-        String id = request.getParameter("");
+        Pessoa pessoa = new Pessoa(Integer.parseInt(request.getParameter("txtIdPessoa")));
 
-        if (id.equals("")) {
-            response.sendRedirect("");
-        } else {
+        try {
 
-            Pessoa pessoa = new Pessoa(Integer.parseInt(id));
+            PessoaDAO.getInstancia().delete(pessoa);
+            response.sendRedirect("FrontController?action=LerPessoa");
 
-            try {
-                PessoaDAO.getInstancia().delete(pessoa);
-            } catch (ClassNotFoundException ex) {
-                ex.printStackTrace();
-            } catch (SQLException ex) {
-                response.sendRedirect("erro.jsp?erro=" + ex);
-                ex.printStackTrace();
-            }
+        } catch (SQLException | ClassNotFoundException ex) {
+            ex.printStackTrace();
         }
     }
 

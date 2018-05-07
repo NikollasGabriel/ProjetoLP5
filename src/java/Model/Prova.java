@@ -1,76 +1,62 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 package Model;
 
-/**
- *
- * @author rwspa
- */
-public class Prova{
-    private int idProva;
-    private int Valor;
-    private String aluno;
+public class Prova {
 
-    public Prova(){}
-    
-    public Prova(int idProva, int Valor, String aluno) {
-        this.idProva = idProva;
-        this.Valor = Valor;
-        this.aluno = aluno;
+    private int idProva;
+    private float valor;
+    private String aluno;
+    private Disciplina disciplina;
+
+    public Prova() {
     }
-    
-    public Prova(int Valor, String aluno) {
-        this.idProva = idProva;
-        this.Valor = Valor;
-        this.aluno = aluno;
-    }
-    
+
     public Prova(int idProva) {
         this.idProva = idProva;
     }
-//////////////////
-    /**
-     * @return the Valor
-     */
-    public int getValor() {
-        return Valor;
-    }
 
-    /**
-     * @param Valor the Valor to set
-     */
-    public void setValor(int Valor) {
-        this.Valor = Valor;
-    }
-
-    /**
-     * @return the aluno
-     */
-    public String getAluno() {
-        return aluno;
-    }
-
-    /**
-     * @param aluno the aluno to set
-     */
-    public void setAluno(String aluno) {
+    public Prova(int idProva, float valor, String aluno, Disciplina disciplina) {
+        this.idProva = idProva;
+        this.valor = valor;
         this.aluno = aluno;
+        this.disciplina = disciplina;
     }
 
-    /**
-     * @return the idProva
-     */
+    public Prova(float valor, String aluno, Disciplina disciplina) {
+        this.valor = valor;
+        this.aluno = aluno;
+        this.disciplina = disciplina;
+    }
+
     public int getIdProva() {
         return idProva;
     }
 
-    /**
-     * @param idProva the idProva to set
-     */
     public void setIdProva(int idProva) {
         this.idProva = idProva;
     }
+
+    public float getValor() {
+        return valor;
+    }
+
+    public void setValor(float valor) {
+        this.valor = valor;
+    }
+
+    public String getAluno() {
+        return aluno;
+    }
+
+    public void setAluno(String aluno) {
+        this.aluno = aluno;
+    }
+
+    public Disciplina getDisciplina() {
+        return disciplina;
+    }
+
+    public void setDisciplina(Disciplina disciplina) {
+        this.disciplina = disciplina;
+    }
+
 }

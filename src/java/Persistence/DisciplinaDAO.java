@@ -55,7 +55,7 @@ public class DisciplinaDAO {
         try {
             conn = connector.getConnection();
 
-            String sql = "DELETE FROM Disciplina WHERE iddisciplina = ?";
+            String sql = "DELETE FROM Disciplina WHERE idDisciplina = ?";
             pstm = conn.prepareStatement(sql);
 
             pstm.setInt(1, disciplina.getIdDisciplina());
@@ -131,7 +131,7 @@ public class DisciplinaDAO {
         return disciplinas;
     }
 
-    public void editar(Disciplina disciplina, String nome, int numeroCreditos, int numeroVagas, int idprova) throws SQLException, ClassNotFoundException {
+    public void editar(Disciplina disciplina) throws SQLException, ClassNotFoundException {
         Connection conn = null;
         PreparedStatement pstm = null;
         DatabaseLocator connector = DatabaseLocator.getInstance();
@@ -144,9 +144,9 @@ public class DisciplinaDAO {
                     + " numerovagas = ? WHERE d.iddisciplina = ?";
             pstm = conn.prepareStatement(sql);
 
-            pstm.setString(1, nome);
-            pstm.setInt(2, numeroCreditos);
-            pstm.setInt(3, numeroVagas);
+            pstm.setString(1, disciplina.getNomeDisciplina());
+            pstm.setInt(2, disciplina.getNumeroCreditos());
+            pstm.setInt(3, disciplina.getNumeroVagas());
             pstm.setInt(4, disciplina.getIdDisciplina());
 
             pstm.execute();

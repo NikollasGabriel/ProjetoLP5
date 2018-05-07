@@ -1,8 +1,3 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 package Persistence;
 
 import Model.Disciplina;
@@ -15,11 +10,8 @@ import java.sql.Statement;
 import java.util.ArrayList;
 import java.util.List;
 
-/**
- *
- * @author rwspa
- */
 public class ProvaDAO {
+
     private static ProvaDAO instancia = new ProvaDAO();
 
     public ProvaDAO() {
@@ -39,11 +31,12 @@ public class ProvaDAO {
         try {
             conn = connector.getConnection();
 
-            String sql = "INSERT INTO Prova (valor, aluno) VALUES (?, ?)";
+            String sql = "INSERT INTO Prova (valor, aluno, Disciplina_idDisciplina) VALUES (?, ?, ?)";
             pstm = conn.prepareStatement(sql);
 
-            pstm.setInt(1, prova.getValor());
+            pstm.setFloat(1, prova.getValor());
             pstm.setString(2, prova.getAluno());
+            pstm.setInt(3, prova.getDisciplina().getIdDisciplina());
 
             pstm.execute();
 
@@ -87,14 +80,20 @@ public class ProvaDAO {
             conn = connector.getConnection();
             st = conn.createStatement();
 
-            ResultSet rs = st.executeQuery("select * from Prova where idprova ="+idProva);
+            ResultSet rs = st.executeQuery("select * from Prova join Disciplina on Disciplina.idDisciplina = Prova.Disciplina_idDisciplina where idprova =" + idProva);
             rs.first();
-            
+
+            Disciplina disciplina = new Disciplina(
+                    rs.getInt("idDisciplina"),
+                    rs.getString("nome"),
+                    rs.getInt("numeroCreditos"),
+                    rs.getInt("numeroVagas"));
+
             prova = new Prova(
-                    rs.getInt("idprova"),
+                    rs.getInt("idProva"),
                     rs.getInt("valor"),
-                    rs.getString("aluno")
-            );
+                    rs.getString("aluno"),
+                    disciplina);
 
         } catch (SQLException ex) {
             throw ex;
@@ -116,15 +115,22 @@ public class ProvaDAO {
             conn = connector.getConnection();
             st = conn.createStatement();
 
-            ResultSet rs = st.executeQuery("SELECT = FROM Prova");
-            
+            ResultSet rs = st.executeQuery("select * from Prova join Disciplina on Disciplina.idDisciplina = Prova.Disciplina_idDisciplina");
+
             while (rs.next()) {
 
+                Disciplina disciplina = new Disciplina(
+                        rs.getInt("idDisciplina"),
+                        rs.getString("nome"),
+                        rs.getInt("numeroCreditos"),
+                        rs.getInt("numeroVagas"));
+
                 Prova prova = new Prova(
-                    rs.getInt("idprova"),
-                    rs.getInt("valor"),
-                    rs.getString("aluno")
-                );
+                        rs.getInt("idProva"),
+                        rs.getInt("valor"),
+                        rs.getString("aluno"),
+                        disciplina);
+
                 provas.add(prova);
             }
 
@@ -137,7 +143,7 @@ public class ProvaDAO {
         return provas;
     }
 
-    public void editar(Prova prova, int valor, String aluno) throws SQLException, ClassNotFoundException {
+    public void editar(Prova prova) throws SQLException, ClassNotFoundException {
         Connection conn = null;
         PreparedStatement pstm = null;
         DatabaseLocator connector = DatabaseLocator.getInstance();
@@ -146,13 +152,15 @@ public class ProvaDAO {
             conn = connector.getConnection();
 
             String sql = "UPDATE Prova AS p SET"
-                    + " valor = ?, aluno = ?"
-                    + " WHERE p.idprova = ?";
+                    + " valor = ?, aluno = ?,"
+                    + " Disciplina_idDisciplina = ? WHERE p.idprova = ?";
+
             pstm = conn.prepareStatement(sql);
 
-            pstm.setInt(1, valor);
-            pstm.setString(2, aluno);
-            pstm.setInt(3, prova.getIdProva());
+            pstm.setFloat(1, prova.getValor());
+            pstm.setString(2, prova.getAluno());
+            pstm.setInt(3, prova.getDisciplina().getIdDisciplina());
+            pstm.setInt(4, prova.getIdProva());
 
             pstm.execute();
 

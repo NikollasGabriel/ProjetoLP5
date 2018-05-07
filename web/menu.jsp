@@ -52,16 +52,16 @@
                 <a class="active" href="index.jsp" target="_parent">Home</a>
             </li>
             <li>
-                <a href="gravar.jsp" target="_parent">Gravar</a>
+                <a href="FrontController?action=LerDisciplina" target="_parent">Disciplina</a>
             </li>
             <li>
-                <a href="ler.jsp" target="_parent">Ler</a>
+               <a href="FrontController?action=LerPessoa" target="_parent">Pessoa</a>
             </li>
             <li>
-                <a href="editar.jsp" target="_parent">Editar</a>
+                <a href="FrontController?action=LerProva" target="_parent">Prova</a>
             </li>
             <li>
-                <a href="excluir.jsp" target="_parent">Apagar</a>
+                <a href="FrontController?action=LerTurma" target="_parent">Turma</a>
             </li>
         </ul>
     </body>

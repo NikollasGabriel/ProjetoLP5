@@ -18,25 +18,31 @@
             <object width="100%" height="65px" data="./menu.jsp"></object>
         </nav>
         <div class="container">
-            <h1>Cadastro Disciplina</h1>
+            <h1>Cadastro Turmas</h1>
 
-            <form action="FrontController?action=GravarDisciplina" method="post" name="frmManterDisciplina" onsubmit="">
+            <form action="FrontController?action=GravarTurma" method="post" name="frmManterTurma" onsubmit="">
 
                 <div class="form-group">
-                    <label for="usr">Nome da disciplina:</label>
-                    <input type="text" class="form-control" id="usr" name="textNomeDisciplina">
+                    <label for="usr">Periodo:</label>
+                    <input type="text" class="form-control" id="usr" name="txtPeriodoTurma">
                 </div>
                 <div class="form-group">
-                    <label for="usr">Numero de creditos:</label>
-                    <input type="text" class="form-control" id="usr" name="textNumeroCreditos">
+                    <label for="usr">Tamanho:</label>
+                    <input type="text" class="form-control" id="usr" name="txtTamanhoTurma">
                 </div>
                 <div class="form-group">
-                    <label for="usr">Numero de vagas:</label>
-                    <input type="text" class="form-control" id="usr" name="textNumeroVagas">
-                </div>                    
+                    <label for="usr">Disciplina:</label>
+                    <select class="selectpicker" name="txtIdDisciplina">
+                        <option value="0" <c:if test="${disciplina.idDisciplina != null}"> selected</c:if>></option>
+                        <c:forEach items="${disciplinas}" var="disciplina">
+                            <option value="${disciplina.idDisciplina}">
+                                ${disciplina.nomeDisciplina}
+                            </option>
+                        </c:forEach>
+                    </select>
+                </div>
                 <button type="submit" class="btn btn-default" name="btnConfirmar" value="Confirmar">Confirmar</button>
             </form>
         </div>
-
     </body>
 </html>
