@@ -12,7 +12,7 @@
     <body>
 
         <nav class="navbar navbar-expand-md navbar-dark bg-primary fixed-top">
-            <a class="navbar-brand" href="../index.jsp">SISTEMA LP5</a>
+            <a class="navbar-brand" href="../index.jsp">Área de Disciplinas</a>
             <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarsExampleDefault" aria-controls="navbarsExampleDefault" aria-expanded="false" aria-label="Toggle navigation">
                 <span class="navbar-toggler-icon"></span>
             </button>
@@ -26,13 +26,13 @@
                         <a class="nav-link" href="gravar.jsp">Gravar</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="ler.jsp">Ler</a>
+                        <a class="nav-link" href="../FrontController?action=LerDisciplina">Ler</a>
                     </li>
                     <li class="nav-item">
                         <a class="nav-link" href="editar.jsp">Editar</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="apagar.jsp">Apagar</a>
+                        <a class="nav-link" href="excluir.jsp">Apagar</a>
                     </li>
                 </ul>
             </div>
@@ -41,8 +41,8 @@
         <main role="main" class="container">
             <div class="starter-template">
 
-                <h1>Sistema de Cadastro de Contatos</h1>
-                <!-- <p class="lead">Se você deseja cadastrar seus Contatos, pode começar clicando <a href="gravar.jsp">aqui</a></p> -->
+                <h1>Área de Disciplinas</h1>
+                <p class="lead">Se você deseja cadastrar suas Disciplinas, pode começar clicando <a href="gravar.jsp">aqui</a></p>
 
             </div>
         </main><!-- /.container -->

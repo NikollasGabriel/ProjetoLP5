@@ -31,6 +31,10 @@ public class GravarDisciplinaAction implements Action {
                 //response.sendRedirect("../erro.jsp?erro=" + ex);
                 ex.printStackTrace();
             }
+            
+            response.sendRedirect("FrontController?action=LerDisciplina");
+            
+            
         }
     }
 

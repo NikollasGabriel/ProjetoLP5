@@ -26,22 +26,27 @@ import javax.servlet.http.HttpServletResponse;
 public class LerDisciplinaAction implements Action {
 
     @Override
-    public void execute(HttpServletRequest request,
-            HttpServletResponse response) throws IOException{
-            try{
-                List<Disciplina> disciplinas = new ArrayList<Disciplina>();
-                disciplinas = DisciplinaDAO.getInstancia().obterDisciplinas();
-                request.setAttribute("disciplinas", disciplinas);
-                RequestDispatcher view = request.getRequestDispatcher("disciplinaConsulta.jsp");
-                view.forward(request, response);
-            } catch(SQLException ex)
-            {
-                response.sendRedirect("erro.jsp");
-                ex.printStackTrace();
-            } catch (ClassNotFoundException ex) {
+    public void execute(HttpServletRequest request, HttpServletResponse response) throws IOException {
+
+        try {
+            List<Disciplina> disciplinas = new ArrayList<>();
+
+            disciplinas = DisciplinaDAO.getInstancia().obterDisciplinas();
+
+            request.setAttribute("disciplinas", disciplinas);
+
+            RequestDispatcher view = request.getRequestDispatcher("Disciplina/ler.jsp");
+            view.forward(request, response);
+
+        } catch (SQLException ex) {
+            //response.sendRedirect("erro.jsp");
+            ex.printStackTrace();
+        } catch (ClassNotFoundException ex) {
             ex.printStackTrace();
         } catch (ServletException ex) {
-            Logger.getLogger(LerDisciplinaAction.class.getName()).log(Level.SEVERE, null, ex);
+            //Logger.getLogger(LerDisciplinaAction.class.getName()).log(Level.SEVERE, null, ex);
+        } catch (NullPointerException ex) {
+            ex.printStackTrace();
         }
     }
 

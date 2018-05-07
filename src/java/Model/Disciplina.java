@@ -7,22 +7,19 @@ public class Disciplina {
     private String nomeDisciplina;
     private int numeroCreditos;
     private int numeroVagas;
-    private Prova p1;
 
-    public Disciplina(int idDisciplina, String nomeDisciplina, int numeroCreditos, int numeroVagas, Prova p1) {
+    public Disciplina(int idDisciplina, String nomeDisciplina, int numeroCreditos, int numeroVagas) {
         this.idDisciplina = idDisciplina;
         this.nomeDisciplina = nomeDisciplina;
         this.numeroCreditos = numeroCreditos;
         this.numeroVagas = numeroVagas;
-        this.p1 = p1;
     }
     
-    public Disciplina(String nomeDisciplina, int numeroCreditos, int numeroVagas, Prova p1) {
+    public Disciplina(String nomeDisciplina, int numeroCreditos, int numeroVagas) {
         this.idDisciplina = idDisciplina;
         this.nomeDisciplina = nomeDisciplina;
         this.numeroCreditos = numeroCreditos;
         this.numeroVagas = numeroVagas;
-        this.p1 = p1;
     }
     
     public Disciplina(int idDisciplina) {
@@ -64,20 +61,5 @@ public class Disciplina {
 
     public void setIdDisciplina(int idDisciplina) {
         this.idDisciplina = idDisciplina;
-    }
-
-    /**
-     * @return the p1
-     */
-    public Prova getP1() {
-        return p1;
-    }
-
-    /**
-     * @param p1 the p1 to set
-     */
-    public void setP1(Prova p1) {
-        this.p1 = p1;
-    }
-        
+    }        
 }
