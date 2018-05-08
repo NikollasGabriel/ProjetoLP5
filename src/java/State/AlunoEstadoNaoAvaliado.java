@@ -6,7 +6,7 @@ public class AlunoEstadoNaoAvaliado implements AlunoEstado{
 
     @Override
     public String getEstado() {
-        return "NaoAvaliado";
+        return "Nao Avaliado";
     }
 
     @Override

@@ -11,35 +11,43 @@
         <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
         <script src="./js/bootstrap.min.js"></script>
 
-        <title>Editar Pessoa</title>                                                                        
+        <title>Cadastrar Aluno</title>                                                                        
     </head>
     <body>
         <nav>
             <object width="100%" height="65px" data="./menu.jsp"></object>
         </nav>
         <div class="container">
-            <h1>Editar Pessoa</h1>
+            <h1>Cadastrar Aluno</h1>
 
-            <form action="FrontController?action=EditarPessoa" method="post" name="frmManterPessoa" onsubmit="">
+            <form action="FrontController?action=GravarAluno" method="post" name="frmManterPessoa" onsubmit="">
 
-                <div class="form-group">
-                    <label for="usr">Id:</label>
-                    <input type="text" class="form-control" id="usr" name="txtIdPessoa" value="${pessoa.idPessoa}" readonly>
-                </div>
                 <div class="form-group">
                     <label for="usr">Nome:</label>
-                    <input type="text" class="form-control" id="usr" name="txtNomePessoa" value="${pessoa.nomePessoa}">
+                    <input type="text" class="form-control" id="usr" name="txtNomePessoa">
                 </div>
                 <div class="form-group">
                     <label for="usr">Idade:</label>
-                    <input type="text" class="form-control" id="usr" name="txtIdadePessoa" value="${pessoa.idadePessoa}">
+                    <input type="text" class="form-control" id="usr" name="txtIdadePessoa">
                 </div>
                 <div class="form-group">
-                    <label for="usr">Disciplina:</label>
+                    <label for="usr">Numero de faltas:</label>
+                    <input type="text" class="form-control" id="usr" name="txtNumeroFaltas">
+                </div>
+                <div class="form-group">
+                    <label for="usr">Media das Notas:</label>
+                    <input type="text" class="form-control" id="usr" name="txtMediaNotas">
+                </div>
+                <div class="form-group">
+                    <label for="usr">Situação:</label>
+                    <input type="text" class="form-control" id="usr" name="txtSituacao">
+                </div>
+                <div class="form-group">
+                    <label for="usr">Turma:</label>
                     <select class="selectpicker" name="txtIdTurma">
                         <option value="0" <c:if test="${turma.idTurma != null}"> selected</c:if>></option>
                         <c:forEach items="${turmas}" var="turma">
-                            <option value="${turma.idTurma}" <c:if test="${turma.idTurma == pessoa.turma.idTurma}"> selected</c:if>>
+                            <option value="${turma.idTurma}">
                                 ${turma.periodoTurma}
                             </option>
                         </c:forEach>

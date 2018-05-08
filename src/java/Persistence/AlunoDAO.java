@@ -5,7 +5,7 @@
  */
 package Persistence;
 
-import Model.Pessoa;
+import Model.Aluno;
 import Model.Turma;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
@@ -19,19 +19,19 @@ import java.util.List;
  *
  * @author rwspa
  */
-public class PessoaDAO {
+public class AlunoDAO {
 
-    private static PessoaDAO instancia = new PessoaDAO();
+    private static AlunoDAO instancia = new AlunoDAO();
 
-    public PessoaDAO() {
+    public AlunoDAO() {
 
     }
 
-    public static PessoaDAO getInstancia() {
+    public static AlunoDAO getInstancia() {
         return instancia;
     }
 
-    public void save(Pessoa pessoa) throws SQLException, ClassNotFoundException {
+    public void save(Aluno aluno) throws SQLException, ClassNotFoundException {
 
         Connection conn = null;
         PreparedStatement pstm = null;
@@ -40,12 +40,15 @@ public class PessoaDAO {
         try {
             conn = connector.getConnection();
 
-            String sql = "INSERT INTO Pessoa (nome, idade, Turma_idTurma) VALUES (?, ?, ?)";
+            String sql = "INSERT INTO Aluno (nome, idade, Turma_idTurma, numeroFaltas, mediaNotas, situacao) VALUES (?, ?, ?, ?, ?, ?)";
             pstm = conn.prepareStatement(sql);
 
-            pstm.setString(1, pessoa.getNomePessoa());
-            pstm.setInt(2, pessoa.getIdadePessoa());
-            pstm.setInt(3, pessoa.getTurma().getIdTurma());
+            pstm.setString(1, aluno.getNomePessoa());
+            pstm.setInt(2, aluno.getIdadePessoa());
+            pstm.setInt(3, aluno.getTurma().getIdTurma());
+            pstm.setInt(4, aluno.getNumeroFaltas());
+            pstm.setFloat(5, aluno.getMediaNotas());
+            pstm.setString(6, aluno.getSituacao().getEstado());
 
             pstm.execute();
 
@@ -56,7 +59,7 @@ public class PessoaDAO {
         }
     }
 
-    public void delete(Pessoa pessoa) throws SQLException, ClassNotFoundException {
+    public void delete(Aluno aluno) throws SQLException, ClassNotFoundException {
 
         Connection conn = null;
         PreparedStatement pstm = null;
@@ -65,10 +68,10 @@ public class PessoaDAO {
         try {
             conn = connector.getConnection();
 
-            String sql = "DELETE FROM Pessoa WHERE idpessoa = ?";
+            String sql = "DELETE FROM Aluno WHERE idpessoa = ?";
             pstm = conn.prepareStatement(sql);
 
-            pstm.setInt(1, pessoa.getIdPessoa());
+            pstm.setInt(1, aluno.getIdPessoa());
             pstm.execute();
 
         } catch (SQLException ex) {
@@ -78,26 +81,29 @@ public class PessoaDAO {
         }
     }
 
-    public Pessoa obter(Integer idPessoa) throws SQLException, ClassNotFoundException {
+    public Aluno obter(Integer idPessoa) throws SQLException, ClassNotFoundException {
 
         Connection conn = null;
         Statement st = null;
         DatabaseLocator connector = DatabaseLocator.getInstance();
-        Pessoa pessoa = null;
+        Aluno aluno = null;
 
         try {
             conn = connector.getConnection();
             st = conn.createStatement();
 
-            ResultSet rs = st.executeQuery("SELECT * FROM pessoa join turma on pessoa.Turma_idTurma = turma.idTurma WHERE idPessoa =" + idPessoa);
+            ResultSet rs = st.executeQuery("SELECT * FROM aluno join turma on aluno.Turma_idTurma = turma.idTurma WHERE idPessoa =" + idPessoa);
             rs.first();
 
             Turma turma = new Turma(rs.getInt("idTurma"), rs.getString("periodo"), rs.getInt("tamanho"), null);
-            pessoa = new Pessoa(
+            aluno = new Aluno(
                     rs.getInt("idPessoa"),
                     rs.getString("nome"),
                     rs.getInt("idade"),
-                    turma);
+                    turma,
+                    rs.getInt("numeroFaltas"),
+                    rs.getFloat("mediaNotas"),
+                    rs.getString("situacao"));
 
         } catch (SQLException ex) {
             throw ex;
@@ -105,33 +111,36 @@ public class PessoaDAO {
             connector.closeConnection(conn, st);
         }
 
-        return pessoa;
+        return aluno;
     }
 
-    public List<Pessoa> obterPessoas() throws ClassNotFoundException, SQLException {
+    public List<Aluno> obterAlunos() throws ClassNotFoundException, SQLException {
 
         Connection conn = null;
         Statement st = null;
         DatabaseLocator connector = DatabaseLocator.getInstance();
-        List<Pessoa> pessoas = new ArrayList<>();
+        List<Aluno> alunos = new ArrayList<>();
 
         try {
             conn = connector.getConnection();
             st = conn.createStatement();
 
-            ResultSet rs = st.executeQuery("SELECT * FROM pessoa join turma on pessoa.Turma_idTurma = turma.idTurma");
+            ResultSet rs = st.executeQuery("SELECT * FROM aluno join turma on aluno.Turma_idTurma = turma.idTurma");
 
             while (rs.next()) {
 
                 Turma turma = new Turma(rs.getInt("idTurma"), rs.getString("periodo"), rs.getInt("tamanho"), null);
 
-                Pessoa pessoa = new Pessoa(
+                Aluno aluno = new Aluno(
                         rs.getInt("idPessoa"),
                         rs.getString("nome"),
                         rs.getInt("idade"),
-                        turma);
+                        turma,
+                        rs.getInt("numeroFaltas"),
+                        rs.getFloat("mediaNotas"),
+                        rs.getString("situacao"));
 
-                pessoas.add(pessoa);
+                alunos.add(aluno);
             }
 
         } catch (SQLException ex) {
@@ -140,10 +149,10 @@ public class PessoaDAO {
             connector.closeConnection(conn, st);
         }
 
-        return pessoas;
+        return alunos;
     }
 
-    public void editar(Pessoa pessoa) throws SQLException, ClassNotFoundException {
+    public void editar(Aluno aluno) throws SQLException, ClassNotFoundException {
         Connection conn = null;
         PreparedStatement pstm = null;
         DatabaseLocator connector = DatabaseLocator.getInstance();
@@ -151,15 +160,18 @@ public class PessoaDAO {
         try {
             conn = connector.getConnection();
 
-            String sql = "UPDATE Pessoa AS p SET"
-                    + " nome = ?, idade = ?, Turma_idTurma = ? WHERE p.idPessoa = ?";
-            
+            String sql = "UPDATE Aluno AS p SET"
+                    + " nome = ?, idade = ?, Turma_idTurma = ?, numeroFaltas = ?, mediaNotas = ?, situacao = ? WHERE p.idPessoa = ?";
+
             pstm = conn.prepareStatement(sql);
 
-            pstm.setString(1, pessoa.getNomePessoa());
-            pstm.setInt(2, pessoa.getIdadePessoa());
-            pstm.setInt(3, pessoa.getTurma().getIdTurma());
-            pstm.setInt(4, pessoa.getIdPessoa());
+            pstm.setString(1, aluno.getNomePessoa());
+            pstm.setInt(2, aluno.getIdadePessoa());
+            pstm.setInt(3, aluno.getTurma().getIdTurma());
+            pstm.setInt(4, aluno.getNumeroFaltas());
+            pstm.setFloat(5, aluno.getMediaNotas());
+            pstm.setString(6, aluno.getSituacao().getEstado());
+            pstm.setInt(7, aluno.getIdPessoa());
 
             pstm.execute();
 

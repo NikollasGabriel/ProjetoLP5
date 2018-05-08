@@ -55,7 +55,7 @@
                 <a href="FrontController?action=LerDisciplina" target="_parent">Disciplina</a>
             </li>
             <li>
-               <a href="FrontController?action=LerPessoa" target="_parent">Pessoa</a>
+               <a href="FrontController?action=LerAluno" target="_parent">Aluno</a>
             </li>
             <li>
                 <a href="FrontController?action=LerProva" target="_parent">Prova</a>

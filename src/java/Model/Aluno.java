@@ -6,6 +6,11 @@
 package Model;
 
 import State.AlunoEstado;
+import State.AlunoEstadoAprovadoFrequencia;
+import State.AlunoEstadoAprovadoNota;
+import State.AlunoEstadoNaoAvaliado;
+import State.AlunoEstadoReprovadoFrequencia;
+import State.AlunoEstadoReprovadoNota;
 
 /**
  *
@@ -16,7 +21,7 @@ public class Aluno extends Pessoa {
     private int numeroFaltas;
     private float mediaNotas;
     private AlunoEstado situacao;
-    
+
     public Aluno() {
     }
 
@@ -34,6 +39,29 @@ public class Aluno extends Pessoa {
         super(idPessoa, nomePessoa, idadePessoa, turma);
         this.numeroFaltas = numeroFaltas;
         this.mediaNotas = mediaNotas;
+    }
+
+    public Aluno(int idPessoa, String nomePessoa, int idadePessoa, Turma turma, int numeroFaltas, float mediaNotas, String situacao) {
+        super(idPessoa, nomePessoa, idadePessoa, turma);
+        this.numeroFaltas = numeroFaltas;
+        this.mediaNotas = mediaNotas;
+        switch (situacao) {
+            case "Aprovado Frequencia":
+                this.situacao = new AlunoEstadoAprovadoFrequencia();
+                break;
+            case "Aprovado Nota":
+                this.situacao = new AlunoEstadoAprovadoNota();
+                break;
+            case "Reprovado Frequencia":
+                this.situacao = new AlunoEstadoReprovadoFrequencia();
+                break;
+            case "Reprovado Nota":
+                this.situacao = new AlunoEstadoReprovadoNota();
+                break;
+            case "Nao Avaliado":
+                this.situacao = new AlunoEstadoNaoAvaliado();
+                break;
+        }
     }
 
     public int getNumeroFaltas() {
@@ -59,5 +87,5 @@ public class Aluno extends Pessoa {
     public void setSituacao(AlunoEstado situacao) {
         this.situacao = situacao;
     }
-        
+
 }
