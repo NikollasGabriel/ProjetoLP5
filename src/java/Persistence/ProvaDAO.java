@@ -31,7 +31,7 @@ public class ProvaDAO {
         try {
             conn = connector.getConnection();
 
-            String sql = "INSERT INTO Prova (valor, aluno, Disciplina_idDisciplina) VALUES (?, ?, ?)";
+            String sql = "INSERT INTO prova (valor, aluno, Disciplina_idDisciplina) VALUES (?, ?, ?)";
             pstm = conn.prepareStatement(sql);
 
             pstm.setFloat(1, prova.getValor());
@@ -56,7 +56,7 @@ public class ProvaDAO {
         try {
             conn = connector.getConnection();
 
-            String sql = "DELETE FROM Prova WHERE idprova = ?";
+            String sql = "DELETE FROM prova WHERE idProva = ?";
             pstm = conn.prepareStatement(sql);
 
             pstm.setInt(1, prova.getIdProva());
@@ -80,7 +80,7 @@ public class ProvaDAO {
             conn = connector.getConnection();
             st = conn.createStatement();
 
-            ResultSet rs = st.executeQuery("select * from Prova join Disciplina on Disciplina.idDisciplina = Prova.Disciplina_idDisciplina where idprova =" + idProva);
+            ResultSet rs = st.executeQuery("select * from prova join disciplina on disciplina.idDisciplina = prova.Disciplina_idDisciplina where idProva =" + idProva);
             rs.first();
 
             Disciplina disciplina = new Disciplina(
@@ -115,7 +115,7 @@ public class ProvaDAO {
             conn = connector.getConnection();
             st = conn.createStatement();
 
-            ResultSet rs = st.executeQuery("select * from Prova join Disciplina on Disciplina.idDisciplina = Prova.Disciplina_idDisciplina");
+            ResultSet rs = st.executeQuery("select * from prova join disciplina on disciplina.idDisciplina = prova.Disciplina_idDisciplina");
 
             while (rs.next()) {
 
@@ -151,9 +151,9 @@ public class ProvaDAO {
         try {
             conn = connector.getConnection();
 
-            String sql = "UPDATE Prova AS p SET"
+            String sql = "UPDATE prova AS p SET"
                     + " valor = ?, aluno = ?,"
-                    + " Disciplina_idDisciplina = ? WHERE p.idprova = ?";
+                    + " Disciplina_idDisciplina = ? WHERE p.idProva = ?";
 
             pstm = conn.prepareStatement(sql);
 

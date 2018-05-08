@@ -30,7 +30,7 @@ public class DisciplinaDAO {
         try {
             conn = connector.getConnection();
 
-            String sql = "INSERT INTO Disciplina (nome, numeroCreditos, numeroVagas) VALUES (?, ?, ?)";
+            String sql = "INSERT INTO disciplina (nome, numeroCreditos, numeroVagas) VALUES (?, ?, ?)";
             pstm = conn.prepareStatement(sql);
 
             pstm.setString(1, disciplina.getNomeDisciplina());
@@ -55,7 +55,7 @@ public class DisciplinaDAO {
         try {
             conn = connector.getConnection();
 
-            String sql = "DELETE FROM Disciplina WHERE idDisciplina = ?";
+            String sql = "DELETE FROM disciplina WHERE idDisciplina = ?";
             pstm = conn.prepareStatement(sql);
 
             pstm.setInt(1, disciplina.getIdDisciplina());
@@ -79,12 +79,12 @@ public class DisciplinaDAO {
             conn = connector.getConnection();
             st = conn.createStatement();
 
-            ResultSet rs = st.executeQuery("SELECT * FROM Disciplina WHERE idDisciplina =" + idDisciplina);
+            ResultSet rs = st.executeQuery("SELECT * FROM disciplina WHERE idDisciplina =" + idDisciplina);
             rs.first();
 
             
             disciplina = new Disciplina(
-                    rs.getInt("iddisciplina"),
+                    rs.getInt("idDisciplina"),
                     rs.getString("nome"),
                     rs.getInt("numerocreditos"),
                     rs.getInt("numerovagas"));
@@ -139,9 +139,9 @@ public class DisciplinaDAO {
         try {
             conn = connector.getConnection();
 
-            String sql = "UPDATE Disciplina AS d SET"
+            String sql = "UPDATE disciplina AS d SET"
                     + " nome = ?, numerocreditos = ?,"
-                    + " numerovagas = ? WHERE d.iddisciplina = ?";
+                    + " numerovagas = ? WHERE d.idDisciplina = ?";
             pstm = conn.prepareStatement(sql);
 
             pstm.setString(1, disciplina.getNomeDisciplina());

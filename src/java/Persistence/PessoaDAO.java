@@ -40,7 +40,7 @@ public class PessoaDAO {
         try {
             conn = connector.getConnection();
 
-            String sql = "INSERT INTO Pessoa (nome, idade, Turma_idTurma) VALUES (?, ?, ?)";
+            String sql = "INSERT INTO pessoa (nome, idade, Turma_idTurma) VALUES (?, ?, ?)";
             pstm = conn.prepareStatement(sql);
 
             pstm.setString(1, pessoa.getNomePessoa());
@@ -65,7 +65,7 @@ public class PessoaDAO {
         try {
             conn = connector.getConnection();
 
-            String sql = "DELETE FROM Pessoa WHERE idpessoa = ?";
+            String sql = "DELETE FROM pessoa WHERE idPessoa = ?";
             pstm = conn.prepareStatement(sql);
 
             pstm.setInt(1, pessoa.getIdPessoa());
@@ -151,7 +151,7 @@ public class PessoaDAO {
         try {
             conn = connector.getConnection();
 
-            String sql = "UPDATE Pessoa AS p SET"
+            String sql = "UPDATE pessoa AS p SET"
                     + " nome = ?, idade = ?, Turma_idTurma = ? WHERE p.idPessoa = ?";
             
             pstm = conn.prepareStatement(sql);

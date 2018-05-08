@@ -31,7 +31,7 @@ public class TurmaDAO {
         try {
             conn = connector.getConnection();
 
-            String sql = "INSERT INTO Turma (periodo, tamanho, Disciplina_idDisciplina) VALUES (?, ?, ?)";
+            String sql = "INSERT INTO turma (periodo, tamanho, Disciplina_idDisciplina) VALUES (?, ?, ?)";
             pstm = conn.prepareStatement(sql);
 
             pstm.setString(1, turma.getPeriodoTurma());
@@ -56,7 +56,7 @@ public class TurmaDAO {
         try {
             conn = connector.getConnection();
 
-            String sql = "DELETE FROM Turma WHERE idturma = ?";
+            String sql = "DELETE FROM turma WHERE idTurma = ?";
             pstm = conn.prepareStatement(sql);
 
             pstm.setInt(1, turma.getIdTurma());
@@ -80,17 +80,17 @@ public class TurmaDAO {
             conn = connector.getConnection();
             st = conn.createStatement();
 
-            ResultSet rs = st.executeQuery("SELECT * FROM Turma join Disciplina on Disciplina.idDisciplina = Turma.Disciplina_idDisciplina WHERE idTurma =" + idTurma);
+            ResultSet rs = st.executeQuery("SELECT * FROM turma join disciplina on disciplina.idDisciplina = turma.Disciplina_idDisciplina WHERE idTurma =" + idTurma);
             rs.first();
 
             Disciplina disciplina = new Disciplina(
-                    rs.getInt("iddisciplina"),
+                    rs.getInt("idDisciplina"),
                     rs.getString("nome"),
                     rs.getInt("numerocreditos"),
                     rs.getInt("numerovagas"));
 
             turma = new Turma(
-                    rs.getInt("idturma"),
+                    rs.getInt("idTurma"),
                     rs.getString("periodo"),
                     rs.getInt("tamanho"),
                     disciplina
@@ -116,7 +116,7 @@ public class TurmaDAO {
             conn = connector.getConnection();
             st = conn.createStatement();
 
-            ResultSet rs = st.executeQuery("SELECT * FROM Turma join Disciplina on Disciplina.idDisciplina = Turma.Disciplina_idDisciplina");
+            ResultSet rs = st.executeQuery("SELECT * FROM turma join disciplina on disciplina.idDisciplina = turma.Disciplina_idDisciplina");
 
             /*Disciplina disciplina = new Disciplina(
                     rs.getInt("idDisciplina"),
@@ -158,9 +158,9 @@ public class TurmaDAO {
         try {
             conn = connector.getConnection();
 
-            String sql = "UPDATE Turma AS t SET"
+            String sql = "UPDATE turma AS t SET"
                     + " periodo = ?, tamanho = ?,"
-                    + " Disciplina_idDisciplina =? WHERE t.idturma = ?";
+                    + " Disciplina_idDisciplina =? WHERE t.idTurma = ?";
             pstm = conn.prepareStatement(sql);
 
             pstm.setString(1, turma.getPeriodoTurma());
