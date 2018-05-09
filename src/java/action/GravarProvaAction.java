@@ -3,6 +3,7 @@ package action;
 import Controller.Action;
 import Model.Aluno;
 import Model.Disciplina;
+import Model.Professor;
 import Model.Prova;
 import Persistence.ProvaDAO;
 import java.io.IOException;
@@ -18,6 +19,7 @@ public class GravarProvaAction implements Action {
         Prova prova = new Prova(
                 Float.parseFloat(request.getParameter("txtValor")),
                 new Aluno(Integer.parseInt(request.getParameter("txtAluno"))),
+                new Professor(Integer.parseInt(request.getParameter("txtIdProfessor"))),
                 new Disciplina(Integer.parseInt(request.getParameter("txtIdDisciplina"))));
 
         try {
