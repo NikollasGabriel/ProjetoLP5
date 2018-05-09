@@ -1,37 +1,36 @@
 package action;
 
 import Controller.Action;
-import Model.Aluno;
+import Model.Professor;
 import Model.Prova;
 import Model.Turma;
-import Persistence.AlunoDAO;
+import Persistence.ProfessorDAO;
 import java.io.IOException;
 import java.sql.SQLException;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-public class EditarAlunoAction implements Action {
+public class EditarProfessorAction implements Action {
 
-    public EditarAlunoAction() {
+    public EditarProfessorAction() {
     }
 
     @Override
     public void execute(HttpServletRequest request, HttpServletResponse response) throws IOException {
 
-        Aluno pessoa = new Aluno(
+        Professor pessoa = new Professor(
+                Integer.parseInt(request.getParameter("txtNumeroFaltas")),
+                request.getParameter("txtNivelEnsinoSuperior"),
                 Integer.parseInt(request.getParameter("txtIdPessoa")),
                 request.getParameter("txtNomePessoa"),
                 Integer.parseInt(request.getParameter("txtIdadePessoa")),
-                new Turma(Integer.parseInt(request.getParameter("txtIdTurma"))),
-                Integer.parseInt(request.getParameter("txtNumeroFaltas")),
-                Float.parseFloat(request.getParameter("txtMediaNotas")),
-                request.getParameter("txtSituacao")
+                new Turma(Integer.parseInt(request.getParameter("txtIdTurma")))
         );
 
         try {
 
-            AlunoDAO.getInstancia().editar(pessoa);
-            response.sendRedirect("FrontController?action=LerAluno");
+            ProfessorDAO.getInstancia().editar(pessoa);
+            response.sendRedirect("FrontController?action=LerProfessor");
 
         } catch (SQLException | ClassNotFoundException ex) {
             ex.printStackTrace();

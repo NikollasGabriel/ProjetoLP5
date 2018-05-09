@@ -1,6 +1,7 @@
 package action;
 
 import Controller.Action;
+import Model.Aluno;
 import Model.Disciplina;
 import Model.Prova;
 import Persistence.ProvaDAO;
@@ -16,7 +17,7 @@ public class GravarProvaAction implements Action {
 
         Prova prova = new Prova(
                 Float.parseFloat(request.getParameter("txtValor")),
-                request.getParameter("txtAluno"),
+                new Aluno(Integer.parseInt(request.getParameter("txtAluno"))),
                 new Disciplina(Integer.parseInt(request.getParameter("txtIdDisciplina"))));
 
         try {

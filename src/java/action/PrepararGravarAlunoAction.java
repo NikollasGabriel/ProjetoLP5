@@ -9,14 +9,14 @@ import javax.servlet.ServletException;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-public class PrepararGravarPessoaAction implements Action {
+public class PrepararGravarAlunoAction implements Action {
 
     @Override
     public void execute(HttpServletRequest request, HttpServletResponse response) throws IOException {
         try {
             request.setAttribute("turmas", TurmaDAO.getInstancia().obterTurmas());
 
-            RequestDispatcher view = request.getRequestDispatcher("Pessoa/gravar.jsp");
+            RequestDispatcher view = request.getRequestDispatcher("Aluno/gravar.jsp");
 
             view.forward(request, response);
 

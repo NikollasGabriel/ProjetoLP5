@@ -1,6 +1,7 @@
 package action;
 
 import Controller.Action;
+import Model.Aluno;
 import Model.Disciplina;
 import Model.Prova;
 import Persistence.ProvaDAO;
@@ -20,7 +21,7 @@ public class EditarProvaAction implements Action {
         Prova prova = new Prova(
                 Integer.parseInt(request.getParameter("txtIdProva")),
                 Float.parseFloat(request.getParameter("txtValor")),
-                request.getParameter("txtAluno"),
+                new Aluno(Integer.parseInt(request.getParameter("txtIdAluno"))),
                 new Disciplina(Integer.parseInt(request.getParameter("txtIdDisciplina"))));
 
         try {
