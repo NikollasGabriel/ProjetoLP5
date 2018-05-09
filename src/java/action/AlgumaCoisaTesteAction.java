@@ -1,14 +1,30 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 package action;
 
-/**
- *
- * @author asus note
- */
-public class AlgumaCoisaTesteAction {
+import Controller.Action;
+import java.io.IOException;
+import java.util.Observable;
+import java.util.Observer;
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
+
+
+public class AlgumaCoisaTesteAction implements Action, Observer{
+    
+    private Observable instanciaEdita;
+    
+    AlgumaCoisaTesteAction(Observable instanciaEdita){
+        this.instanciaEdita = instanciaEdita;
+        instanciaEdita.addObserver(this);
+    }
+
+    @Override
+    public void execute(HttpServletRequest request, HttpServletResponse response) throws IOException {
+        
+    }
+
+    @Override
+    public void update(Observable o, Object arg) {
+        
+    }
     
 }
