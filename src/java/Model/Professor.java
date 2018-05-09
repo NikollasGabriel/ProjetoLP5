@@ -22,14 +22,14 @@ public class Professor extends Pessoa {
         super(idPessoa);
     }
 
-    public Professor(int numeroFaltas, String nivelEnsinoSuperior, String nomePessoa, int idadePessoa, Turma turma) {
-        super(nomePessoa, idadePessoa, turma);
+    public Professor(int numeroFaltas, String nivelEnsinoSuperior, String nomePessoa, int idadePessoa) {
+        super(nomePessoa, idadePessoa);
         this.numeroFaltas = numeroFaltas;
         this.nivelEnsinoSuperior = nivelEnsinoSuperior;
     }
 
-    public Professor(int numeroFaltas, String nivelEnsinoSuperior, int idPessoa, String nomePessoa, int idadePessoa, Turma turma) {
-        super(idPessoa, nomePessoa, idadePessoa, turma);
+    public Professor(int numeroFaltas, String nivelEnsinoSuperior, int idPessoa, String nomePessoa, int idadePessoa) {
+        super(idPessoa, nomePessoa, idadePessoa);
         this.numeroFaltas = numeroFaltas;
         this.nivelEnsinoSuperior = nivelEnsinoSuperior;
     }

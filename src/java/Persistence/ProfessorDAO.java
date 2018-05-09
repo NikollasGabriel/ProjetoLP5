@@ -40,12 +40,11 @@ public class ProfessorDAO {
         try {
             conn = connector.getConnection();
 
-            String sql = "INSERT INTO professor (nome, idade, Turma_idTurma, numeroFaltas, nivelEnsinoSuperior) VALUES (?, ?, ?, ?, ?)";
+            String sql = "INSERT INTO professor (nome, idade, numeroFaltas, nivelEnsinoSuperior) VALUES (?, ?, ?, ?)";
             pstm = conn.prepareStatement(sql);
 
             pstm.setString(1, professor.getNomePessoa());
             pstm.setInt(2, professor.getIdadePessoa());
-            pstm.setInt(3, professor.getTurma().getIdTurma());
             pstm.setInt(4, professor.getNumeroFaltas());
             pstm.setString(5, professor.getNivelEnsinoSuperior());
 
@@ -91,17 +90,15 @@ public class ProfessorDAO {
             conn = connector.getConnection();
             st = conn.createStatement();
 
-            ResultSet rs = st.executeQuery("SELECT * FROM professor join turma on professor.Turma_idTurma = turma.idTurma WHERE idPessoa =" + idPessoa);
+            ResultSet rs = st.executeQuery("SELECT * FROM professor WHERE idPessoa =" + idPessoa);
             rs.first();
 
-            Turma turma = new Turma(rs.getInt("idTurma"), rs.getString("periodo"), rs.getInt("tamanho"), null);
             professor = new Professor(
                         rs.getInt("numeroFaltas"),
                         rs.getString("nivelEnsinoSuperior"),
                         rs.getInt("idPessoa"),
                         rs.getString("nome"),
-                        rs.getInt("idade"),
-                        turma
+                        rs.getInt("idade")
                 );
 
         } catch (SQLException ex) {
@@ -124,19 +121,16 @@ public class ProfessorDAO {
             conn = connector.getConnection();
             st = conn.createStatement();
 
-            ResultSet rs = st.executeQuery("SELECT * FROM professor join turma on professor.Turma_idTurma = turma.idTurma");
+            ResultSet rs = st.executeQuery("SELECT * FROM professor");
 
             while (rs.next()) {
-
-                Turma turma = new Turma(rs.getInt("idTurma"), rs.getString("periodo"), rs.getInt("tamanho"), null);
 
                 Professor professor = new Professor(
                         rs.getInt("numeroFaltas"),
                         rs.getString("nivelEnsinoSuperior"),
                         rs.getInt("idPessoa"),
                         rs.getString("nome"),
-                        rs.getInt("idade"),
-                        turma
+                        rs.getInt("idade")
                 );
 
                 professors.add(professor);
@@ -160,13 +154,12 @@ public class ProfessorDAO {
             conn = connector.getConnection();
 
             String sql = "UPDATE professor AS p SET"
-                    + " nome = ?, idade = ?, Turma_idTurma = ?, numeroFaltas = ?, mediaNotas = ? WHERE p.idPessoa = ?";
+                    + " nome = ?, idade = ?, numeroFaltas = ?, mediaNotas = ? WHERE p.idPessoa = ?";
 
             pstm = conn.prepareStatement(sql);
 
             pstm.setString(1, professor.getNomePessoa());
             pstm.setInt(2, professor.getIdadePessoa());
-            pstm.setInt(3, professor.getTurma().getIdTurma());
             pstm.setInt(4, professor.getNumeroFaltas());
             pstm.setString(5, professor.getNivelEnsinoSuperior());
             pstm.setInt(6, professor.getIdPessoa());

@@ -21,6 +21,7 @@ public class Aluno extends Pessoa {
     private int numeroFaltas;
     private float mediaNotas;
     private AlunoEstado situacao;
+    private Turma turma;
 
     public Aluno() {
     }
@@ -30,21 +31,24 @@ public class Aluno extends Pessoa {
     }
 
     public Aluno(int numeroFaltas, float mediaNotas, String nomePessoa, int idadePessoa, Turma turma) {
-        super(nomePessoa, idadePessoa, turma);
+        super(nomePessoa, idadePessoa);
         this.numeroFaltas = numeroFaltas;
         this.mediaNotas = mediaNotas;
+        this.turma = turma;
     }
 
     public Aluno(int numeroFaltas, float mediaNotas, int idPessoa, String nomePessoa, int idadePessoa, Turma turma) {
-        super(idPessoa, nomePessoa, idadePessoa, turma);
+        super(idPessoa, nomePessoa, idadePessoa);
         this.numeroFaltas = numeroFaltas;
         this.mediaNotas = mediaNotas;
+        this.turma = turma;
     }
 
     public Aluno(int idPessoa, String nomePessoa, int idadePessoa, Turma turma, int numeroFaltas, float mediaNotas, String situacao) {
-        super(idPessoa, nomePessoa, idadePessoa, turma);
+        super(idPessoa, nomePessoa, idadePessoa);
         this.numeroFaltas = numeroFaltas;
         this.mediaNotas = mediaNotas;
+        this.turma = turma;
         switch (situacao) {
             case "Aprovado Frequencia":
                 this.situacao = new AlunoEstadoAprovadoFrequencia();
@@ -86,6 +90,20 @@ public class Aluno extends Pessoa {
 
     public void setSituacao(AlunoEstado situacao) {
         this.situacao = situacao;
+    }
+
+    /**
+     * @return the turma
+     */
+    public Turma getTurma() {
+        return turma;
+    }
+
+    /**
+     * @param turma the turma to set
+     */
+    public void setTurma(Turma turma) {
+        this.turma = turma;
     }
 
 }

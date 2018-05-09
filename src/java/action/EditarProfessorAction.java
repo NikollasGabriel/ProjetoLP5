@@ -23,8 +23,7 @@ public class EditarProfessorAction implements Action {
                 request.getParameter("txtNivelEnsinoSuperior"),
                 Integer.parseInt(request.getParameter("txtIdPessoa")),
                 request.getParameter("txtNomePessoa"),
-                Integer.parseInt(request.getParameter("txtIdadePessoa")),
-                new Turma(Integer.parseInt(request.getParameter("txtIdTurma")))
+                Integer.parseInt(request.getParameter("txtIdadePessoa"))
         );
 
         try {

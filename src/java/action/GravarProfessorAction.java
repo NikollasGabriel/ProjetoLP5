@@ -18,8 +18,7 @@ public class GravarProfessorAction implements Action {
                 Integer.parseInt(request.getParameter("txtNumeroFaltas")),
                 request.getParameter("txtNivelEnsinoSuperior"),
                 request.getParameter("txtNomePessoa"),
-                Integer.parseInt(request.getParameter("txtIdadePessoa")),
-                new Turma(Integer.parseInt(request.getParameter("txtIdTurma")))
+                Integer.parseInt(request.getParameter("txtIdadePessoa"))
         );
 
         try {
