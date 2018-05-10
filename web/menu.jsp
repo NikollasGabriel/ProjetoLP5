@@ -69,6 +69,9 @@
             <li>
                 <a href="FrontController?action=LerCoordenador" target="_parent">Coordenador</a>
             </li>
+            <li>
+                <a href="FrontController?action=LerViceCoordenador" target="_parent">ViceCoordenador</a>
+            </li>
         </ul>
     </body>
 </html>

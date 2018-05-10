@@ -48,4 +48,8 @@ public class AlunoMemento {
     public AlunoEstado Situacao(){
         return aluno.getSituacao();
     }
+    
+    public int id(){
+        return aluno.getIdPessoa();
+    }
 }

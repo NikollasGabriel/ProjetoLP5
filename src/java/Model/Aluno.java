@@ -135,6 +135,7 @@ public class Aluno extends Pessoa {
     }
     
     public void restoreFromMemento(AlunoMemento memento){
+        this.setIdPessoa(memento.id());
         this.setNomePessoa(memento.toStringNomeAluno());
         this.setIdadePessoa(memento.Idade());
         this.setTurma(memento.Turma());
