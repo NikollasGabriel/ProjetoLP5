@@ -8,10 +8,11 @@ import Model.Prova;
 import Persistence.ProvaDAO;
 import java.io.IOException;
 import java.sql.SQLException;
+import java.util.Observable;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-public class GravarProvaAction implements Action {
+public class GravarProvaAction extends Observable implements Action {
 
     @Override
     public void execute(HttpServletRequest request, HttpServletResponse response) throws IOException {
@@ -25,6 +26,12 @@ public class GravarProvaAction implements Action {
         try {
 
             ProvaDAO.getInstancia().save(prova);
+
+            /*Observer*/
+            AlgumaCoisaTesteAction observer = new AlgumaCoisaTesteAction(this);
+            setChanged();
+            notifyObservers();
+
             response.sendRedirect("FrontController?action=LerProva");
 
         } catch (SQLException | ClassNotFoundException ex) {

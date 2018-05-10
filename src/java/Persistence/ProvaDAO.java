@@ -136,7 +136,7 @@ public class ProvaDAO {
             conn = connector.getConnection();
             st = conn.createStatement();
 
-            ResultSet rs = st.executeQuery("select * from prova join disciplina on disciplina.idDisciplina = prova.Disciplina_idDisciplina join aluno on aluno.idAluno = prova.idAluno");
+            ResultSet rs = st.executeQuery("select * from prova join disciplina on disciplina.idDisciplina = prova.Disciplina_idDisciplina join aluno on Aluno.idPessoa = prova.Pessoa_idPessoa");
 
             while (rs.next()) {
 

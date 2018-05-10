@@ -17,6 +17,11 @@ public class AlgumaCoisaTesteAction implements Action, Observer{
         instanciaEdita.addObserver(this);
     }
 
+    public void setInstanciaEdita(Observable instanciaEdita) {
+        this.instanciaEdita = instanciaEdita;
+        instanciaEdita.addObserver(this);
+    }
+    
     @Override
     public void execute(HttpServletRequest request, HttpServletResponse response) throws IOException {
         
@@ -24,6 +29,8 @@ public class AlgumaCoisaTesteAction implements Action, Observer{
 
     @Override
     public void update(Observable o, Object arg) {
+        
+        System.out.println("CAAAAAAAAAAAAAAAAARALHO PORRA FUNCIONOU OBSERVER FULL TRAB");
         
     }
     
