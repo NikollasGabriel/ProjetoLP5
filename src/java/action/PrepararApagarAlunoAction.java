@@ -15,7 +15,7 @@ public class PrepararApagarAlunoAction implements Action {
     @Override
     public void execute(HttpServletRequest request, HttpServletResponse response) throws IOException {
         try {
-            request.setAttribute("pessoa", AlunoDAO.getInstancia().obter(Integer.parseInt(request.getParameter("txtIdPessoa"))));
+            request.setAttribute("aluno", AlunoDAO.getInstancia().obter(Integer.parseInt(request.getParameter("txtIdPessoa"))));
             request.setAttribute("turmas", TurmaDAO.getInstancia().obterTurmas());
 
             RequestDispatcher view = request.getRequestDispatcher("Aluno/excluir.jsp");

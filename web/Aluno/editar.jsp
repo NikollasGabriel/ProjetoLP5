@@ -40,17 +40,18 @@
                 </div>
                 <div class="form-group">
                     <label for="usr">Media das Notas:</label>
-                    <input type="text" class="form-control" id="usr" name="txtMediaNotas" value="${aluno.mediaNotas}">
+                    <input type="text" class="form-control" id="usr" name="txtMediaNotas" value="${aluno.mediaNotas}" readonly>
                 </div>
                 <div class="form-group">
                     <label for="usr">Situação:</label>
-                    <select name="textEstado" type="text" class="form-control" aria-label="Default" value="${aluno.situacao.getEstado()}">
-                        <option value="AprovadoFrequencia"> Aprovado Frequencia</option>
-                        <option value="AprovadoNota">Aprovado Nota</option>
-                        <option value="NaoAvaliado">Não Avaliado</option>
-                        <option value="ReprovadoFrequencia">Reprovado Frequencia</option>
-                        <option value="ReprovadoNota">Reprovado Nota</option>
-                    </select>
+                    <!--<select name="txtSituacao" type="text" class="form-control" aria-label="Default" value="${aluno.situacao.getEstado()}" readonly>
+                        <option value="Aprovado por Frequencia" <c:if test="${'Aprovado por Frequencia' == aluno.situacao.getEstado()}"> selected</c:if>> Aprovado por Frequencia</option>
+                        <option value="Aprovado por Nota" <c:if test="${'Aprovado por Nota' == aluno.situacao.getEstado()}"> selected</c:if>>Aprovado por Nota</option>
+                        <option value="Nao Avaliado" <c:if test="${'Nao Avaliado' == aluno.situacao.getEstado()}"> selected</c:if>>Não Avaliado</option>
+                        <option value="Reprovado por Frequencia" <c:if test="${'Reprovado por Frequencia' == aluno.situacao.getEstado()}"> selected</c:if>>Reprovado por Frequencia</option>
+                        <option value="Reprovado por Nota" <c:if test="${'Reprovado por Nota' == aluno.situacao.getEstado()}"> selected</c:if>>Reprovado por Nota</option>
+                    </select>-->
+                    <input type="text" class="form-control" id="usr" name="txtSituacao" value="${aluno.situacao.getEstado()}" readonly>
                 </div>
                 <div class="form-group">
                     <label for="usr">Turma:</label>
@@ -65,9 +66,9 @@
                 </div>
                 <button type="submit" class="btn btn-default" name="btnConfirmar" value="Confirmar">Confirmar</button>
             </form>
-                        <form action="FrontController?action=AlunoMemento&txtIdPessoa=<c:out value="${aluno.idPessoa}"/>" method="post" name="frmDezfazerPessoa" onsubmit="">
-                            <button type="submit" class="btn btn-default" name="btnDesfazer" value="Desfazer">Desfazer</button>
-                        </form>
+            <form action="FrontController?action=AlunoMemento&txtIdPessoa=<c:out value="${aluno.idPessoa}"/>" method="post" name="frmDezfazerPessoa" onsubmit="">
+                <button type="submit" class="btn btn-default" name="btnDesfazer" value="Desfazer">Desfazer</button>
+            </form>
         </div>
     </body>
 </html>

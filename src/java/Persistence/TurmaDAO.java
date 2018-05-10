@@ -85,7 +85,7 @@ public class TurmaDAO {
 
             Disciplina disciplina = new Disciplina(
                     rs.getInt("idDisciplina"),
-                    rs.getString("nome"),
+                    rs.getString("nomeDisciplina"),
                     rs.getInt("numerocreditos"),
                     rs.getInt("numerovagas"));
 
@@ -127,7 +127,7 @@ public class TurmaDAO {
 
                 Disciplina disciplina = new Disciplina(
                         rs.getInt("idDisciplina"),
-                        rs.getString("nome"),
+                        rs.getString("nomeDisciplina"),
                         rs.getInt("numeroCreditos"),
                         rs.getInt("numeroVagas"));
 

@@ -1,14 +1,11 @@
 package action;
 
-import Controller.Action;
 import Model.Aluno;
 import Model.Disciplina;
 import Model.Professor;
 import Model.Prova;
+import Persistence.AlunoDAO;
 import Persistence.DatabaseLocator;
-import State.AlunoEstadoAprovadoNota;
-import State.AlunoEstadoReprovadoNota;
-import java.io.IOException;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
@@ -18,10 +15,8 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Observable;
 import java.util.Observer;
-import javax.servlet.http.HttpServletRequest;
-import javax.servlet.http.HttpServletResponse;
 
-public class AlgumaCoisaTesteAction implements Action, Observer {
+public class AlgumaCoisaTesteAction implements Observer {
 
     private Observable instanciaEdita;
 
@@ -36,11 +31,6 @@ public class AlgumaCoisaTesteAction implements Action, Observer {
     }
 
     @Override
-    public void execute(HttpServletRequest request, HttpServletResponse response) throws IOException {
-
-    }
-
-    @Override
     public void update(Observable instanciaEdita, Object arg) {
 
         if (instanciaEdita instanceof GravarProvaAction) {
@@ -48,8 +38,6 @@ public class AlgumaCoisaTesteAction implements Action, Observer {
             GravarProvaAction observable = (GravarProvaAction) instanciaEdita;
             int idAluno = observable.prova.getAluno().getIdPessoa();
             float media = 0;
-            String estado;
-            Aluno aluno = new Aluno();
 
             Connection conn = null;
             Statement st = null;
@@ -75,61 +63,81 @@ public class AlgumaCoisaTesteAction implements Action, Observer {
                     provas.add(prova);
                 }
 
-            } catch (SQLException | ClassNotFoundException ex) {
-                ex.printStackTrace();
-            } finally {
-                try {
-                    connector.closeConnection(conn, st);
-                } catch (SQLException ex) {
-                    ex.printStackTrace();
-                }
-            }
+                if (provas.size() == 3) {
 
-            if (provas.size() == 3) {
+                    for (Prova p : provas) {
+                        media = media + p.getValor();
+                    }
 
-                for (Prova p : provas) {
-                    media = media + p.getValor();
-                }
+                    media = media / 3;
 
-                media = media / 3;
+                    Aluno aluno = AlunoDAO.getInstancia().obter(idAluno);
 
-                if (media >= 60) {
+                    if (media >= 60) {
+                        aluno.getSituacao().aprovadoNota(aluno); // Mudança de estado condicional
 
-                    aluno.setSituacao(new AlunoEstadoAprovadoNota());
-                    estado = aluno.getSituacao().getEstado();
+                    } else {
+                        aluno.getSituacao().reprovadoNota(aluno); // Mudança de estado condicional
+                    }
 
-                } else {
-
-                    aluno.setSituacao(new AlunoEstadoReprovadoNota());
-                    estado = aluno.getSituacao().getEstado();
-                }
-
-                try {
                     conn = connector.getConnection();
 
                     String sql = "UPDATE Aluno AS p SET"
                             + " mediaNotas = ?, situacao = ? WHERE p.idPessoa = ?";
 
                     pstm = conn.prepareStatement(sql);
-
                     pstm.setFloat(1, media);
-                    pstm.setString(2, estado);
+                    pstm.setString(2, aluno.getSituacao().getEstado());
                     pstm.setInt(3, idAluno);
-
                     pstm.execute();
 
-                } catch (SQLException | ClassNotFoundException ex) {
-                    ex.printStackTrace();
-                } finally {
-                    try {
-                        connector.closeConnection(conn, st);
-                    } catch (SQLException ex) {
-                        ex.printStackTrace();
-                    }
+                    connector.closeConnection(conn, st);
+
                 }
+            } catch (SQLException | ClassNotFoundException ex) {
+                ex.printStackTrace();
+            }
+
+        } else {
+
+            EditarAlunoAction observable = (EditarAlunoAction) instanciaEdita;
+
+            int numeroFaltas = observable.numeroFaltas;
+            int idAluno = observable.idPessoa;
+
+            Connection conn = null;
+            PreparedStatement pstm = null;
+            Statement st = null;
+            DatabaseLocator connector = DatabaseLocator.getInstance();
+
+            try {
+
+                Aluno aluno = AlunoDAO.getInstancia().obter(idAluno);
+
+                if (numeroFaltas > 12) {
+
+                    aluno.getSituacao().reprovadoFrequencia(aluno);
+
+                } else {
+
+                    aluno.getSituacao().aprovadoFrequencia(aluno);
+                }
+
+                conn = connector.getConnection();
+
+                String sql = "UPDATE Aluno AS p SET"
+                        + " situacao = ? WHERE p.idPessoa = ?";
+
+                pstm = conn.prepareStatement(sql);
+                pstm.setString(1, aluno.getSituacao().getEstado());
+                pstm.setInt(2, idAluno);
+                pstm.execute();
+
+                connector.closeConnection(conn, st);
+
+            } catch (SQLException | ClassNotFoundException ex) {
+                ex.printStackTrace();
             }
         }
-
     }
-
 }

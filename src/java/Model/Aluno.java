@@ -50,16 +50,16 @@ public class Aluno extends Pessoa {
         this.mediaNotas = mediaNotas;
         this.turma = turma;
         switch (situacao) {
-            case "Aprovado Frequencia":
+            case "Aprovado por Frequencia":
                 this.situacao = new AlunoEstadoAprovadoFrequencia();
                 break;
-            case "Aprovado Nota":
+            case "Aprovado por Nota":
                 this.situacao = new AlunoEstadoAprovadoNota();
                 break;
-            case "Reprovado Frequencia":
+            case "Reprovado por Frequencia":
                 this.situacao = new AlunoEstadoReprovadoFrequencia();
                 break;
-            case "Reprovado Nota":
+            case "Reprovado por Nota":
                 this.situacao = new AlunoEstadoReprovadoNota();
                 break;
             case "Nao Avaliado":

@@ -40,7 +40,7 @@ public class AlunoDAO {
         try {
             conn = connector.getConnection();
 
-            String sql = "INSERT INTO aluno (nome, idade, Turma_idTurma, numeroFaltas, mediaNotas, situacao) VALUES (?, ?, ?, ?, ?, ?)";
+            String sql = "INSERT INTO aluno (nomeAluno, idade, Turma_idTurma, numeroFaltas, mediaNotas, situacao) VALUES (?, ?, ?, ?, ?, ?)";
             pstm = conn.prepareStatement(sql);
 
             pstm.setString(1, aluno.getNomePessoa());
@@ -98,7 +98,7 @@ public class AlunoDAO {
             Turma turma = new Turma(rs.getInt("idTurma"), rs.getString("periodo"), rs.getInt("tamanho"), null);
             aluno = new Aluno(
                     rs.getInt("idPessoa"),
-                    rs.getString("nome"),
+                    rs.getString("nomeAluno"),
                     rs.getInt("idade"),
                     turma,
                     rs.getInt("numeroFaltas"),
@@ -133,7 +133,7 @@ public class AlunoDAO {
 
                 Aluno aluno = new Aluno(
                         rs.getInt("idPessoa"),
-                        rs.getString("nome"),
+                        rs.getString("nomeAluno"),
                         rs.getInt("idade"),
                         turma,
                         rs.getInt("numeroFaltas"),
@@ -161,7 +161,7 @@ public class AlunoDAO {
             conn = connector.getConnection();
 
             String sql = "UPDATE aluno AS p SET"
-                    + " nome = ?, idade = ?, Turma_idTurma = ?, numeroFaltas = ?, mediaNotas = ?, situacao = ? WHERE p.idPessoa = ?";
+                    + " nomeAluno = ?, idade = ?, Turma_idTurma = ?, numeroFaltas = ?, mediaNotas = ?, situacao = ? WHERE p.idPessoa = ?";
 
             pstm = conn.prepareStatement(sql);
 
@@ -175,8 +175,8 @@ public class AlunoDAO {
 
             pstm.execute();
 
-        } catch (SQLException ex) {
-            throw ex;
+        } catch (SQLException | NullPointerException ex) {
+            ex.printStackTrace();
         } finally {
             connector.closeConnection(conn, pstm);
         }

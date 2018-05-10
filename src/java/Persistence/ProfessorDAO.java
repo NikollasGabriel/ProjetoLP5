@@ -40,7 +40,7 @@ public class ProfessorDAO {
         try {
             conn = connector.getConnection();
 
-            String sql = "INSERT INTO professor (nome, idade, numeroFaltas, nivelEnsinoSuperior) VALUES (?, ?, ?, ?)";
+            String sql = "INSERT INTO professor (nomeProfessor, idade, numeroFaltas, nivelEnsinoSuperior) VALUES (?, ?, ?, ?)";
             pstm = conn.prepareStatement(sql);
 
             pstm.setString(1, professor.getNomePessoa());
@@ -97,7 +97,7 @@ public class ProfessorDAO {
                         rs.getInt("numeroFaltas"),
                         rs.getString("nivelEnsinoSuperior"),
                         rs.getInt("idPessoa"),
-                        rs.getString("nome"),
+                        rs.getString("nomeProfessor"),
                         rs.getInt("idade")
                 );
 
@@ -129,7 +129,7 @@ public class ProfessorDAO {
                         rs.getInt("numeroFaltas"),
                         rs.getString("nivelEnsinoSuperior"),
                         rs.getInt("idPessoa"),
-                        rs.getString("nome"),
+                        rs.getString("nomeProfessor"),
                         rs.getInt("idade")
                 );
 
@@ -154,7 +154,7 @@ public class ProfessorDAO {
             conn = connector.getConnection();
 
             String sql = "UPDATE professor AS p SET"
-                    + " nome = ?, idade = ?, numeroFaltas = ?, mediaNotas = ? WHERE p.idPessoa = ?";
+                    + " nomeProfessor = ?, idade = ?, numeroFaltas = ?, mediaNotas = ? WHERE p.idPessoa = ?";
 
             pstm = conn.prepareStatement(sql);
 

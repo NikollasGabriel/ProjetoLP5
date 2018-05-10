@@ -6,7 +6,7 @@ public class AlunoEstadoReprovadoFrequencia implements AlunoEstado {
 
     @Override
     public String getEstado() {
-        return "Reprovado Frequencia";
+        return "Reprovado por Frequencia";
     }
 
     @Override
