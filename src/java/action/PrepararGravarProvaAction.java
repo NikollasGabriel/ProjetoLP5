@@ -1,7 +1,9 @@
 package action;
 
 import Controller.Action;
+import Persistence.AlunoDAO;
 import Persistence.DisciplinaDAO;
+import Persistence.ProfessorDAO;
 import java.io.IOException;
 import java.sql.SQLException;
 import javax.servlet.RequestDispatcher;
@@ -15,6 +17,8 @@ public class PrepararGravarProvaAction implements Action {
     public void execute(HttpServletRequest request, HttpServletResponse response) throws IOException {
         try {
             request.setAttribute("disciplinas", DisciplinaDAO.getInstancia().obterDisciplinas());
+            request.setAttribute("alunos", AlunoDAO.getInstancia().obterAlunos());
+            request.setAttribute("professores", ProfessorDAO.getInstancia().obterProfessores());
 
             RequestDispatcher view = request.getRequestDispatcher("Prova/gravar.jsp");
 

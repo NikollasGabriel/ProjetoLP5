@@ -33,13 +33,13 @@ public class ProvaDAO {
         try {
             conn = connector.getConnection();
 
-            String sql = "INSERT INTO prova (valor, Aluno_idAluno, Professor_idProfessor, Disciplina_idDisciplina) VALUES (?, ?, ?)";
+            String sql = "INSERT INTO prova (valor, Pessoa_idPessoa, Professor_idPessoa, Disciplina_idDisciplina) VALUES (?, ?, ?, ?)";
             pstm = conn.prepareStatement(sql);
 
             pstm.setFloat(1, prova.getValor());
             pstm.setInt(2, prova.getAluno().getIdPessoa());
-            pstm.setInt(2, prova.getProfessor().getIdPessoa());
-            pstm.setInt(3, prova.getDisciplina().getIdDisciplina());
+            pstm.setInt(3, prova.getProfessor().getIdPessoa());
+            pstm.setInt(4, prova.getDisciplina().getIdDisciplina());
 
             pstm.execute();
 
@@ -136,7 +136,7 @@ public class ProvaDAO {
             conn = connector.getConnection();
             st = conn.createStatement();
 
-            ResultSet rs = st.executeQuery("select * from prova join disciplina on disciplina.idDisciplina = prova.Disciplina_idDisciplina join aluno on Aluno.idPessoa = prova.Pessoa_idPessoa");
+            ResultSet rs = st.executeQuery("select * from prova join disciplina on disciplina.idDisciplina = prova.Disciplina_idDisciplina join aluno on Aluno.idPessoa = prova.Pessoa_idPessoa join professor on Professor.idPessoa = prova.Professor_idPessoa");
 
             while (rs.next()) {
 
