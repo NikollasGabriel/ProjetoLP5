@@ -15,12 +15,11 @@ public class GravarAlunoAction implements Action {
     public void execute(HttpServletRequest request, HttpServletResponse response) throws IOException {
 
         Aluno pessoa = new Aluno(
-                0,
                 request.getParameter("txtNomePessoa"),
                 Integer.parseInt(request.getParameter("txtIdadePessoa")),
                 new Turma(Integer.parseInt(request.getParameter("txtIdTurma"))),
                 Integer.parseInt(request.getParameter("txtNumeroFaltas")),
-                0,
+                Float.parseFloat(request.getParameter("txtMediaNotas")),
                 "Nao Avaliado");
 
         try {

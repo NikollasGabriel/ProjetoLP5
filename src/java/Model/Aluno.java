@@ -67,6 +67,30 @@ public class Aluno extends Pessoa {
                 break;
         }
     }
+    
+    public Aluno(String nomePessoa, int idadePessoa, Turma turma, int numeroFaltas, float mediaNotas, String situacao) {
+        super(nomePessoa, idadePessoa);
+        this.numeroFaltas = numeroFaltas;
+        this.mediaNotas = mediaNotas;
+        this.turma = turma;
+        switch (situacao) {
+            case "Aprovado por Frequencia":
+                this.situacao = new AlunoEstadoAprovadoFrequencia();
+                break;
+            case "Aprovado por Nota":
+                this.situacao = new AlunoEstadoAprovadoNota();
+                break;
+            case "Reprovado por Frequencia":
+                this.situacao = new AlunoEstadoReprovadoFrequencia();
+                break;
+            case "Reprovado por Nota":
+                this.situacao = new AlunoEstadoReprovadoNota();
+                break;
+            case "Nao Avaliado":
+                this.situacao = new AlunoEstadoNaoAvaliado();
+                break;
+        }
+    }
 
     public int getNumeroFaltas() {
         return numeroFaltas;

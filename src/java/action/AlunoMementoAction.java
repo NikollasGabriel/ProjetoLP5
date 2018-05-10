@@ -26,9 +26,9 @@ import javax.servlet.http.HttpServletResponse;
  * @author rwspa
  */
 public class AlunoMementoAction implements Action{
-    AlunoMemento alunoMemento;
-    Aluno alunoSelect;
-    ArrayList<AlunoMemento> alunoList = new ArrayList<>();
+    AlunoMemento alunoMemento = new AlunoMemento();
+    Aluno alunoSelect = new Aluno();
+    static ArrayList<AlunoMemento> alunoList = new ArrayList<>();
     
     public AlunoMementoAction() {
     }
@@ -54,12 +54,17 @@ public class AlunoMementoAction implements Action{
         try {
             this.selecionaAluno(Integer.parseInt(request.getParameter("txtIdPessoa")));
             alunoSelect.restoreFromMemento(alunoMemento);
+            request.setAttribute("turmas", TurmaDAO.getInstancia().obterTurmas());
             request.setAttribute("aluno", alunoSelect);
             
             RequestDispatcher view = request.getRequestDispatcher("Aluno/editar.jsp");
             view.forward(request, response);
 
         } catch (ServletException ex) {
+            Logger.getLogger(AlunoMementoAction.class.getName()).log(Level.SEVERE, null, ex);
+        } catch (SQLException ex) {
+            Logger.getLogger(AlunoMementoAction.class.getName()).log(Level.SEVERE, null, ex);
+        } catch (ClassNotFoundException ex) {
             Logger.getLogger(AlunoMementoAction.class.getName()).log(Level.SEVERE, null, ex);
         }
     }

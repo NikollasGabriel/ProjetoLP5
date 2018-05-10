@@ -3,6 +3,7 @@ package Model;
 
 public class Coordenador extends Funcionario{
 
+    
     @Override
     public float getBonificacao() {
         return 1000;

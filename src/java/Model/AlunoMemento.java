@@ -13,6 +13,9 @@ import State.AlunoEstado;
  */
 public class AlunoMemento {
     private Aluno aluno;
+    public AlunoMemento(){
+        aluno = new Aluno();
+    }
     
     public AlunoMemento(Aluno alunoSalvar){
         aluno = alunoSalvar;

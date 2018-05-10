@@ -49,7 +49,7 @@
                     </select>
                 </div>
                 <div class="form-group">
-                    <label for="usr">Profesor:</label>
+                    <label for="usr">Professor:</label>
                     <select class="selectpicker" name="txtIdProfessor">
                         <option value="0" <c:if test="${professor.idPessoa != null}"> selected</c:if>></option>
                         <c:forEach items="${professores}" var="professor">
