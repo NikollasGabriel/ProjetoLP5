@@ -20,9 +20,8 @@ public class GravarAlunoAction implements Action {
                 Integer.parseInt(request.getParameter("txtIdadePessoa")),
                 new Turma(Integer.parseInt(request.getParameter("txtIdTurma"))),
                 Integer.parseInt(request.getParameter("txtNumeroFaltas")),
-                Float.parseFloat(request.getParameter("txtMediaNotas")),
-                request.getParameter("txtSituacao")
-        );
+                0,
+                "Nao Avaliado");
 
         try {
 
