@@ -191,16 +191,16 @@ public class ProvaDAO {
             conn = connector.getConnection();
 
             String sql = "UPDATE prova AS p SET"
-                    + " valor = ?, Pessoa_idPessoa = ?, Professor_idPessoa,"
+                    + " valor = ?, Pessoa_idPessoa = ?, Professor_idPessoa = ?,"
                     + " Disciplina_idDisciplina = ? WHERE p.idProva = ?";
 
             pstm = conn.prepareStatement(sql);
 
             pstm.setFloat(1, prova.getValor());
             pstm.setInt(2, prova.getAluno().getIdPessoa());
-            pstm.setInt(2, prova.getProfessor().getIdPessoa());
-            pstm.setInt(3, prova.getDisciplina().getIdDisciplina());
-            pstm.setInt(4, prova.getIdProva());
+            pstm.setInt(3, prova.getProfessor().getIdPessoa());
+            pstm.setInt(4, prova.getDisciplina().getIdDisciplina());
+            pstm.setInt(5, prova.getIdProva());
 
             pstm.execute();
 

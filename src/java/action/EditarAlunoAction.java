@@ -2,7 +2,6 @@ package action;
 
 import Controller.Action;
 import Model.Aluno;
-import Model.Prova;
 import Model.Turma;
 import Persistence.AlunoDAO;
 import java.io.IOException;
@@ -34,12 +33,10 @@ public class EditarAlunoAction extends Observable implements Action {
 
         try {
             new AlunoMementoAction(AlunoDAO.getInstancia().obter(pessoa.getIdPessoa()));
-        } catch (SQLException ex) {
-            Logger.getLogger(EditarAlunoAction.class.getName()).log(Level.SEVERE, null, ex);
-        } catch (ClassNotFoundException ex) {
-            Logger.getLogger(EditarAlunoAction.class.getName()).log(Level.SEVERE, null, ex);
+        } catch (SQLException | ClassNotFoundException ex) {
+            ex.printStackTrace();
         }
-        
+
         try {
 
             AlunoDAO.getInstancia().editar(pessoa);

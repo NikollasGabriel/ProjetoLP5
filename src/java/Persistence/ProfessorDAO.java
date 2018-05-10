@@ -45,8 +45,8 @@ public class ProfessorDAO {
 
             pstm.setString(1, professor.getNomePessoa());
             pstm.setInt(2, professor.getIdadePessoa());
-            pstm.setInt(4, professor.getNumeroFaltas());
-            pstm.setString(5, professor.getNivelEnsinoSuperior());
+            pstm.setInt(3, professor.getNumeroFaltas());
+            pstm.setString(4, professor.getNivelEnsinoSuperior());
 
             pstm.execute();
 
@@ -154,15 +154,15 @@ public class ProfessorDAO {
             conn = connector.getConnection();
 
             String sql = "UPDATE professor AS p SET"
-                    + " nomeProfessor = ?, idade = ?, numeroFaltas = ?, mediaNotas = ? WHERE p.idPessoa = ?";
+                    + " nomeProfessor = ?, idade = ?, numeroFaltas = ?, nivelEnsinoSuperior = ? WHERE p.idPessoa = ?";
 
             pstm = conn.prepareStatement(sql);
 
             pstm.setString(1, professor.getNomePessoa());
             pstm.setInt(2, professor.getIdadePessoa());
-            pstm.setInt(4, professor.getNumeroFaltas());
-            pstm.setString(5, professor.getNivelEnsinoSuperior());
-            pstm.setInt(6, professor.getIdPessoa());
+            pstm.setInt(3, professor.getNumeroFaltas());
+            pstm.setString(4, professor.getNivelEnsinoSuperior());
+            pstm.setInt(5, professor.getIdPessoa());
 
             pstm.execute();
 
