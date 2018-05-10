@@ -45,6 +45,7 @@
                             <td><c:out value="${aluno.mediaNotas}"></c:out></td>
                             <td><c:out value="${aluno.situacao.getEstado()}"></c:out></td>
                             <td><a href="FrontController?action=PrepararEditarAluno&txtIdPessoa=<c:out value="${aluno.idPessoa}"/>"><i class="icon-edit"></i>Editar</a> </td>
+                            <td><a href="FrontController?action=AlunoMemento&txtIdPessoa=<c:out value="${aluno.idPessoa}"/>"><i class="icon-edit"></i>Desfazer</a> </td>
                             <td><a href="FrontController?action=PrepararApagarAluno&txtIdPessoa=<c:out value="${aluno.idPessoa}"/>"><i class="icon-remove"></i>Excluir</a> </td>
                         </tr>
                     </c:forEach>

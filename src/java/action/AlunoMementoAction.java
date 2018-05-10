@@ -14,6 +14,7 @@ import Persistence.AlunoDAO;
 import Persistence.TurmaDAO;
 import java.io.IOException;
 import java.sql.SQLException;
+import java.util.ArrayList;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.servlet.RequestDispatcher;
@@ -27,33 +28,32 @@ import javax.servlet.http.HttpServletResponse;
 public class AlunoMementoAction implements Action{
     AlunoMemento alunoMemento;
     Aluno alunoSelect;
+    ArrayList<AlunoMemento> alunoList = new ArrayList<>();
+    
     public AlunoMementoAction() {
     }
 
-    public AlunoMemento setAlunoMementoAction(HttpServletRequest request) {
-        
-        //Dando null aqui
-        //tem que dar um jeito de pegar essas informações do request para criar o objeto e completar o memento
-        alunoSelect = new Aluno(
-                Integer.parseInt(request.getParameter("txtIdPessoa")),
-                request.getParameter("txtNomePessoa"),
-                Integer.parseInt(request.getParameter("idadePessoa")),
-                new Turma(Integer.parseInt(request.getParameter("txtIdTurma"))),
-                Integer.parseInt(request.getParameter("txtNumeroFaltas")),
-                Float.parseFloat(request.getParameter("txtMediaNotas")),
-                request.getParameter("txtSituacao")
-        );
-        return alunoMemento = new AlunoMemento(alunoSelect);
+    public AlunoMementoAction(Aluno a) {
+        alunoSelect = a;
+        alunoMemento = new AlunoMemento(alunoSelect);
+        alunoList.add(alunoMemento);
+    }
+    
+    public void selecionaAluno(int id){
+        for(AlunoMemento aluno : alunoList){
+            if(aluno.getAlunoSalvo().getIdPessoa()==id){
+                alunoMemento = aluno;
+                break;
+            }
+        }
     }
     
     @Override
     public void execute(HttpServletRequest request, HttpServletResponse response) throws IOException {
 
         try {
-            request.setAttribute("aluno", AlunoDAO.getInstancia().obter(Integer.parseInt(request.getParameter("txtIdPessoa"))));
-            request.setAttribute("turmas", TurmaDAO.getInstancia().obterTurmas());
-            
-            alunoSelect.restoreFromMemento(this.setAlunoMementoAction(request));
+            this.selecionaAluno(Integer.parseInt(request.getParameter("txtIdPessoa")));
+            alunoSelect.restoreFromMemento(alunoMemento);
             request.setAttribute("aluno", alunoSelect);
             
             RequestDispatcher view = request.getRequestDispatcher("Aluno/editar.jsp");
@@ -61,10 +61,6 @@ public class AlunoMementoAction implements Action{
 
         } catch (ServletException ex) {
             Logger.getLogger(AlunoMementoAction.class.getName()).log(Level.SEVERE, null, ex);
-        } catch (SQLException ex) {
-            Logger.getLogger(AlunoMementoAction.class.getName()).log(Level.SEVERE, null, ex);
-        } catch (ClassNotFoundException ex) {
-            Logger.getLogger(AlunoMementoAction.class.getName()).log(Level.SEVERE, null, ex);
-        } 
+        }
     }
 }

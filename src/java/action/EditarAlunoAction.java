@@ -33,6 +33,14 @@ public class EditarAlunoAction extends Observable implements Action {
         );
 
         try {
+            new AlunoMementoAction(AlunoDAO.getInstancia().obter(pessoa.getIdPessoa()));
+        } catch (SQLException ex) {
+            Logger.getLogger(EditarAlunoAction.class.getName()).log(Level.SEVERE, null, ex);
+        } catch (ClassNotFoundException ex) {
+            Logger.getLogger(EditarAlunoAction.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        
+        try {
 
             AlunoDAO.getInstancia().editar(pessoa);
 
