@@ -12,17 +12,17 @@ import State.AlunoEstado;
  * @author rwspa
  */
 public class AlunoMemento {
-    private AlunoEstado estado;
+    private Aluno aluno;
     
-    public AlunoMemento(AlunoEstado estadoSalvar){
-        estado = estadoSalvar;
+    public AlunoMemento(Aluno alunoSalvar){
+        aluno = alunoSalvar;
     }
     
-    public AlunoEstado getEstadoSalvo(){
-        return estado;
+    public Aluno getAlunoSalvo(){
+        return aluno;
     }
     
-    public String toString(){
-        return estado.getEstado();
+    public String toStringNomeAluno(){
+        return aluno.getNomePessoa();
     }
 }

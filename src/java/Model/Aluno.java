@@ -107,11 +107,11 @@ public class Aluno extends Pessoa {
     }
     
     public AlunoMemento saveMemento(){
-        return new AlunoMemento(situacao);
+        return new AlunoMemento(this);
     }
     
     public void restoreFromMemento(AlunoMemento memento){
-        situacao = memento.getEstadoSalvo();
+        this.setNomePessoa(memento.toStringNomeAluno());
     }
 
 }
