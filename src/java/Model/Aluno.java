@@ -105,5 +105,13 @@ public class Aluno extends Pessoa {
     public void setTurma(Turma turma) {
         this.turma = turma;
     }
+    
+    public AlunoMemento saveMemento(){
+        return new AlunoMemento(situacao);
+    }
+    
+    public void restoreFromMemento(AlunoMemento memento){
+        situacao = memento.getEstadoSalvo();
+    }
 
 }

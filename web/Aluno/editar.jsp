@@ -44,7 +44,13 @@
                 </div>
                 <div class="form-group">
                     <label for="usr">Situação:</label>
-                    <input type="text" class="form-control" id="usr" name="txtSituacao" value="${aluno.situacao.getEstado()}">
+                    <select name="textEstado" type="text" class="form-control" aria-label="Default" value="${aluno.situacao.getEstado()}">
+                        <option value="AprovadoFrequencia"> Aprovado Frequencia</option>
+                        <option value="AprovadoNota">Aprovado Nota</option>
+                        <option value="NaoAvaliado">Não Avaliado</option>
+                        <option value="ReprovadoFrequencia">Reprovado Frequencia</option>
+                        <option value="ReprovadoNota">Reprovado Nota</option>
+                    </select>
                 </div>
                 <div class="form-group">
                     <label for="usr">Turma:</label>

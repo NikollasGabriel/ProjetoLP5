@@ -40,7 +40,7 @@ public class AlunoDAO {
         try {
             conn = connector.getConnection();
 
-            String sql = "INSERT INTO Aluno (nome, idade, Turma_idTurma, numeroFaltas, mediaNotas, situacao) VALUES (?, ?, ?, ?, ?, ?)";
+            String sql = "INSERT INTO aluno (nome, idade, Turma_idTurma, numeroFaltas, mediaNotas, situacao) VALUES (?, ?, ?, ?, ?, ?)";
             pstm = conn.prepareStatement(sql);
 
             pstm.setString(1, aluno.getNomePessoa());
@@ -68,7 +68,7 @@ public class AlunoDAO {
         try {
             conn = connector.getConnection();
 
-            String sql = "DELETE FROM Aluno WHERE idpessoa = ?";
+            String sql = "DELETE FROM aluno WHERE idPessoa = ?";
             pstm = conn.prepareStatement(sql);
 
             pstm.setInt(1, aluno.getIdPessoa());
@@ -160,7 +160,7 @@ public class AlunoDAO {
         try {
             conn = connector.getConnection();
 
-            String sql = "UPDATE Aluno AS p SET"
+            String sql = "UPDATE aluno AS p SET"
                     + " nome = ?, idade = ?, Turma_idTurma = ?, numeroFaltas = ?, mediaNotas = ?, situacao = ? WHERE p.idPessoa = ?";
 
             pstm = conn.prepareStatement(sql);

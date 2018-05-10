@@ -36,11 +36,11 @@
                 </div>
                 <div class="form-group">
                     <label for="usr">Media das Notas:</label>
-                    <input type="text" class="form-control" id="usr" name="txtMediaNotas">
+                    <input type="text" class="form-control" id="usr" name="txtMediaNotas" value="0.0" readonly>
                 </div>
                 <div class="form-group">
                     <label for="usr">Situação:</label>
-                    <input type="text" class="form-control" id="usr" name="txtSituacao">
+                    <input type="text" class="form-control" id="usr" name="txtSituacao" value="NaoAvaliado" readonly>
                 </div>
                 <div class="form-group">
                     <label for="usr">Turma:</label>
