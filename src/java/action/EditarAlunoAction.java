@@ -7,6 +7,8 @@ import Model.Turma;
 import Persistence.AlunoDAO;
 import java.io.IOException;
 import java.sql.SQLException;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
@@ -28,6 +30,14 @@ public class EditarAlunoAction implements Action {
                 request.getParameter("txtSituacao")
         );
 
+        try {
+            new AlunoMementoAction(AlunoDAO.getInstancia().obter(pessoa.getIdPessoa()));
+        } catch (SQLException ex) {
+            Logger.getLogger(EditarAlunoAction.class.getName()).log(Level.SEVERE, null, ex);
+        } catch (ClassNotFoundException ex) {
+            Logger.getLogger(EditarAlunoAction.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        
         try {
 
             AlunoDAO.getInstancia().editar(pessoa);
