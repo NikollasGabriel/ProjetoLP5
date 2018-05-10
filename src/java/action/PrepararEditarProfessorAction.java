@@ -15,7 +15,7 @@ public class PrepararEditarProfessorAction implements Action {
     @Override
     public void execute(HttpServletRequest request, HttpServletResponse response) throws IOException {
         try {
-            request.setAttribute("pessoa", ProfessorDAO.getInstancia().obter(Integer.parseInt(request.getParameter("txtIdPessoa"))));
+            request.setAttribute("professor", ProfessorDAO.getInstancia().obter(Integer.parseInt(request.getParameter("txtIdPessoa"))));
             request.setAttribute("turmas", TurmaDAO.getInstancia().obterTurmas());
 
             RequestDispatcher view = request.getRequestDispatcher("Professor/editar.jsp");

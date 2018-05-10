@@ -17,7 +17,7 @@ public class LerProfessorAction implements Action {
         try {
 
             request.setAttribute("turmas", TurmaDAO.getInstancia().obterTurmas());
-            request.setAttribute("pessoas", ProfessorDAO.getInstancia().obterProfessores());
+            request.setAttribute("professores", ProfessorDAO.getInstancia().obterProfessores());
 
             RequestDispatcher view = request.getRequestDispatcher("Professor/ler.jsp");
             view.forward(request, response);

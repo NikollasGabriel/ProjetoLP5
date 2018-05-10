@@ -65,6 +65,9 @@
                 </div>
                 <button type="submit" class="btn btn-default" name="btnConfirmar" value="Confirmar">Confirmar</button>
             </form>
+                        <form action="FrontController?action=AlunoMemento&txtIdPessoa=<c:out value="${aluno.idPessoa}"/>" method="post" name="frmDezfazerPessoa" onsubmit="">
+                            <button type="submit" class="btn btn-default" name="btnDesfazer" value="Desfazer">Desfazer</button>
+                        </form>
         </div>
     </body>
 </html>
