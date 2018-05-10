@@ -112,6 +112,11 @@ public class Aluno extends Pessoa {
     
     public void restoreFromMemento(AlunoMemento memento){
         this.setNomePessoa(memento.toStringNomeAluno());
+        this.setIdadePessoa(memento.Idade());
+        this.setTurma(memento.Turma());
+        this.setNumeroFaltas(memento.NumeroFaltas());
+        this.setMediaNotas(memento.MediaNotas());
+        this.setSituacao(memento.Situacao());
     }
 
 }
