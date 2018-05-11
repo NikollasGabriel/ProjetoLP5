@@ -95,7 +95,7 @@ public class AlunoDAO {
             ResultSet rs = st.executeQuery("SELECT * FROM aluno join turma on aluno.Turma_idTurma = turma.idTurma WHERE idPessoa =" + idPessoa);
             rs.first();
 
-            Turma turma = new Turma(rs.getInt("idTurma"), rs.getString("periodo"), rs.getInt("tamanho"), null);
+            Turma turma = new Turma(rs.getInt("idTurma"), rs.getString("periodo"), rs.getInt("tamanho"), null,null);
             aluno = new Aluno(
                     rs.getInt("idPessoa"),
                     rs.getString("nomeAluno"),
@@ -129,7 +129,7 @@ public class AlunoDAO {
 
             while (rs.next()) {
 
-                Turma turma = new Turma(rs.getInt("idTurma"), rs.getString("periodo"), rs.getInt("tamanho"), null);
+                Turma turma = new Turma(rs.getInt("idTurma"), rs.getString("periodo"), rs.getInt("tamanho"), null,null);
 
                 Aluno aluno = new Aluno(
                         rs.getInt("idPessoa"),

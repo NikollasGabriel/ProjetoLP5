@@ -1,5 +1,6 @@
 package Persistence;
 
+import Model.Coordenador;
 import Model.Disciplina;
 import Model.Turma;
 import java.sql.Connection;
@@ -31,12 +32,13 @@ public class TurmaDAO {
         try {
             conn = connector.getConnection();
 
-            String sql = "INSERT INTO turma (periodo, tamanho, Disciplina_idDisciplina) VALUES (?, ?, ?)";
+            String sql = "INSERT INTO turma (periodo, tamanho, Disciplina_idDisciplina, Coodenador_idCoordenador) VALUES (?, ?, ?, ?)";
             pstm = conn.prepareStatement(sql);
 
             pstm.setString(1, turma.getPeriodoTurma());
             pstm.setInt(2, turma.getTamanhoTurma());
             pstm.setInt(3, turma.getDisciplina().getIdDisciplina());
+            pstm.setInt(4, turma.getCoordenador().getIdPessoa());
 
             pstm.execute();
 
@@ -80,7 +82,7 @@ public class TurmaDAO {
             conn = connector.getConnection();
             st = conn.createStatement();
 
-            ResultSet rs = st.executeQuery("SELECT * FROM turma join disciplina on disciplina.idDisciplina = turma.Disciplina_idDisciplina WHERE idTurma =" + idTurma);
+            ResultSet rs = st.executeQuery("SELECT * FROM turma join disciplina on disciplina.idDisciplina = turma.Disciplina_idDisciplina join coordenador on coordenador.idCoordenador = turma.Coordenador_idCoordenador WHERE idTurma =" + idTurma);
             rs.first();
 
             Disciplina disciplina = new Disciplina(
@@ -88,12 +90,21 @@ public class TurmaDAO {
                     rs.getString("nomeDisciplina"),
                     rs.getInt("numerocreditos"),
                     rs.getInt("numerovagas"));
+            
+            Coordenador coordenador = new Coordenador(
+                    null,
+                    rs.getFloat("salarioBase"),
+                    rs.getInt("idCoordenador"),
+                    rs.getString("nome"),
+                    rs.getInt("idade")
+            );
 
             turma = new Turma(
                     rs.getInt("idTurma"),
                     rs.getString("periodo"),
                     rs.getInt("tamanho"),
-                    disciplina
+                    disciplina,
+                    coordenador
             );
 
         } catch (SQLException ex) {
@@ -116,7 +127,7 @@ public class TurmaDAO {
             conn = connector.getConnection();
             st = conn.createStatement();
 
-            ResultSet rs = st.executeQuery("SELECT * FROM turma join disciplina on disciplina.idDisciplina = turma.Disciplina_idDisciplina");
+            ResultSet rs = st.executeQuery("SELECT * FROM turma join disciplina on disciplina.idDisciplina = turma.Disciplina_idDisciplina join coordenador on coordenador.idCoordenador = turma.Coordenador_idCoordenador");
 
             /*Disciplina disciplina = new Disciplina(
                     rs.getInt("idDisciplina"),
@@ -130,13 +141,22 @@ public class TurmaDAO {
                         rs.getString("nomeDisciplina"),
                         rs.getInt("numeroCreditos"),
                         rs.getInt("numeroVagas"));
+                
+                Coordenador coordenador = new Coordenador(
+                    null,
+                    rs.getFloat("salarioBase"),
+                    rs.getInt("idCoordenador"),
+                    rs.getString("nome"),
+                    rs.getInt("idade")
+            );
 
                 Turma turma = new Turma(
-                        rs.getInt("idTurma"),
-                        rs.getString("periodo"),
-                        rs.getInt("tamanho"),
-                        disciplina
-                );
+                    rs.getInt("idTurma"),
+                    rs.getString("periodo"),
+                    rs.getInt("tamanho"),
+                    disciplina,
+                    coordenador
+            );
 
                 turmas.add(turma);
             }
@@ -160,13 +180,14 @@ public class TurmaDAO {
 
             String sql = "UPDATE turma AS t SET"
                     + " periodo = ?, tamanho = ?,"
-                    + " Disciplina_idDisciplina =? WHERE t.idTurma = ?";
+                    + " Disciplina_idDisciplina =?, Coordenador_idCoordenador=? WHERE t.idTurma = ?";
             pstm = conn.prepareStatement(sql);
 
             pstm.setString(1, turma.getPeriodoTurma());
             pstm.setInt(2, turma.getTamanhoTurma());
             pstm.setInt(3, turma.getDisciplina().getIdDisciplina());
-            pstm.setInt(4, turma.getIdTurma());
+            pstm.setInt(4, turma.getCoordenador().getIdPessoa());
+            pstm.setInt(5, turma.getIdTurma());
 
             pstm.execute();
 
