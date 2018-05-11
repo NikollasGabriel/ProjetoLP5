@@ -36,6 +36,12 @@ public abstract class Funcionario extends Pessoa{
         this.salarioFinal = salarioFinal;
     }
 
+    public Funcionario(float salarioFinal, float salarioBase, int idPessoa, String nomePessoa, int idadePessoa) {
+        super(idPessoa, nomePessoa, idadePessoa);
+        this.salarioBase = salarioBase;
+        this.salarioFinal = salarioFinal;
+    }
+    
     public Funcionario(float salarioBase, int idPessoa, String nomePessoa, int idadePessoa) {
         super(idPessoa, nomePessoa, idadePessoa);
         this.salarioBase = salarioBase;

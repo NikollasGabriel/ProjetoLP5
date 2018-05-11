@@ -5,7 +5,6 @@
  */
 package Persistence;
 
-import Model.Coordenador;
 import Model.ViceCoordenador;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
@@ -19,18 +18,18 @@ import java.util.List;
  *
  * @author asus note
  */
-public class CoordenadorDAO {
-    private static CoordenadorDAO instancia = new CoordenadorDAO();
+public class ViceCoordenadorDAO {
+    private static ViceCoordenadorDAO instancia = new ViceCoordenadorDAO();
 
-    public CoordenadorDAO() {
+    public ViceCoordenadorDAO() {
 
     }
 
-    public static CoordenadorDAO getInstancia() {
+    public static ViceCoordenadorDAO getInstancia() {
         return instancia;
     }
 
-    public void save(Coordenador coordenador) throws SQLException, ClassNotFoundException {
+    public void save(ViceCoordenador viceCoordenador) throws SQLException, ClassNotFoundException {
 
         Connection conn = null;
         PreparedStatement pstm = null;
@@ -39,16 +38,15 @@ public class CoordenadorDAO {
         try {
             conn = connector.getConnection();
 
-            String sql = "INSERT INTO coordenador (nome, idade, salarioBase, salarioFinal, ViceCoordenador_idViceCoordenador) VALUES (?, ?, ?, ?, ?)";
+            String sql = "INSERT INTO vicecoordenador (nome, idade, salarioBase, salarioFinal) VALUES (?, ?, ?, ?)";
             pstm = conn.prepareStatement(sql);
 
-            coordenador.setRemuneracao();
+            viceCoordenador.setRemuneracao();
             
-            pstm.setString(1, coordenador.getNomePessoa());
-            pstm.setInt(2, coordenador.getIdadePessoa());
-            pstm.setFloat(3, coordenador.getSalarioBase());
-            pstm.setFloat(4, coordenador.getSalarioFinal());
-            pstm.setInt(5, coordenador.getViceCoordenador().getIdPessoa());
+            pstm.setString(1, viceCoordenador.getNomePessoa());
+            pstm.setInt(2, viceCoordenador.getIdadePessoa());
+            pstm.setFloat(3, viceCoordenador.getSalarioBase());
+            pstm.setFloat(4, viceCoordenador.getSalarioFinal());
 
             pstm.execute();
 
@@ -59,7 +57,7 @@ public class CoordenadorDAO {
         }
     }
 
-    public void delete(Coordenador coordenador) throws SQLException, ClassNotFoundException {
+    public void delete(ViceCoordenador viceCoordenador) throws SQLException, ClassNotFoundException {
 
         Connection conn = null;
         PreparedStatement pstm = null;
@@ -68,10 +66,10 @@ public class CoordenadorDAO {
         try {
             conn = connector.getConnection();
 
-            String sql = "DELETE FROM coordenador WHERE idPessoa = ?";
+            String sql = "DELETE FROM vicecoordenador WHERE idPessoa = ?";
             pstm = conn.prepareStatement(sql);
 
-            pstm.setInt(1, coordenador.getIdPessoa());
+            pstm.setInt(1, viceCoordenador.getIdPessoa());
             pstm.execute();
 
         } catch (SQLException ex) {
@@ -81,27 +79,25 @@ public class CoordenadorDAO {
         }
     }
 
-    public Coordenador obter(Integer idPessoa) throws SQLException, ClassNotFoundException {
+    public ViceCoordenador obter(Integer idPessoa) throws SQLException, ClassNotFoundException {
 
         Connection conn = null;
         Statement st = null;
         DatabaseLocator connector = DatabaseLocator.getInstance();
-        Coordenador coordenador = null;
+        ViceCoordenador viceCoordenador = null;
 
         try {
             conn = connector.getConnection();
             st = conn.createStatement();
 
-            ResultSet rs = st.executeQuery("SELECT * FROM coordenador join vicecoordenador on vicecoordenador.idViceCoordenador = coordenador.ViceCoordenador_idViceCoordenador WHERE idCoordenador =" + idPessoa);
+            ResultSet rs = st.executeQuery("SELECT * FROM vicecoordenador WHERE idViceCoordenador =" + idPessoa);
             rs.first();
 
-            ViceCoordenador viceCoordenador = new ViceCoordenador((float) 0.0,rs.getInt("idViceCoordenador"),rs.getString("nome"),0);
             
-            coordenador = new Coordenador(
-                    viceCoordenador,
+            viceCoordenador = new ViceCoordenador(
                     rs.getFloat("salarioBase"),
                     rs.getFloat("salarioFinal"),
-                    rs.getInt("idCoordenador"),
+                    rs.getInt("idViceCoordenador"),
                     rs.getString("nome"),
                     rs.getInt("idade")
                     );
@@ -112,36 +108,33 @@ public class CoordenadorDAO {
             connector.closeConnection(conn, st);
         }
 
-        return coordenador;
+        return viceCoordenador;
     }
 
-    public List<Coordenador> obterCoordenadors() throws ClassNotFoundException, SQLException {
+    public List<ViceCoordenador> obterViceCoordenadors() throws ClassNotFoundException, SQLException {
 
         Connection conn = null;
         Statement st = null;
         DatabaseLocator connector = DatabaseLocator.getInstance();
-        List<Coordenador> coordenadors = new ArrayList<>();
+        List<ViceCoordenador> viceCoordenadors = new ArrayList<>();
 
         try {
             conn = connector.getConnection();
             st = conn.createStatement();
 
-            ResultSet rs = st.executeQuery("SELECT * FROM join vicecoordenador on vicecoordenador.idViceCoordenador = coordenador.ViceCoordenador_idViceCoordenador");
+            ResultSet rs = st.executeQuery("SELECT * FROM join vicevicecoordenador on viceviceCoordenador.idViceViceCoordenador = viceCoordenador.ViceViceCoordenador_idViceViceCoordenador");
 
             while (rs.next()) {
 
-                ViceCoordenador viceCoordenador = new ViceCoordenador((float) 0.0,rs.getInt("idViceCoordenador"),rs.getString("nome"),0);
-
-                Coordenador coordenador = new Coordenador(
-                    viceCoordenador,
+                ViceCoordenador viceCoordenador = new ViceCoordenador(
                     rs.getFloat("salarioBase"),
                     rs.getFloat("salarioFinal"),
-                    rs.getInt("idCoordenador"),
+                    rs.getInt("idViceCoordenador"),
                     rs.getString("nome"),
                     rs.getInt("idade")
                     );
 
-                coordenadors.add(coordenador);
+                viceCoordenadors.add(viceCoordenador);
             }
 
         } catch (SQLException ex) {
@@ -150,10 +143,10 @@ public class CoordenadorDAO {
             connector.closeConnection(conn, st);
         }
 
-        return coordenadors;
+        return viceCoordenadors;
     }
 
-    public void editar(Coordenador coordenador) throws SQLException, ClassNotFoundException {
+    public void editar(ViceCoordenador viceCoordenador) throws SQLException, ClassNotFoundException {
         Connection conn = null;
         PreparedStatement pstm = null;
         DatabaseLocator connector = DatabaseLocator.getInstance();
@@ -161,19 +154,18 @@ public class CoordenadorDAO {
         try {
             conn = connector.getConnection();
 
-            String sql = "UPDATE coordenador AS p SET"
-                    + " nome = ?, idade = ?, salarioBase=?, salarioFinal=?, ViceCoordenador_ViceCoordenador=? WHERE p.idCoordenador = ?";
+            String sql = "UPDATE vicecoordenador AS p SET"
+                    + " nome = ?, idade = ?, salarioBase=?, salarioFinal=? WHERE p.idViceCoordenador = ?";
 
             pstm = conn.prepareStatement(sql);
 
-            coordenador.setRemuneracao();
+            viceCoordenador.setRemuneracao();
             
-            pstm.setString(1, coordenador.getNomePessoa());
-            pstm.setInt(2, coordenador.getIdadePessoa());
-            pstm.setFloat(3, coordenador.getSalarioBase());
-            pstm.setFloat(4, coordenador.getSalarioFinal());
-            pstm.setInt(5, coordenador.getViceCoordenador().getIdPessoa());
-            pstm.setInt(6, coordenador.getIdPessoa());
+            pstm.setString(1, viceCoordenador.getNomePessoa());
+            pstm.setInt(2, viceCoordenador.getIdadePessoa());
+            pstm.setFloat(3, viceCoordenador.getSalarioBase());
+            pstm.setFloat(4, viceCoordenador.getSalarioFinal());
+            pstm.setInt(6, viceCoordenador.getIdPessoa());
 
             pstm.execute();
 
