@@ -11,32 +11,32 @@
         <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
         <script src="./js/bootstrap.min.js"></script>
 
-        <title>Cadastrar Aluno</title>                                                                        
+        <title>Cadastrar Coordenador</title>                                                                        
     </head>
     <body>
         <nav>
             <object width="100%" height="65px" data="./menu.jsp"></object>
         </nav>
         <div class="container">
-            <h1>Cadastrar Aluno</h1>
+            <h1>Cadastrar Coordenador</h1>
 
-            <form action="FrontController?action=GravarViceCoordenador" method="post" name="frmGravarViceCoordenador" onsubmit="">
+            <form action="FrontController?action=GravarCoordenador" method="post" name="frmGravarCoordenador" onsubmit="">
 
                 <div class="form-group">
                     <label for="usr">IdViceCoordenador:</label>
-                    <input type="text" class="form-control" id="usr" name="txtIdPessoa">
+                    <input type="text" class="form-control" id="usr" name="txtIdCoordenador">
                 </div>
                 <div class="form-group">
                     <label for="usr">Nome:</label>
-                    <input type="text" class="form-control" id="usr" name="txtNomePessoa">
+                    <input type="text" class="form-control" id="usr" name="txtNome">
                 </div>
                 <div class="form-group">
                     <label for="usr">Idade:</label>
-                    <input type="text" class="form-control" id="usr" name="txtIdadePessoa">
+                    <input type="text" class="form-control" id="usr" name="txtIdade">
                 </div>
                 <div class="form-group">
                     <label for="usr">Salario:</label>
-                    <input type="text" class="form-control" id="usr" name="txtSalarioViceCoordenador">
+                    <input type="text" class="form-control" id="usr" name="txtSalarioBase">
                 </div>
                 <button type="submit" class="btn btn-default" name="btnConfirmar" value="Confirmar">Confirmar</button>
             </form>

@@ -1,6 +1,7 @@
 package action;
 
 import Controller.Action;
+import Model.Coordenador;
 import Model.Disciplina;
 import Model.Turma;
 import Persistence.TurmaDAO;
@@ -17,7 +18,9 @@ public class GravarTurmaAction implements Action {
         Turma turma = new Turma(
                 request.getParameter("txtPeriodoTurma"),
                 Integer.parseInt(request.getParameter("txtTamanhoTurma")),
-                new Disciplina(Integer.parseInt(request.getParameter("txtIdDisciplina"))));
+                new Disciplina(Integer.parseInt(request.getParameter("txtIdDisciplina"))),
+                new Coordenador(Integer.parseInt(request.getParameter("txtIdCoordenador")))
+        );
 
         try {
 

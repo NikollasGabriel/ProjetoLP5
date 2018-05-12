@@ -24,19 +24,30 @@
 
                 <div class="form-group">
                     <label for="usr">IdViceCoordenador:</label>
-                    <input type="text" class="form-control" id="usr" name="txtIdPessoa">
+                    <input type="text" class="form-control" id="usr" name="txtIdCoordenador">
                 </div>
                 <div class="form-group">
                     <label for="usr">Nome:</label>
-                    <input type="text" class="form-control" id="usr" name="txtNomePessoa">
+                    <input type="text" class="form-control" id="usr" name="txtNome">
                 </div>
                 <div class="form-group">
                     <label for="usr">Idade:</label>
-                    <input type="text" class="form-control" id="usr" name="txtIdadePessoa">
+                    <input type="text" class="form-control" id="usr" name="txtIdade">
                 </div>
                 <div class="form-group">
                     <label for="usr">Salario:</label>
-                    <input type="text" class="form-control" id="usr" name="txtSalarioCoordenador">
+                    <input type="text" class="form-control" id="usr" name="txtSalarioBase">
+                </div>
+                <div class="form-group">
+                    <label for="usr">ViceCoordenador:</label>
+                    <select class="selectpicker" name="txtIdViceCoordenador">
+                        <option value="0" <c:if test="${viceCoordenador.idViceCoordenador != null}"> selected</c:if>></option>
+                        <c:forEach items="${viceCoordenadores}" var="viceCoordenador">
+                            <option value="${viceCoordenador.idViceCoordenador}">
+                                ${viceCoordenador.periodoViceCoordenador}
+                            </option>
+                        </c:forEach>
+                    </select>
                 </div>
                 <button type="submit" class="btn btn-default" name="btnConfirmar" value="Confirmar">Confirmar</button>
             </form>

@@ -1,11 +1,7 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 package action;
 
 import Controller.Action;
+import Persistence.CoordenadorDAO;
 import Persistence.ViceCoordenadorDAO;
 import java.io.IOException;
 import java.sql.SQLException;
@@ -14,22 +10,20 @@ import javax.servlet.ServletException;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-/**
- *
- * @author asus note
- */
-public class PrepararGravarCoordenadorAction implements Action {
-     @Override
+public class PrepararEditarCoordenadorAction implements Action {
+    
+    @Override
     public void execute(HttpServletRequest request, HttpServletResponse response) throws IOException {
         try {
+            request.setAttribute("coordenador", CoordenadorDAO.getInstancia().obter(Integer.parseInt(request.getParameter("txtIdCoordenador"))));
             request.setAttribute("viceCoordenadores", ViceCoordenadorDAO.getInstancia().obterViceCoordenadors());
-
-            RequestDispatcher view = request.getRequestDispatcher("Coordenador/gravar.jsp");
-
+            
+            RequestDispatcher view = request.getRequestDispatcher("Coordenador/editar.jsp");
             view.forward(request, response);
 
-        } catch (ServletException | IOException | SQLException | ClassNotFoundException ex) {
+        } catch (ServletException | IOException | ClassNotFoundException | SQLException ex) {
             ex.printStackTrace();
         }
     }
+
 }

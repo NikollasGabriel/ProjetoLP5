@@ -6,12 +6,8 @@
 package action;
 
 import Controller.Action;
-import Model.Coordenador;
-import Model.Coordenador;
-import Model.Turma;
 import Model.ViceCoordenador;
-import Persistence.CoordenadorDAO;
-import Persistence.CoordenadorDAO;
+import Persistence.ViceCoordenadorDAO;
 import java.io.IOException;
 import java.sql.SQLException;
 import javax.servlet.http.HttpServletRequest;
@@ -21,13 +17,12 @@ import javax.servlet.http.HttpServletResponse;
  *
  * @author asus note
  */
-public class GravarCoordenadorAction implements Action{
+public class GravarViceCoordenadorAction implements Action{
     
     @Override
     public void execute(HttpServletRequest request, HttpServletResponse response) throws IOException {
 
-        Coordenador coordenador = new Coordenador(
-                new ViceCoordenador(Integer.parseInt(request.getParameter("txtIdViceCoordenador"))),
+        ViceCoordenador viceCoordenador = new ViceCoordenador(
                 Float.parseFloat(request.getParameter("txtSalarioBase")),
                 request.getParameter("txtNome"),
                 Integer.parseInt(request.getParameter("txtIdade"))
@@ -35,8 +30,8 @@ public class GravarCoordenadorAction implements Action{
 
         try {
 
-            CoordenadorDAO.getInstancia().save(coordenador);
-            response.sendRedirect("FrontController?action=LerCoordenador");
+            ViceCoordenadorDAO.getInstancia().save(viceCoordenador);
+            response.sendRedirect("FrontController?action=LerViceCoordenador");
 
         } catch (ClassNotFoundException | SQLException ex) {
             ex.printStackTrace();

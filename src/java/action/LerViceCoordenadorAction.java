@@ -18,17 +18,17 @@ import javax.servlet.http.HttpServletResponse;
  *
  * @author asus note
  */
-public class PrepararGravarCoordenadorAction implements Action {
-     @Override
+public class LerViceCoordenadorAction implements Action{
+    @Override
     public void execute(HttpServletRequest request, HttpServletResponse response) throws IOException {
         try {
-            request.setAttribute("viceCoordenadores", ViceCoordenadorDAO.getInstancia().obterViceCoordenadors());
 
-            RequestDispatcher view = request.getRequestDispatcher("Coordenador/gravar.jsp");
+            request.setAttribute("viceCordenadores", ViceCoordenadorDAO.getInstancia().obterViceCoordenadors());
 
+            RequestDispatcher view = request.getRequestDispatcher("ViceCoordenador/ler.jsp");
             view.forward(request, response);
 
-        } catch (ServletException | IOException | SQLException | ClassNotFoundException ex) {
+        } catch (SQLException | ClassNotFoundException | ServletException | NullPointerException ex) {
             ex.printStackTrace();
         }
     }

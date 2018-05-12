@@ -24,19 +24,34 @@
 
                 <div class="form-group">
                     <label for="usr">Id:</label>
-                    <input type="text" class="form-control" id="usr" name="txtIdPessoa" value="${coordenador.idPessoa}" readonly>
+                    <input type="text" class="form-control" id="usr" name="txtIdCoordenador" value="${coordenador.idCoordenador}" readonly>
                 </div>
                 <div class="form-group">
                     <label for="usr">Nome:</label>
-                    <input type="text" class="form-control" id="usr" name="txtNomePessoa" value="${coordenador.nomePessoa}" readonly>
+                    <input type="text" class="form-control" id="usr" name="txtNomePessoa" value="${coordenador.nome}" readonly>
                 </div>
                 <div class="form-group">
                     <label for="usr">Idade:</label>
-                    <input type="text" class="form-control" id="usr" name="txtIdadePessoa" value="${coordenador.idadePessoa}" readonly>
+                    <input type="text" class="form-control" id="usr" name="txtIdadePessoa" value="${coordenador.idade}" readonly>
+                </div>
+                <div class="form-group">
+                    <label for="usr">Salario Base:</label>
+                    <input type="text" class="form-control" id="usr" name="txtSalario" value="${coordenador.salarioBase}" readonly>
                 </div>
                 <div class="form-group">
                     <label for="usr">Salario:</label>
-                    <input type="text" class="form-control" id="usr" name="txtSalario" value="${coordenador.salario}" readonly>
+                    <input type="text" class="form-control" id="usr" name="txtSalario" value="${coordenador.salarioFinal}" readonly>
+                </div>
+                <div class="form-group">
+                    <label for="usr">ViceCoordenador:</label>
+                    <select class="selectpicker" name="txtIdViceCoordenador" readonly>
+                        <option value="0" <c:if test="${viceCoordenador.idViceCoordenador != null}"> selected</c:if>></option>
+                        <c:forEach items="${viceCoordenadores}" var="viceCoordenador">
+                            <option value="${viceCoordenador.idViceCoordenador}" <c:if test="${viceCoordenador.idViceCoordenador == coordenador.viceCoordenador.idViceCoordenador}"> selected</c:if>>
+                                ${viceCoordenador.nome}
+                            </option>
+                        </c:forEach>
+                    </select>
                 </div>
                 <button type="submit" class="btn btn-default" name="btnConfirmar" value="Confirmar">Confirmar</button>
             </form>

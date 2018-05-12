@@ -12,7 +12,7 @@
         <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
         <script src="js/bootstrap.min.js"></script>
 
-        <title>Consultar Coordenadors</title>
+        <title>Consultar ViceCoordenadors</title>
     </head>
     <body align="center">
         <nav>
@@ -26,6 +26,7 @@
                         <th>Id</th>
                         <th>Nome</th>
                         <th>Idade</th>
+                        <th>Salário Base</th>
                         <th>Salário</th>
                         <th colspan=2>Ação:</th>
 
@@ -34,17 +35,18 @@
                 <tbody>
                     <c:forEach items="${viceCoordenadores}" var="viceCoordenador">
                         <tr>
-                            <td><c:out value="${viceCoordenador.idPessoa}"></c:out></td>
-                            <td><c:out value="${viceCoordenador.nomePèssoa}"></c:out></td>
-                            <td><c:out value="${viceCoordenador.idadePessoa}"></c:out></td>
-                            <td><c:out value="${viceCoordenador.salario}"></c:out></td>
-                            <td><a href="FrontController?action=EditarViceCoordenador&txtIdPessoa=<c:out value="${viceCoordenador.idPessoa}"/>"><i class="icon-edit"></i>Editar</a> </td>
-                            <td><a href="FrontController?action=EditarViceCoordenador&txtIdPessoa=<c:out value="${viceCoordenador.idPessoa}"/>"><i class="icon-remove"></i>Excluir</a> </td>
+                            <td><c:out value="${viceCoordenador.idViceCoordenador}"></c:out></td>
+                            <td><c:out value="${viceCoordenador.nome}"></c:out></td>
+                            <td><c:out value="${viceCoordenador.idade}"></c:out></td>
+                            <td><c:out value="${viceCoordenador.salarioBase}"></c:out></td>
+                            <td><c:out value="${viceCoordenador.salarioFinal}"></c:out></td>
+                            <td><a href="FrontController?action=EditarViceCoordenador&txtIdViceCoordenador=<c:out value="${viceCoordenador.idViceCoordenador}"/>"><i class="icon-edit"></i>Editar</a> </td>
+                            <td><a href="FrontController?action=EditarViceCoordenador&txtIdViceCoordenador=<c:out value="${viceCoordenador.idViceCoordenador}"/>"><i class="icon-remove"></i>Excluir</a> </td>
                         </tr>
                     </c:forEach>
                 </tbody>
             </table>            
-            <form action="FrontController?action=GravarCoordenador" method="post" name="frmLerCoordenador" onsubmit="">
+            <form action="FrontController?action=PrepararGravarViceCoordenador" method="post" name="frmLerViceCoordenador" onsubmit="">
                 <input type="submit" class="btn btn-default" value="Gravar">
             </form>
         </div>

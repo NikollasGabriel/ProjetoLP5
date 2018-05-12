@@ -26,7 +26,9 @@
                         <th>Id</th>
                         <th>Nome</th>
                         <th>Idade</th>
+                        <th>Salário Base</th>
                         <th>Salário</th>
+                        <th>Vice</th>
                         <th colspan=2>Ação:</th>
 
                     </tr>
@@ -34,12 +36,14 @@
                 <tbody>
                     <c:forEach items="${coordenadores}" var="coordenador">
                         <tr>
-                            <td><c:out value="${Coordenador.idPessoa}"></c:out></td>
-                            <td><c:out value="${Coordenador.nomePèssoa}"></c:out></td>
-                            <td><c:out value="${Coordenador.idadePessoa}"></c:out></td>
-                            <td><c:out value="${Coordenador.salarioFinal}"></c:out></td>
-                            <td><a href="FrontController?action=EditarCoordenador&txtIdPessoa=<c:out value="${coordenador.idPessoa}"/>"><i class="icon-edit"></i>Editar</a> </td>
-                            <td><a href="FrontController?action=EditarCoordenador&txtIdPessoa=<c:out value="${coordenador.idPessoa}"/>"><i class="icon-remove"></i>Excluir</a> </td>
+                            <td><c:out value="${coordenador.idCoordenador}"></c:out></td>
+                            <td><c:out value="${coordenador.nome}"></c:out></td>
+                            <td><c:out value="${coordenador.idade}"></c:out></td>
+                            <td><c:out value="${coordenador.salarioBase}"></c:out></td>
+                            <td><c:out value="${coordenador.salarioFinal}"></c:out></td>
+                            <td><c:out value="${coordenador.viceCoordenador.nome}"></c:out></td>
+                            <td><a href="FrontController?action=EditarCoordenador&txtIdCoordenador=<c:out value="${coordenador.idCoordenador}"/>"><i class="icon-edit"></i>Editar</a> </td>
+                            <td><a href="FrontController?action=EditarCoordenador&txtIdCoordenador=<c:out value="${coordenador.idCoordenador}"/>"><i class="icon-remove"></i>Excluir</a> </td>
                         </tr>
                     </c:forEach>
                 </tbody>
