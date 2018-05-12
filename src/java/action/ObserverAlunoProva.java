@@ -16,11 +16,11 @@ import java.util.List;
 import java.util.Observable;
 import java.util.Observer;
 
-public class AlgumaCoisaTesteAction implements Observer {
+public class ObserverAlunoProva implements Observer {
 
     private Observable instanciaEdita;
 
-    AlgumaCoisaTesteAction(Observable instanciaEdita) {
+    ObserverAlunoProva(Observable instanciaEdita) {
         this.instanciaEdita = instanciaEdita;
         instanciaEdita.addObserver(this);
     }

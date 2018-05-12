@@ -13,7 +13,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 public class GravarProvaAction extends Observable implements Action {
-    
+
     public Prova prova;
 
     @Override
@@ -24,7 +24,7 @@ public class GravarProvaAction extends Observable implements Action {
                 new Aluno(Integer.parseInt(request.getParameter("txtIdAluno"))),
                 new Professor(Integer.parseInt(request.getParameter("txtIdProfessor"))),
                 new Disciplina(Integer.parseInt(request.getParameter("txtIdDisciplina"))));
-        
+
         this.prova = prova;
 
         try {
@@ -32,7 +32,7 @@ public class GravarProvaAction extends Observable implements Action {
             ProvaDAO.getInstancia().save(prova);
 
             /*Observer*/
-            AlgumaCoisaTesteAction observer = new AlgumaCoisaTesteAction(this);
+            ObserverAlunoProva observer = new ObserverAlunoProva(this);
             setChanged();
             notifyObservers();
 
