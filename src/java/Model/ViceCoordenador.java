@@ -20,7 +20,7 @@ public class ViceCoordenador extends Funcionario {
 
     @Override
     public float getBonificacao() {
-        return 500;
+        return this.getEstrategiaCalculoBonificacao().calculaSalarioComBonificacao(this);
     }
 
 }

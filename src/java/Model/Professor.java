@@ -1,16 +1,6 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 package Model;
 
-
-/**
- *
- * @author asus note
- */
-public class Professor extends Pessoa {
+public class Professor extends Funcionario {
 
     private int numeroFaltas;
     private String nivelEnsinoSuperior;
@@ -48,6 +38,11 @@ public class Professor extends Pessoa {
 
     public void setNivelEnsinoSuperior(String nivelEnsinoSuperior) {
         this.nivelEnsinoSuperior = nivelEnsinoSuperior;
+    }
+
+    @Override
+    public float getBonificacao() {
+        return this.getEstrategiaCalculoBonificacao().calculaSalarioComBonificacao(this);
     }
 
 }

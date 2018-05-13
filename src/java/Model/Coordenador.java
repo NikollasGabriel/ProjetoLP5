@@ -7,7 +7,7 @@ public class Coordenador extends Funcionario{
 
     @Override
     public float getBonificacao() {
-        return 1000;
+        return this.getEstrategiaCalculoBonificacao().calculaSalarioComBonificacao(this);
     }
 
     public Coordenador(ViceCoordenador viceCoordenador, float salarioBase, float salarioFinal, int idPessoa, String nomePessoa, int idadePessoa) {
