@@ -1,28 +1,31 @@
 package action;
 
 import Controller.Action;
-import Model.Pessoa;
+import Model.Aluno;
 import Model.Turma;
-import Persistence.PessoaDAO;
+import Persistence.AlunoDAO;
 import java.io.IOException;
 import java.sql.SQLException;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-public class GravarPessoaAction implements Action {
+public class GravarAlunoAction implements Action {
 
     @Override
     public void execute(HttpServletRequest request, HttpServletResponse response) throws IOException {
 
-        Pessoa pessoa = new Pessoa(
+        Aluno pessoa = new Aluno(
                 request.getParameter("txtNomePessoa"),
                 Integer.parseInt(request.getParameter("txtIdadePessoa")),
-                new Turma(Integer.parseInt(request.getParameter("txtIdTurma"))));
+                new Turma(Integer.parseInt(request.getParameter("txtIdTurma"))),
+                Integer.parseInt(request.getParameter("txtNumeroFaltas")),
+                Float.parseFloat(request.getParameter("txtMediaNotas")),
+                "Nao Avaliado");
 
         try {
 
-            PessoaDAO.getInstancia().save(pessoa);
-            response.sendRedirect("FrontController?action=LerPessoa");
+            AlunoDAO.getInstancia().save(pessoa);
+            response.sendRedirect("FrontController?action=LerAluno");
 
         } catch (ClassNotFoundException | SQLException ex) {
             ex.printStackTrace();

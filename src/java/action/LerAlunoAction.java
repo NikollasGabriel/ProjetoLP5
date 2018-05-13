@@ -1,6 +1,7 @@
 package action;
 
 import Controller.Action;
+import Persistence.AlunoDAO;
 import Persistence.TurmaDAO;
 import java.io.IOException;
 import java.sql.SQLException;
@@ -9,18 +10,19 @@ import javax.servlet.ServletException;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-public class PrepararGravarPessoaAction implements Action {
+public class LerAlunoAction implements Action {
 
     @Override
     public void execute(HttpServletRequest request, HttpServletResponse response) throws IOException {
         try {
+
             request.setAttribute("turmas", TurmaDAO.getInstancia().obterTurmas());
+            request.setAttribute("alunos", AlunoDAO.getInstancia().obterAlunos());
 
-            RequestDispatcher view = request.getRequestDispatcher("Pessoa/gravar.jsp");
-
+            RequestDispatcher view = request.getRequestDispatcher("Aluno/ler.jsp");
             view.forward(request, response);
 
-        } catch (ServletException | IOException | SQLException | ClassNotFoundException ex) {
+        } catch (SQLException | ClassNotFoundException | ServletException | NullPointerException ex) {
             ex.printStackTrace();
         }
     }

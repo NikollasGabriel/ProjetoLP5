@@ -1,6 +1,8 @@
 package Persistence;
 
+import Model.Aluno;
 import Model.Disciplina;
+import Model.Professor;
 import Model.Prova;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
@@ -31,12 +33,13 @@ public class ProvaDAO {
         try {
             conn = connector.getConnection();
 
-            String sql = "INSERT INTO prova (valor, aluno, Disciplina_idDisciplina) VALUES (?, ?, ?)";
+            String sql = "INSERT INTO prova (valor, Pessoa_idPessoa, Professor_idPessoa, Disciplina_idDisciplina) VALUES (?, ?, ?, ?)";
             pstm = conn.prepareStatement(sql);
 
             pstm.setFloat(1, prova.getValor());
-            pstm.setString(2, prova.getAluno());
-            pstm.setInt(3, prova.getDisciplina().getIdDisciplina());
+            pstm.setInt(2, prova.getAluno().getIdPessoa());
+            pstm.setInt(3, prova.getProfessor().getIdPessoa());
+            pstm.setInt(4, prova.getDisciplina().getIdDisciplina());
 
             pstm.execute();
 
@@ -80,20 +83,39 @@ public class ProvaDAO {
             conn = connector.getConnection();
             st = conn.createStatement();
 
-            ResultSet rs = st.executeQuery("select * from prova join disciplina on disciplina.idDisciplina = prova.Disciplina_idDisciplina where idProva =" + idProva);
+            ResultSet rs = st.executeQuery("select * from Prova join Disciplina on Disciplina.idDisciplina = Prova.Disciplina_idDisciplina join Aluno on Aluno.idPessoa = Prova.Pessoa_idPessoa join Professor on Professor.idPessoa = Prova.Professor_idPessoa where idProva =" + idProva);
             rs.first();
 
             Disciplina disciplina = new Disciplina(
                     rs.getInt("idDisciplina"),
-                    rs.getString("nome"),
+                    rs.getString("nomeDisciplina"),
                     rs.getInt("numeroCreditos"),
                     rs.getInt("numeroVagas"));
 
+            Aluno pessoa = new Aluno(
+                    rs.getInt("idPessoa"),
+                    rs.getString("nomeAluno"),
+                    rs.getInt("idade"),
+                    null,
+                    rs.getInt("numeroFaltas"),
+                    rs.getFloat("mediaNotas"),
+                    rs.getString("situacao"));
+            
+            Professor pessoaProfessor = new Professor(
+                    rs.getInt("numeroFaltas"),
+                    rs.getString("nivelEnsinoSuperior"),
+                    rs.getInt("idPessoa"),
+                    rs.getString("nomeProfessor"),
+                    rs.getInt("idade"),
+                    rs.getFloat("salarioBase")
+                    );
+            
             prova = new Prova(
-                    rs.getInt("idProva"),
-                    rs.getInt("valor"),
-                    rs.getString("aluno"),
-                    disciplina);
+                        rs.getInt("idProva"),
+                        rs.getInt("valor"),
+                        pessoa,
+                        pessoaProfessor,
+                        disciplina);
 
         } catch (SQLException ex) {
             throw ex;
@@ -115,20 +137,39 @@ public class ProvaDAO {
             conn = connector.getConnection();
             st = conn.createStatement();
 
-            ResultSet rs = st.executeQuery("select * from prova join disciplina on disciplina.idDisciplina = prova.Disciplina_idDisciplina");
+            ResultSet rs = st.executeQuery("select * from prova join disciplina on disciplina.idDisciplina = prova.Disciplina_idDisciplina join aluno on Aluno.idPessoa = prova.Pessoa_idPessoa join professor on Professor.idPessoa = prova.Professor_idPessoa");
 
             while (rs.next()) {
 
                 Disciplina disciplina = new Disciplina(
                         rs.getInt("idDisciplina"),
-                        rs.getString("nome"),
+                        rs.getString("nomeDisciplina"),
                         rs.getInt("numeroCreditos"),
                         rs.getInt("numeroVagas"));
 
+                Aluno pessoa = new Aluno(
+                    rs.getInt("idPessoa"),
+                    rs.getString("nomeAluno"),
+                    rs.getInt("idade"),
+                    null,
+                    rs.getInt("numeroFaltas"),
+                    rs.getFloat("mediaNotas"),
+                    rs.getString("situacao"));
+                
+                Professor pessoaProfessor = new Professor(
+                    rs.getInt("numeroFaltas"),
+                    rs.getString("nivelEnsinoSuperior"),
+                    rs.getInt("idPessoa"),
+                    rs.getString("nomeProfessor"),
+                    rs.getInt("idade"),
+                    rs.getFloat("salarioBase")
+                    );
+                
                 Prova prova = new Prova(
                         rs.getInt("idProva"),
                         rs.getInt("valor"),
-                        rs.getString("aluno"),
+                        pessoa,
+                        pessoaProfessor,
                         disciplina);
 
                 provas.add(prova);
@@ -152,15 +193,16 @@ public class ProvaDAO {
             conn = connector.getConnection();
 
             String sql = "UPDATE prova AS p SET"
-                    + " valor = ?, aluno = ?,"
+                    + " valor = ?, Pessoa_idPessoa = ?, Professor_idPessoa = ?,"
                     + " Disciplina_idDisciplina = ? WHERE p.idProva = ?";
 
             pstm = conn.prepareStatement(sql);
 
             pstm.setFloat(1, prova.getValor());
-            pstm.setString(2, prova.getAluno());
-            pstm.setInt(3, prova.getDisciplina().getIdDisciplina());
-            pstm.setInt(4, prova.getIdProva());
+            pstm.setInt(2, prova.getAluno().getIdPessoa());
+            pstm.setInt(3, prova.getProfessor().getIdPessoa());
+            pstm.setInt(4, prova.getDisciplina().getIdDisciplina());
+            pstm.setInt(5, prova.getIdProva());
 
             pstm.execute();
 

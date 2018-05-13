@@ -27,16 +27,34 @@
                     <input type="text" class="form-control" id="usr" name="txtValor">
                 </div>
                 <div class="form-group">
-                    <label for="usr">Aluno:</label>
-                    <input type="text" class="form-control" id="usr" name="txtAluno">
-                </div>
-                <div class="form-group">
                     <label for="usr">Disciplina:</label>
                     <select class="selectpicker" name="txtIdDisciplina">
                         <option value="0" <c:if test="${disciplina.idDisciplina != null}"> selected</c:if>></option>
                         <c:forEach items="${disciplinas}" var="disciplina">
                             <option value="${disciplina.idDisciplina}">
                                 ${disciplina.nomeDisciplina}
+                            </option>
+                        </c:forEach>
+                    </select>
+                </div>
+                <div class="form-group">
+                    <label for="usr">Aluno:</label>
+                    <select class="selectpicker" name="txtIdAluno">
+                        <option value="0" <c:if test="${aluno.idPessoa != null}"> selected</c:if>></option>
+                        <c:forEach items="${alunos}" var="aluno">
+                            <option value="${aluno.idPessoa}">
+                                ${aluno.nomePessoa}
+                            </option>
+                        </c:forEach>
+                    </select>
+                </div>
+                <div class="form-group">
+                    <label for="usr">Professor:</label>
+                    <select class="selectpicker" name="txtIdProfessor">
+                        <option value="0" <c:if test="${professor.idPessoa != null}"> selected</c:if>></option>
+                        <c:forEach items="${professores}" var="professor">
+                            <option value="${professor.idPessoa}">
+                                ${professor.nomePessoa}
                             </option>
                         </c:forEach>
                     </select>

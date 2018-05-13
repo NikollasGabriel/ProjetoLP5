@@ -55,13 +55,22 @@
                 <a href="FrontController?action=LerDisciplina" target="_parent">Disciplina</a>
             </li>
             <li>
-               <a href="FrontController?action=LerPessoa" target="_parent">Pessoa</a>
+                <a href="FrontController?action=LerAluno" target="_parent">Aluno</a>
+            </li>
+            <li>
+                <a href="FrontController?action=LerProfessor" target="_parent">Professor</a>
             </li>
             <li>
                 <a href="FrontController?action=LerProva" target="_parent">Prova</a>
             </li>
             <li>
                 <a href="FrontController?action=LerTurma" target="_parent">Turma</a>
+            </li>
+            <li>
+                <a href="FrontController?action=LerCoordenador" target="_parent">Coordenador</a>
+            </li>
+            <li>
+                <a href="FrontController?action=LerViceCoordenador" target="_parent">ViceCoordenador</a>
             </li>
         </ul>
     </body>

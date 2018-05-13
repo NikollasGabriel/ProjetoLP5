@@ -21,7 +21,6 @@
             <h1>Excluir Prova</h1>
 
             <form action="FrontController?action=ApagarProva" method="post" name="frmManterProva" onsubmit="">
-
                 <div class="form-group">
                     <label for="usr">Id:</label>
                     <input type="text" class="form-control" id="usr" name="txtIdProva" value="${prova.idProva}" readonly>
@@ -31,16 +30,34 @@
                     <input type="text" class="form-control" id="usr" name="txtValor" value="${prova.valor}" readonly>
                 </div>
                 <div class="form-group">
-                    <label for="usr">Aluno:</label>
-                    <input type="text" class="form-control" id="usr" name="txtAluno" value="${prova.aluno}" readonly>
-                </div>
-                <div class="form-group">
                     <label for="usr">Disciplina:</label>
                     <select class="selectpicker" name="txtIdDisciplina" readonly>
                         <option value="0" <c:if test="${disciplina.idDisciplina != null}"> selected</c:if>></option>
                         <c:forEach items="${disciplinas}" var="disciplina">
                             <option value="${disciplina.idDisciplina}" <c:if test="${disciplina.idDisciplina == prova.disciplina.idDisciplina}"> selected</c:if>>
                                 ${disciplina.nomeDisciplina}
+                            </option>
+                        </c:forEach>
+                    </select>
+                </div>
+                <div class="form-group">
+                    <label for="usr">Aluno:</label>
+                    <select class="selectpicker" name="txtIdAluno" readonly>
+                        <option value="0" <c:if test="${aluno.idPessoa != null}"> selected</c:if>></option>
+                        <c:forEach items="${alunos}" var="aluno">
+                            <option value="${aluno.idPessoa}" <c:if test="${aluno.idPessoa == prova.aluno.idPessoa}"> selected</c:if>>
+                                ${aluno.nomePessoa}
+                            </option>
+                        </c:forEach>
+                    </select>
+                </div>
+                <div class="form-group">
+                    <label for="usr">Profesor:</label>
+                    <select class="selectpicker" name="txtIdProfessor" readonly>
+                        <option value="0" <c:if test="${professor.idPessoa != null}"> selected</c:if>></option>
+                        <c:forEach items="${professores}" var="professor">
+                            <option value="${professor.idPessoa}" <c:if test="${professor.idPessoa == prova.professor.idPessoa}"> selected</c:if>>
+                                ${professor.nomePessoa}
                             </option>
                         </c:forEach>
                     </select>

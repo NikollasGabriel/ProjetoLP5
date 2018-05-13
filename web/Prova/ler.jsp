@@ -27,6 +27,7 @@
                         <th>Valor</th>
                         <th>Aluno</th>
                         <th>Disciplina</th>
+                        <th>Professor</th>
                         <th colspan=2>Ação:</th>
 
                     </tr>
@@ -36,8 +37,9 @@
                         <tr>
                             <td><c:out value="${prova.idProva}"></c:out></td>
                             <td><c:out value="${prova.valor}"></c:out></td>
-                            <td><c:out value="${prova.aluno}"></c:out></td>
+                            <td><c:out value="${prova.aluno.nomePessoa}"></c:out></td>
                             <td><c:out value="${prova.disciplina.nomeDisciplina}"></c:out></td>
+                            <td><c:out value="${prova.professor.nomePessoa}"></c:out></td>
                             <td><a href="FrontController?action=PrepararEditarProva&txtIdProva=<c:out value="${prova.idProva}"/>"><i class="icon-edit"></i>Editar</a> </td>
                             <td><a href="FrontController?action=PrepararApagarProva&txtIdProva=<c:out value="${prova.idProva}"/>"><i class="icon-remove"></i>Excluir</a> </td>
                         </tr>

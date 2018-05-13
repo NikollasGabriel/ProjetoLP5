@@ -6,21 +6,24 @@ public class Turma {
     private String periodoTurma;
     private int tamanhoTurma;
     private Disciplina disciplina;
+    private Coordenador coordenador;
 
     public Turma() {
     }
 
-    public Turma(int idTurma, String periodoTurma, int tamanhoTurma, Disciplina disciplina) {
+    public Turma(int idTurma, String periodoTurma, int tamanhoTurma, Disciplina disciplina, Coordenador coordenador) {
         this.idTurma = idTurma;
         this.periodoTurma = periodoTurma;
         this.tamanhoTurma = tamanhoTurma;
         this.disciplina = disciplina;
+        this.coordenador = coordenador;
     }
 
-    public Turma(String periodoTurma, int tamanhoTurma, Disciplina disciplina) {
+    public Turma(String periodoTurma, int tamanhoTurma, Disciplina disciplina, Coordenador coordenador) {
         this.periodoTurma = periodoTurma;
         this.tamanhoTurma = tamanhoTurma;
         this.disciplina = disciplina;
+        this.coordenador = coordenador;
     }
 
     public Turma(int idTurma) {
@@ -63,6 +66,20 @@ public class Turma {
      */
     public void setDisciplina(Disciplina disciplina) {
         this.disciplina = disciplina;
+    }
+
+    /**
+     * @return the coordenador
+     */
+    public Coordenador getCoordenador() {
+        return coordenador;
+    }
+
+    /**
+     * @param coordenador the coordenador to set
+     */
+    public void setCoordenador(Coordenador coordenador) {
+        this.coordenador = coordenador;
     }
 
 }

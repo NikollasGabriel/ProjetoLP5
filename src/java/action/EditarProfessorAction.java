@@ -1,33 +1,36 @@
 package action;
 
 import Controller.Action;
-import Model.Pessoa;
+import Model.Professor;
 import Model.Prova;
 import Model.Turma;
-import Persistence.PessoaDAO;
+import Persistence.ProfessorDAO;
 import java.io.IOException;
 import java.sql.SQLException;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-public class EditarPessoaAction implements Action {
+public class EditarProfessorAction implements Action {
 
-    public EditarPessoaAction() {
+    public EditarProfessorAction() {
     }
 
     @Override
     public void execute(HttpServletRequest request, HttpServletResponse response) throws IOException {
 
-        Pessoa pessoa = new Pessoa(
+        Professor pessoa = new Professor(
+                Integer.parseInt(request.getParameter("txtNumeroFaltas")),
+                request.getParameter("txtNivelEnsinoSuperior"),
                 Integer.parseInt(request.getParameter("txtIdPessoa")),
                 request.getParameter("txtNomePessoa"),
                 Integer.parseInt(request.getParameter("txtIdadePessoa")),
-                new Turma(Integer.parseInt(request.getParameter("txtIdTurma"))));
+                Float.parseFloat(request.getParameter("txtSalarioBase"))
+        );
 
         try {
 
-            PessoaDAO.getInstancia().editar(pessoa);
-            response.sendRedirect("FrontController?action=LerPessoa");
+            ProfessorDAO.getInstancia().editar(pessoa);
+            response.sendRedirect("FrontController?action=LerProfessor");
 
         } catch (SQLException | ClassNotFoundException ex) {
             ex.printStackTrace();

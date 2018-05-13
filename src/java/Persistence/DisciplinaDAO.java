@@ -30,7 +30,7 @@ public class DisciplinaDAO {
         try {
             conn = connector.getConnection();
 
-            String sql = "INSERT INTO disciplina (nome, numeroCreditos, numeroVagas) VALUES (?, ?, ?)";
+            String sql = "INSERT INTO Disciplina (nomeDisciplina, numeroCreditos, numeroVagas) VALUES (?, ?, ?)";
             pstm = conn.prepareStatement(sql);
 
             pstm.setString(1, disciplina.getNomeDisciplina());
@@ -84,8 +84,8 @@ public class DisciplinaDAO {
 
             
             disciplina = new Disciplina(
-                    rs.getInt("idDisciplina"),
-                    rs.getString("nome"),
+                    rs.getInt("iddisciplina"),
+                    rs.getString("nomeDisciplina"),
                     rs.getInt("numerocreditos"),
                     rs.getInt("numerovagas"));
 
@@ -115,7 +115,7 @@ public class DisciplinaDAO {
 
                 Disciplina disciplina = new Disciplina(
                     rs.getInt("idDisciplina"),
-                    rs.getString("nome"),
+                    rs.getString("nomeDisciplina"),
                     rs.getInt("numeroCreditos"),
                     rs.getInt("numeroVagas"));
 
@@ -139,9 +139,9 @@ public class DisciplinaDAO {
         try {
             conn = connector.getConnection();
 
-            String sql = "UPDATE disciplina AS d SET"
-                    + " nome = ?, numerocreditos = ?,"
-                    + " numerovagas = ? WHERE d.idDisciplina = ?";
+            String sql = "UPDATE Disciplina AS d SET"
+                    + " nomeDisciplina = ?, numerocreditos = ?,"
+                    + " numerovagas = ? WHERE d.iddisciplina = ?";
             pstm = conn.prepareStatement(sql);
 
             pstm.setString(1, disciplina.getNomeDisciplina());

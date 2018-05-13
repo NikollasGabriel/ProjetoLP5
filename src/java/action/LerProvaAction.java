@@ -1,7 +1,9 @@
 package action;
 
 import Controller.Action;
+import Persistence.AlunoDAO;
 import Persistence.DisciplinaDAO;
+import Persistence.ProfessorDAO;
 import Persistence.ProvaDAO;
 import java.io.IOException;
 import java.sql.SQLException;
@@ -18,6 +20,8 @@ public class LerProvaAction implements Action {
 
             request.setAttribute("disciplinas", DisciplinaDAO.getInstancia().obterDisciplinas());
             request.setAttribute("provas", ProvaDAO.getInstancia().obterProvas());
+            request.setAttribute("alunos", AlunoDAO.getInstancia().obterAlunos());
+            request.setAttribute("professores", ProfessorDAO.getInstancia().obterProfessores());
 
             RequestDispatcher view = request.getRequestDispatcher("Prova/ler.jsp");
             view.forward(request, response);

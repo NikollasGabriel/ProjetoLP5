@@ -1,24 +1,24 @@
 package action;
 
 import Controller.Action;
-import Model.Pessoa;
-import Persistence.PessoaDAO;
+import Model.ViceCoordenador;
+import Persistence.ViceCoordenadorDAO;
 import java.io.IOException;
 import java.sql.SQLException;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-public class ApagarPessoaAction implements Action {
+public class ApagarViceCoordenadorAction implements Action {
 
     @Override
     public void execute(HttpServletRequest request, HttpServletResponse response) throws IOException {
 
-        Pessoa pessoa = new Pessoa(Integer.parseInt(request.getParameter("txtIdPessoa")));
+        ViceCoordenador viceCoordenador = new ViceCoordenador(Integer.parseInt(request.getParameter("txtIdViceCoordenador")));
 
         try {
 
-            PessoaDAO.getInstancia().delete(pessoa);
-            response.sendRedirect("FrontController?action=LerPessoa");
+            ViceCoordenadorDAO.getInstancia().delete(viceCoordenador);
+            response.sendRedirect("FrontController?action=LerViceCoordenador");
 
         } catch (SQLException | ClassNotFoundException ex) {
             ex.printStackTrace();

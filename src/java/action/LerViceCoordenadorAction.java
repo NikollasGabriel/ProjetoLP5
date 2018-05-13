@@ -1,8 +1,12 @@
+/*
+ * To change this license header, choose License Headers in Project Properties.
+ * To change this template file, choose Tools | Templates
+ * and open the template in the editor.
+ */
 package action;
 
 import Controller.Action;
-import Persistence.PessoaDAO;
-import Persistence.TurmaDAO;
+import Persistence.ViceCoordenadorDAO;
 import java.io.IOException;
 import java.sql.SQLException;
 import javax.servlet.RequestDispatcher;
@@ -10,21 +14,22 @@ import javax.servlet.ServletException;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-public class LerPessoaAction implements Action {
-
+/**
+ *
+ * @author asus note
+ */
+public class LerViceCoordenadorAction implements Action{
     @Override
     public void execute(HttpServletRequest request, HttpServletResponse response) throws IOException {
         try {
 
-            request.setAttribute("turmas", TurmaDAO.getInstancia().obterTurmas());
-            request.setAttribute("pessoas", PessoaDAO.getInstancia().obterPessoas());
+            request.setAttribute("viceCordenadores", ViceCoordenadorDAO.getInstancia().obterViceCoordenadors());
 
-            RequestDispatcher view = request.getRequestDispatcher("Pessoa/ler.jsp");
+            RequestDispatcher view = request.getRequestDispatcher("ViceCoordenador/ler.jsp");
             view.forward(request, response);
 
         } catch (SQLException | ClassNotFoundException | ServletException | NullPointerException ex) {
             ex.printStackTrace();
         }
     }
-
 }

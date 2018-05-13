@@ -3,6 +3,7 @@
     <editor-bookmarks xmlns="http://www.netbeans.org/ns/editor-bookmarks/2" lastBookmarkId="0"/>
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
         <group>
+<<<<<<< HEAD
             <file>file:/D:/Documentos/NetBeansProjects/ProjetoLP5/src/java/Persistence/DatabaseLocator.java</file>
             <file>file:/D:/Documentos/NetBeansProjects/ProjetoLP5/src/java/Persistence/PessoaDAO.java</file>
             <file>file:/D:/Documentos/NetBeansProjects/ProjetoLP5/src/java/Persistence/TurmaDAO.java</file>
@@ -11,6 +12,35 @@
             <file>file:/D:/Documentos/NetBeansProjects/ProjetoLP5/src/java/Persistence/ProvaDAO.java</file>
             <file>file:/D:/Documentos/NetBeansProjects/ProjetoLP5/web/sucesso.jsp</file>
             <file>file:/D:/Documentos/NetBeansProjects/ProjetoLP5/web/Disciplina/ler.jsp</file>
+=======
+<<<<<<< HEAD
+            <file>file:/D:/Documentos/NetBeansProjects/ProjetoLP5/src/java/action/GravarCoordenadorAction.java</file>
+            <file>file:/D:/Documentos/NetBeansProjects/ProjetoLP5/src/java/action/PrepararEditarViceCoordenadorAction.java</file>
+            <file>file:/D:/Documentos/NetBeansProjects/ProjetoLP5/src/java/action/GravarAlunoAction.java</file>
+            <file>file:/D:/Documentos/NetBeansProjects/ProjetoLP5/src/java/action/PrepararGravarViceCoordenadorAction.java</file>
+            <file>file:/D:/Documentos/NetBeansProjects/ProjetoLP5/src/java/action/PrepararEditarCoordenadorAction.java</file>
+            <file>file:/D:/Documentos/NetBeansProjects/ProjetoLP5/src/java/Model/AlunoMemento.java</file>
+            <file>file:/D:/Documentos/NetBeansProjects/ProjetoLP5/src/java/action/PrepararApagarViceCoordenadorAction.java</file>
+            <file>file:/D:/Documentos/NetBeansProjects/ProjetoLP5/src/java/action/PrepararGravarAlunoAction.java</file>
+            <file>file:/D:/Documentos/NetBeansProjects/ProjetoLP5/src/java/action/AlunoMementoAction.java</file>
+            <file>file:/D:/Documentos/NetBeansProjects/ProjetoLP5/src/java/Model/Coordenador.java</file>
+            <file>file:/D:/Documentos/NetBeansProjects/ProjetoLP5/src/java/Model/Pessoa.java</file>
+            <file>file:/D:/Documentos/NetBeansProjects/ProjetoLP5/src/java/action/ApagarCoordenadorAction.java</file>
+            <file>file:/D:/Documentos/NetBeansProjects/ProjetoLP5/src/java/action/LerCoordenadorAction.java</file>
+            <file>file:/D:/Documentos/NetBeansProjects/ProjetoLP5/src/java/action/GravarViceCoordenadorAction.java</file>
+            <file>file:/D:/Documentos/NetBeansProjects/ProjetoLP5/src/java/action/LerViceCoordenadorAction.java</file>
+            <file>file:/D:/Documentos/NetBeansProjects/ProjetoLP5/src/java/action/PrepararGravarCoordenadorAction.java</file>
+            <file>file:/D:/Documentos/NetBeansProjects/ProjetoLP5/src/java/Model/Funcionario.java</file>
+            <file>file:/D:/Documentos/NetBeansProjects/ProjetoLP5/src/java/action/GravarTurmaAction.java</file>
+            <file>file:/D:/Documentos/NetBeansProjects/ProjetoLP5/src/java/action/EditarTurmaAction.java</file>
+            <file>file:/D:/Documentos/NetBeansProjects/ProjetoLP5/src/java/Model/Turma.java</file>
+            <file>file:/D:/Documentos/NetBeansProjects/ProjetoLP5/src/java/action/PrepararApagarCoordenadorAction.java</file>
+            <file>file:/D:/Documentos/NetBeansProjects/ProjetoLP5/src/java/action/ApagarViceCoordenadorAction.java</file>
+=======
+            <file>file:/C:/Users/asus%20note/Desktop/ProjetoLP5/src/java/action/ObserverAlunoProva.java</file>
+            <file>file:/C:/Users/asus%20note/Desktop/ProjetoLP5/src/java/Persistence/ObserverAlunoProvaDAO.java</file>
+>>>>>>> Mudanca_no_Observer
+>>>>>>> CoordenadorVice
         </group>
     </open-files>
 </project-private>

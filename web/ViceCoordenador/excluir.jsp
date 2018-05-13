@@ -11,40 +11,38 @@
         <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
         <script src="./js/bootstrap.min.js"></script>
 
-        <title>Editar Pessoa</title>                                                                        
+        <title>Excluir ViceCoordenador</title>                                                                        
     </head>
     <body>
         <nav>
             <object width="100%" height="65px" data="./menu.jsp"></object>
         </nav>
         <div class="container">
-            <h1>Editar Pessoa</h1>
+            <h1>Excluir ViceCoordenador</h1>
 
-            <form action="FrontController?action=EditarPessoa" method="post" name="frmManterPessoa" onsubmit="">
+            <form action="FrontController?action=ApagarViceCoordenador" method="post" name="frmApagarViceCoordenador" onsubmit="">
 
                 <div class="form-group">
                     <label for="usr">Id:</label>
-                    <input type="text" class="form-control" id="usr" name="txtIdPessoa" value="${pessoa.idPessoa}" readonly>
+                    <input type="text" class="form-control" id="usr" name="txtIdViceCoordenador" value="${viceCoordenador.idViceCoordenador}" readonly>
                 </div>
                 <div class="form-group">
                     <label for="usr">Nome:</label>
-                    <input type="text" class="form-control" id="usr" name="txtNomePessoa" value="${pessoa.nomePessoa}">
+                    <input type="text" class="form-control" id="usr" name="txtNomePessoa" value="${viceCoordenador.nome}" readonly>
                 </div>
                 <div class="form-group">
                     <label for="usr">Idade:</label>
-                    <input type="text" class="form-control" id="usr" name="txtIdadePessoa" value="${pessoa.idadePessoa}">
+                    <input type="text" class="form-control" id="usr" name="txtIdadePessoa" value="${viceCoordenador.idade}" readonly>
                 </div>
                 <div class="form-group">
-                    <label for="usr">Disciplina:</label>
-                    <select class="selectpicker" name="txtIdTurma">
-                        <option value="0" <c:if test="${turma.idTurma != null}"> selected</c:if>></option>
-                        <c:forEach items="${turmas}" var="turma">
-                            <option value="${turma.idTurma}" <c:if test="${turma.idTurma == pessoa.turma.idTurma}"> selected</c:if>>
-                                ${turma.periodoTurma}
-                            </option>
-                        </c:forEach>
-                    </select>
+                    <label for="usr">Salario Base:</label>
+                    <input type="text" class="form-control" id="usr" name="txtSalario" value="${viceCoordenador.salarioBase}" readonly>
                 </div>
+                <div class="form-group">
+                    <label for="usr">Salario:</label>
+                    <input type="text" class="form-control" id="usr" name="txtSalario" value="${viceCoordenador.salarioFinal}" readonly>
+                </div>
+                
                 <button type="submit" class="btn btn-default" name="btnConfirmar" value="Confirmar">Confirmar</button>
             </form>
         </div>
