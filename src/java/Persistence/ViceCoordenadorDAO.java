@@ -41,8 +41,6 @@ public class ViceCoordenadorDAO {
             String sql = "INSERT INTO vicecoordenador (nome, idade, salarioBase, salarioFinal) VALUES (?, ?, ?, ?)";
             pstm = conn.prepareStatement(sql);
 
-            viceCoordenador.setRemuneracao();
-            
             pstm.setString(1, viceCoordenador.getNomePessoa());
             pstm.setInt(2, viceCoordenador.getIdadePessoa());
             pstm.setFloat(3, viceCoordenador.getSalarioBase());
@@ -159,8 +157,6 @@ public class ViceCoordenadorDAO {
 
             pstm = conn.prepareStatement(sql);
 
-            viceCoordenador.setRemuneracao();
-            
             pstm.setString(1, viceCoordenador.getNomePessoa());
             pstm.setInt(2, viceCoordenador.getIdadePessoa());
             pstm.setFloat(3, viceCoordenador.getSalarioBase());

@@ -40,7 +40,7 @@
                 </div>
                 <div class="form-group">
                     <label for="usr">Salario Final:</label>
-                    <input type="text" class="form-control" id="usr" name="txtSalarioFinal" value="${coordenador.salarioBase}" readonly>
+                    <input type="text" class="form-control" id="usr" name="txtSalarioFinal" value="${coordenador.salarioFinal}" readonly>
                 </div>
                 <button type="submit" class="btn btn-default" name="btnConfirmar" value="Confirmar">Confirmar</button>
             </form>

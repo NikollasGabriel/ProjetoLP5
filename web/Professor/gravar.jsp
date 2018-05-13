@@ -38,6 +38,10 @@
                     <label for="usr">Nivel ensino Superior:</label>
                     <input type="text" class="form-control" id="usr" name="txtNivelEnsinoSuperior">
                 </div>
+                <div class="form-group">
+                    <label for="usr">Salario:</label>
+                    <input type="text" class="form-control" id="usr" name="txtSalarioBase">
+                </div>
                 <button type="submit" class="btn btn-default" name="btnConfirmar" value="Confirmar">Confirmar</button>
             </form>
         </div>

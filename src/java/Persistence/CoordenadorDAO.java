@@ -42,8 +42,6 @@ public class CoordenadorDAO {
             String sql = "INSERT INTO coordenador (nome, idade, salarioBase, salarioFinal, ViceCoordenador_idViceCoordenador) VALUES (?, ?, ?, ?, ?)";
             pstm = conn.prepareStatement(sql);
 
-            coordenador.setRemuneracao();
-            
             pstm.setString(1, coordenador.getNomePessoa());
             pstm.setInt(2, coordenador.getIdadePessoa());
             pstm.setFloat(3, coordenador.getSalarioBase());
@@ -166,8 +164,6 @@ public class CoordenadorDAO {
 
             pstm = conn.prepareStatement(sql);
 
-            coordenador.setRemuneracao();
-            
             pstm.setString(1, coordenador.getNomePessoa());
             pstm.setInt(2, coordenador.getIdadePessoa());
             pstm.setFloat(3, coordenador.getSalarioBase());

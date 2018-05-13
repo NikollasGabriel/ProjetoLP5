@@ -7,10 +7,11 @@ public abstract class Funcionario extends Pessoa {
     private int tempoServico;
     private CalculaBonificacao estrategiaCalculoBonificacao;
 
-    public Funcionario(float salarioBase, float salarioFinal, String Cargo, int tempoServico, String nomePessoa, int idadePessoa) {
+    static String cargo;
+    
+    public Funcionario(String cargo, float salarioBase, String Cargo, int tempoServico, String nomePessoa, int idadePessoa) {
         super(nomePessoa, idadePessoa);
         this.salarioBase = salarioBase;
-        this.salarioFinal = salarioFinal;
         this.tempoServico = tempoServico;
 
         switch (Cargo) {
@@ -26,6 +27,8 @@ public abstract class Funcionario extends Pessoa {
                 this.estrategiaCalculoBonificacao = new CalculaBonificacaoCoordenador();
                 break;
         }
+        
+        this.setRemuneracao();
 
     }
 

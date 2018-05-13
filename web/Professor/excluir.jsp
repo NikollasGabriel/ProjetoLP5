@@ -42,6 +42,14 @@
                     <label for="usr">Nivel Ensino Superior:</label>
                     <input type="text" class="form-control" id="usr" name="txtNivelEnsinoSuperior" value="${professor.nivelEnsinoSuperior}" readonly>
                 </div>
+                <div class="form-group">
+                    <label for="usr">Salario Base:</label>
+                    <input type="text" class="form-control" id="usr" name="txtSalario" value="${professor.salarioBase}" readonly>
+                </div>
+                <div class="form-group">
+                    <label for="usr">Salario:</label>
+                    <input type="text" class="form-control" id="usr" name="txtSalario" value="${professor.salarioFinal}" readonly>
+                </div>
                 <button type="submit" class="btn btn-default" name="btnConfirmar" value="Confirmar">Confirmar</button>
             </form>
         </div>

@@ -106,7 +106,8 @@ public class ProvaDAO {
                     rs.getString("nivelEnsinoSuperior"),
                     rs.getInt("idPessoa"),
                     rs.getString("nomeProfessor"),
-                    rs.getInt("idade")
+                    rs.getInt("idade"),
+                    rs.getFloat("salarioBase")
                     );
             
             prova = new Prova(
@@ -160,7 +161,8 @@ public class ProvaDAO {
                     rs.getString("nivelEnsinoSuperior"),
                     rs.getInt("idPessoa"),
                     rs.getString("nomeProfessor"),
-                    rs.getInt("idade")
+                    rs.getInt("idade"),
+                    rs.getFloat("salarioBase")
                     );
                 
                 Prova prova = new Prova(
