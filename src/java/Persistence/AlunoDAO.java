@@ -40,11 +40,7 @@ public class AlunoDAO {
         try {
             conn = connector.getConnection();
 
-<<<<<<< HEAD:src/java/Persistence/PessoaDAO.java
-            String sql = "INSERT INTO pessoa (nome, idade, Turma_idTurma) VALUES (?, ?, ?)";
-=======
             String sql = "INSERT INTO aluno (nomeAluno, idade, Turma_idTurma, numeroFaltas, mediaNotas, situacao) VALUES (?, ?, ?, ?, ?, ?)";
->>>>>>> CoordenadorVice:src/java/Persistence/AlunoDAO.java
             pstm = conn.prepareStatement(sql);
 
             pstm.setString(1, aluno.getNomePessoa());
@@ -72,11 +68,7 @@ public class AlunoDAO {
         try {
             conn = connector.getConnection();
 
-<<<<<<< HEAD:src/java/Persistence/PessoaDAO.java
-            String sql = "DELETE FROM pessoa WHERE idPessoa = ?";
-=======
             String sql = "DELETE FROM aluno WHERE idPessoa = ?";
->>>>>>> CoordenadorVice:src/java/Persistence/AlunoDAO.java
             pstm = conn.prepareStatement(sql);
 
             pstm.setInt(1, aluno.getIdPessoa());
@@ -168,15 +160,9 @@ public class AlunoDAO {
         try {
             conn = connector.getConnection();
 
-<<<<<<< HEAD:src/java/Persistence/PessoaDAO.java
-            String sql = "UPDATE pessoa AS p SET"
-                    + " nome = ?, idade = ?, Turma_idTurma = ? WHERE p.idPessoa = ?";
-            
-=======
             String sql = "UPDATE aluno AS p SET"
                     + " nomeAluno = ?, idade = ?, Turma_idTurma = ?, numeroFaltas = ?, mediaNotas = ?, situacao = ? WHERE p.idPessoa = ?";
 
->>>>>>> CoordenadorVice:src/java/Persistence/AlunoDAO.java
             pstm = conn.prepareStatement(sql);
 
             pstm.setString(1, aluno.getNomePessoa());

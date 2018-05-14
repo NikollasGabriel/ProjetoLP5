@@ -12,14 +12,14 @@ public class Professor extends Funcionario {
         super(idPessoa);
     }
 
-    public Professor(int tempoServico, int numeroFaltas, String nivelEnsinoSuperior, String nomePessoa, int idadePessoa, float salarioBase) {
-        super(salarioBase,"Professor",tempoServico,nomePessoa, idadePessoa);
+    public Professor(int numeroFaltas, String nivelEnsinoSuperior, float salarioBase, int tempoServico, String nomePessoa, int idadePessoa) {
+        super("Professor",salarioBase, tempoServico, nomePessoa, idadePessoa);
         this.numeroFaltas = numeroFaltas;
         this.nivelEnsinoSuperior = nivelEnsinoSuperior;
     }
 
-    public Professor(int tempoServico, int numeroFaltas, String nivelEnsinoSuperior, int idPessoa, String nomePessoa, int idadePessoa, float salarioBase) {
-        super(salarioBase,idPessoa, nomePessoa, idadePessoa);
+    public Professor(int numeroFaltas, String nivelEnsinoSuperior, float salarioBase, int tempoServico, int idPessoa, String nomePessoa, int idadePessoa) {
+        super("Professor",salarioBase, tempoServico, idPessoa, nomePessoa, idadePessoa);
         this.numeroFaltas = numeroFaltas;
         this.nivelEnsinoSuperior = nivelEnsinoSuperior;
     }

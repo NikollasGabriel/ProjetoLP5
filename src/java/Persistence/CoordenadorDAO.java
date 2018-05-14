@@ -39,13 +39,13 @@ public class CoordenadorDAO {
         try {
             conn = connector.getConnection();
 
-            String sql = "INSERT INTO coordenador (nome, idade, salarioBase, salarioFinal, ViceCoordenador_idViceCoordenador) VALUES (?, ?, ?, ?, ?)";
+            String sql = "INSERT INTO coordenador (nome, idade, salarioBase, tempoServico, ViceCoordenador_idViceCoordenador) VALUES (?, ?, ?, ?, ?)";
             pstm = conn.prepareStatement(sql);
 
             pstm.setString(1, coordenador.getNomePessoa());
             pstm.setInt(2, coordenador.getIdadePessoa());
             pstm.setFloat(3, coordenador.getSalarioBase());
-            pstm.setFloat(4, coordenador.getSalarioFinal());
+            pstm.setInt(4, coordenador.getTempoServico());
             pstm.setInt(5, coordenador.getViceCoordenador().getIdPessoa());
 
             pstm.execute();
@@ -98,7 +98,7 @@ public class CoordenadorDAO {
             coordenador = new Coordenador(
                     viceCoordenador,
                     rs.getFloat("salarioBase"),
-                    rs.getFloat("salarioFinal"),
+                    rs.getInt("tempoServico"),
                     rs.getInt("idCoordenador"),
                     rs.getString("nome"),
                     rs.getInt("idade")
@@ -133,7 +133,7 @@ public class CoordenadorDAO {
                 Coordenador coordenador = new Coordenador(
                     viceCoordenador,
                     rs.getFloat("salarioBase"),
-                    rs.getFloat("salarioFinal"),
+                    rs.getInt("tempoServico"),
                     rs.getInt("idCoordenador"),
                     rs.getString("nome"),
                     rs.getInt("idade")
@@ -160,14 +160,14 @@ public class CoordenadorDAO {
             conn = connector.getConnection();
 
             String sql = "UPDATE coordenador AS p SET"
-                    + " nome = ?, idade = ?, salarioBase=?, salarioFinal=?, ViceCoordenador_ViceCoordenador=? WHERE p.idCoordenador = ?";
+                    + " nome = ?, idade = ?, salarioBase=?, tempoServico=?, ViceCoordenador_ViceCoordenador=? WHERE p.idCoordenador = ?";
 
             pstm = conn.prepareStatement(sql);
 
             pstm.setString(1, coordenador.getNomePessoa());
             pstm.setInt(2, coordenador.getIdadePessoa());
             pstm.setFloat(3, coordenador.getSalarioBase());
-            pstm.setFloat(4, coordenador.getSalarioFinal());
+            pstm.setInt(4, coordenador.getTempoServico());
             pstm.setInt(5, coordenador.getViceCoordenador().getIdPessoa());
             pstm.setInt(6, coordenador.getIdPessoa());
 

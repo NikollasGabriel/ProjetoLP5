@@ -38,13 +38,13 @@ public class ViceCoordenadorDAO {
         try {
             conn = connector.getConnection();
 
-            String sql = "INSERT INTO vicecoordenador (nome, idade, salarioBase, salarioFinal) VALUES (?, ?, ?, ?)";
+            String sql = "INSERT INTO vicecoordenador (nome, idade, salarioBase, tempoServico) VALUES (?, ?, ?, ?)";
             pstm = conn.prepareStatement(sql);
 
             pstm.setString(1, viceCoordenador.getNomePessoa());
             pstm.setInt(2, viceCoordenador.getIdadePessoa());
             pstm.setFloat(3, viceCoordenador.getSalarioBase());
-            pstm.setFloat(4, viceCoordenador.getSalarioFinal());
+            pstm.setInt(4, viceCoordenador.getTempoServico());
 
             pstm.execute();
 
@@ -94,7 +94,7 @@ public class ViceCoordenadorDAO {
             
             viceCoordenador = new ViceCoordenador(
                     rs.getFloat("salarioBase"),
-                    rs.getFloat("salarioFinal"),
+                    rs.getInt("tempoServico"),
                     rs.getInt("idViceCoordenador"),
                     rs.getString("nome"),
                     rs.getInt("idade")
@@ -126,7 +126,7 @@ public class ViceCoordenadorDAO {
 
                 ViceCoordenador viceCoordenador = new ViceCoordenador(
                     rs.getFloat("salarioBase"),
-                    rs.getFloat("salarioFinal"),
+                    rs.getInt("tempoServico"),
                     rs.getInt("idViceCoordenador"),
                     rs.getString("nome"),
                     rs.getInt("idade")
@@ -153,14 +153,14 @@ public class ViceCoordenadorDAO {
             conn = connector.getConnection();
 
             String sql = "UPDATE vicecoordenador AS p SET"
-                    + " nome = ?, idade = ?, salarioBase=?, salarioFinal=? WHERE p.idViceCoordenador = ?";
+                    + " nome = ?, idade = ?, salarioBase=?, tempoServico=? WHERE p.idViceCoordenador = ?";
 
             pstm = conn.prepareStatement(sql);
 
             pstm.setString(1, viceCoordenador.getNomePessoa());
             pstm.setInt(2, viceCoordenador.getIdadePessoa());
             pstm.setFloat(3, viceCoordenador.getSalarioBase());
-            pstm.setFloat(4, viceCoordenador.getSalarioFinal());
+            pstm.setInt(4, viceCoordenador.getTempoServico());
             pstm.setInt(6, viceCoordenador.getIdPessoa());
 
             pstm.execute();

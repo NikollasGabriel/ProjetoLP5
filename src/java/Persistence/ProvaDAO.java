@@ -104,11 +104,12 @@ public class ProvaDAO {
             Professor pessoaProfessor = new Professor(
                     rs.getInt("numeroFaltas"),
                     rs.getString("nivelEnsinoSuperior"),
+                    rs.getFloat("salarioBase"),
+                    rs.getInt("tempoServico"),
                     rs.getInt("idPessoa"),
                     rs.getString("nomeProfessor"),
-                    rs.getInt("idade"),
-                    rs.getFloat("salarioBase")
-                    );
+                    rs.getInt("idade")
+            );
             
             prova = new Prova(
                         rs.getInt("idProva"),
@@ -159,11 +160,12 @@ public class ProvaDAO {
                 Professor pessoaProfessor = new Professor(
                     rs.getInt("numeroFaltas"),
                     rs.getString("nivelEnsinoSuperior"),
+                    rs.getFloat("salarioBase"),
+                    rs.getInt("tempoServico"),
                     rs.getInt("idPessoa"),
                     rs.getString("nomeProfessor"),
-                    rs.getInt("idade"),
-                    rs.getFloat("salarioBase")
-                    );
+                    rs.getInt("idade")
+                );
                 
                 Prova prova = new Prova(
                         rs.getInt("idProva"),

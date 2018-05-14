@@ -2,16 +2,12 @@ package Model;
 
 public class ViceCoordenador extends Funcionario {
 
-    public ViceCoordenador(float salarioBase, float salarioFinal, int idPessoa, String nomePessoa, int idadePessoa) {
-        super(salarioBase, salarioFinal, idPessoa, nomePessoa, idadePessoa);
-    }
-    
-    public ViceCoordenador(float salarioBase, int idPessoa, String nomePessoa, int idadePessoa) {
-        super(salarioBase, idPessoa, nomePessoa, idadePessoa);
+    public ViceCoordenador(float salarioBase, int tempoServico, int idPessoa, String nomePessoa, int idadePessoa) {
+        super("ViceCoordenador", salarioBase, tempoServico, idPessoa, nomePessoa, idadePessoa);
     }
 
-    public ViceCoordenador(float salarioBase, String nomePessoa, int idadePessoa) {
-        super(salarioBase, nomePessoa, idadePessoa);
+    public ViceCoordenador(float salarioBase, int tempoServico, String nomePessoa, int idadePessoa) {
+       super("ViceCoordenador", salarioBase, tempoServico, nomePessoa, idadePessoa);
     }
 
     public ViceCoordenador(int idPessoa) {

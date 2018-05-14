@@ -41,7 +41,7 @@ public class EditarAlunoAction extends Observable implements Action {
 
             AlunoDAO.getInstancia().editar(pessoa);
 
-            AlgumaCoisaTesteAction observer = new AlgumaCoisaTesteAction(this);
+            ObserverAlunoProva observer = new ObserverAlunoProva(this);
             setChanged();
             notifyObservers();
 

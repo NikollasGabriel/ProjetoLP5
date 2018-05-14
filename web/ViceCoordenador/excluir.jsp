@@ -35,6 +35,10 @@
                     <input type="text" class="form-control" id="usr" name="txtIdadePessoa" value="${viceCoordenador.idade}" readonly>
                 </div>
                 <div class="form-group">
+                    <label for="usr">Tempo de Servico:</label>
+                    <input type="text" class="form-control" id="usr" name="txtTempoServico" value="${viceCoordenador.tempoServico}">
+                </div>
+                <div class="form-group">
                     <label for="usr">Salario Base:</label>
                     <input type="text" class="form-control" id="usr" name="txtSalario" value="${viceCoordenador.salarioBase}" readonly>
                 </div>

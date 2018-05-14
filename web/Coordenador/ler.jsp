@@ -26,6 +26,7 @@
                         <th>Id</th>
                         <th>Nome</th>
                         <th>Idade</th>
+                        <th>TempoServico</th>
                         <th>Salário Base</th>
                         <th>Salário</th>
                         <th>Vice</th>
@@ -39,6 +40,7 @@
                             <td><c:out value="${coordenador.idCoordenador}"></c:out></td>
                             <td><c:out value="${coordenador.nome}"></c:out></td>
                             <td><c:out value="${coordenador.idade}"></c:out></td>
+                            <td><c:out value="${coordenador.tempoServico}"></c:out></td>
                             <td><c:out value="${coordenador.salarioBase}"></c:out></td>
                             <td><c:out value="${coordenador.salarioFinal}"></c:out></td>
                             <td><c:out value="${coordenador.viceCoordenador.nome}"></c:out></td>

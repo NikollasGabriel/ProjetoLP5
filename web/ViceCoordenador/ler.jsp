@@ -26,6 +26,7 @@
                         <th>Id</th>
                         <th>Nome</th>
                         <th>Idade</th>
+                        <th>TempoServico</th>
                         <th>Salário Base</th>
                         <th>Salário</th>
                         <th colspan=2>Ação:</th>
@@ -38,6 +39,7 @@
                             <td><c:out value="${viceCoordenador.idViceCoordenador}"></c:out></td>
                             <td><c:out value="${viceCoordenador.nome}"></c:out></td>
                             <td><c:out value="${viceCoordenador.idade}"></c:out></td>
+                            <td><c:out value="${viceCoordenador.tempoServico}"></c:out></td>
                             <td><c:out value="${viceCoordenador.salarioBase}"></c:out></td>
                             <td><c:out value="${viceCoordenador.salarioFinal}"></c:out></td>
                             <td><a href="FrontController?action=EditarViceCoordenador&txtIdViceCoordenador=<c:out value="${viceCoordenador.idViceCoordenador}"/>"><i class="icon-edit"></i>Editar</a> </td>

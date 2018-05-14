@@ -7,14 +7,12 @@ public abstract class Funcionario extends Pessoa {
     private int tempoServico;
     private CalculaBonificacao estrategiaCalculoBonificacao;
 
-    static String cargo;
-    
-    public Funcionario(String cargo, float salarioBase, String Cargo, int tempoServico, String nomePessoa, int idadePessoa) {
+    public Funcionario(String cargo, float salarioBase, int tempoServico, String nomePessoa, int idadePessoa) {
         super(nomePessoa, idadePessoa);
         this.salarioBase = salarioBase;
         this.tempoServico = tempoServico;
 
-        switch (Cargo) {
+        switch (cargo) {
             case "Professor":
                 this.estrategiaCalculoBonificacao = new CalculaBonificacaoProfessor();
                 break;
@@ -32,24 +30,26 @@ public abstract class Funcionario extends Pessoa {
 
     }
 
-    public Funcionario(String nomePessoa, int idadePessoa) {
-        super(nomePessoa, idadePessoa);
-    }
-
-    public Funcionario(float salarioFinal, float salarioBase, int idPessoa, String nomePessoa, int idadePessoa) {
+    public Funcionario(String cargo, float salarioBase, int tempoServico, int idPessoa, String nomePessoa, int idadePessoa) {
         super(nomePessoa, idadePessoa);
         this.salarioBase = salarioBase;
-        this.salarioFinal = salarioFinal;
-    }
+        this.tempoServico = tempoServico;
 
-    public Funcionario(float salarioBase, int idPessoa, String nomePessoa, int idadePessoa) {
-        super(idPessoa, nomePessoa, idadePessoa);
-        this.salarioBase = salarioBase;
-    }
+        switch (cargo) {
+            case "Professor":
+                this.estrategiaCalculoBonificacao = new CalculaBonificacaoProfessor();
+                break;
 
-    public Funcionario(float salarioBase, String nomePessoa, int idadePessoa) {
-        super(nomePessoa, idadePessoa);
-        this.salarioBase = salarioBase;
+            case "ViceCoordenador":
+                this.estrategiaCalculoBonificacao = new CalculaBonificacaoViceCoordenador();
+                break;
+
+            case "Coordenador":
+                this.estrategiaCalculoBonificacao = new CalculaBonificacaoCoordenador();
+                break;
+        }
+        
+        this.setRemuneracao();
     }
 
     public Funcionario(int idPessoa) {

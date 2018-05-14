@@ -1,36 +1,39 @@
 package action;
 
 import Controller.Action;
-import Model.Professor;
-import Model.Turma;
-import Persistence.ProfessorDAO;
+import Model.Coordenador;
+import Model.ViceCoordenador;
+import Persistence.CoordenadorDAO;
 import java.io.IOException;
 import java.sql.SQLException;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-public class GravarProfessorAction implements Action {
+public class EditarCoordenadorAction implements Action {
+
+    public EditarCoordenadorAction() {
+    }
 
     @Override
     public void execute(HttpServletRequest request, HttpServletResponse response) throws IOException {
 
-        Professor pessoa = new Professor(
-                Integer.parseInt(request.getParameter("txtNumeroFaltas")),
-                request.getParameter("txtNivelEnsinoSuperior"),
+        Coordenador coordenador = new Coordenador(
+                new ViceCoordenador(Integer.parseInt(request.getParameter("txtIdViceCoordenador"))),
                 Float.parseFloat(request.getParameter("txtSalarioBase")),
                 Integer.parseInt(request.getParameter("txtTempoServico")),
-                Integer.parseInt(request.getParameter("txtIdPessoa")),
+                Integer.parseInt(request.getParameter("txtIdCoordenador")),
                 request.getParameter("txtNomePessoa"),
                 Integer.parseInt(request.getParameter("txtIdadePessoa"))
         );
 
         try {
 
-            ProfessorDAO.getInstancia().save(pessoa);
-            response.sendRedirect("FrontController?action=LerProfessor");
+            CoordenadorDAO.getInstancia().editar(coordenador);
+            response.sendRedirect("FrontController?action=LerCoordenador");
 
-        } catch (ClassNotFoundException | SQLException ex) {
+        } catch (SQLException | ClassNotFoundException ex) {
             ex.printStackTrace();
         }
     }
+
 }

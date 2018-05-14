@@ -39,6 +39,10 @@
                     <input type="text" class="form-control" id="usr" name="txtNivelEnsinoSuperior">
                 </div>
                 <div class="form-group">
+                    <label for="usr">TempoServico:</label>
+                    <input type="text" class="form-control" id="usr" name="txtTempoServico">
+                </div>
+                <div class="form-group">
                     <label for="usr">Salario:</label>
                     <input type="text" class="form-control" id="usr" name="txtSalarioBase">
                 </div>

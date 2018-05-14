@@ -39,7 +39,7 @@ public class ProfessorDAO {
         try {
             conn = connector.getConnection();
 
-            String sql = "INSERT INTO professor (nomeProfessor, idade, numeroFaltas, nivelEnsinoSuperior, salarioBase, salarioFinal) VALUES (?, ?, ?, ?, ?, ?)";
+            String sql = "INSERT INTO professor (nomeProfessor, idade, numeroFaltas, nivelEnsinoSuperior, salarioBase, tempoServico) VALUES (?, ?, ?, ?, ?, ?)";
             pstm = conn.prepareStatement(sql);
 
             pstm.setString(1, professor.getNomePessoa());
@@ -47,7 +47,7 @@ public class ProfessorDAO {
             pstm.setInt(3, professor.getNumeroFaltas());
             pstm.setString(4, professor.getNivelEnsinoSuperior());
             pstm.setFloat(5, professor.getSalarioBase());
-            pstm.setFloat(6, professor.getSalarioFinal());
+            pstm.setInt(6, professor.getTempoServico());
 
             pstm.execute();
 
@@ -97,10 +97,11 @@ public class ProfessorDAO {
             professor = new Professor(
                         rs.getInt("numeroFaltas"),
                         rs.getString("nivelEnsinoSuperior"),
+                        rs.getFloat("salarioBase"),
+                        rs.getInt("tempoServico"),
                         rs.getInt("idPessoa"),
                         rs.getString("nomeProfessor"),
-                        rs.getInt("idade"),
-                        rs.getFloat("salarioBase")
+                        rs.getInt("idade")    
                 );
 
         } catch (SQLException ex) {
@@ -130,10 +131,11 @@ public class ProfessorDAO {
                 Professor professor = new Professor(
                         rs.getInt("numeroFaltas"),
                         rs.getString("nivelEnsinoSuperior"),
+                        rs.getFloat("salarioBase"),
+                        rs.getInt("tempoServico"),
                         rs.getInt("idPessoa"),
                         rs.getString("nomeProfessor"),
-                        rs.getInt("idade"),
-                        rs.getFloat("salarioBase")
+                        rs.getInt("idade")    
                 );
 
                 professors.add(professor);
@@ -157,7 +159,7 @@ public class ProfessorDAO {
             conn = connector.getConnection();
 
             String sql = "UPDATE professor AS p SET"
-                    + " nomeProfessor = ?, idade = ?, numeroFaltas = ?, nivelEnsinoSuperior = ? salarioBase =? salarioFinal =? WHERE p.idPessoa = ?";
+                    + " nomeProfessor = ?, idade = ?, numeroFaltas = ?, nivelEnsinoSuperior = ? salarioBase =? tempoServico =? WHERE p.idPessoa = ?";
 
             pstm = conn.prepareStatement(sql);
 
@@ -166,7 +168,7 @@ public class ProfessorDAO {
             pstm.setInt(3, professor.getNumeroFaltas());
             pstm.setString(4, professor.getNivelEnsinoSuperior());
             pstm.setFloat(5, professor.getSalarioBase());
-            pstm.setFloat(6, professor.getSalarioFinal());
+            pstm.setInt(6, professor.getTempoServico());
             pstm.setInt(7, professor.getIdPessoa());
 
             pstm.execute();

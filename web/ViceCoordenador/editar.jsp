@@ -24,23 +24,27 @@
 
                 <div class="form-group">
                     <label for="usr">Id:</label>
-                    <input type="text" class="form-control" id="usr" name="txtIdViceCoordenador" value="${coordenador.idViceCoordenador}" readonly>
+                    <input type="text" class="form-control" id="usr" name="txtIdViceCoordenador" value="${viceCoordenador.idViceCoordenador}" readonly>
                 </div>
                 <div class="form-group">
                     <label for="usr">Nome:</label>
-                    <input type="text" class="form-control" id="usr" name="txtNome" value="${coordenador.nome}">
+                    <input type="text" class="form-control" id="usr" name="txtNome" value="${viceCoordenador.nome}">
                 </div>
                 <div class="form-group">
                     <label for="usr">Idade:</label>
-                    <input type="text" class="form-control" id="usr" name="txtIdade" value="${coordenador.idade}">
+                    <input type="text" class="form-control" id="usr" name="txtIdade" value="${viceCoordenador.idade}">
+                </div>
+                <div class="form-group">
+                    <label for="usr">Tempo de Servico:</label>
+                    <input type="text" class="form-control" id="usr" name="txtTempoServico" value="${viceCoordenador.tempoServico}">
                 </div>
                 <div class="form-group">
                     <label for="usr">Salario Base:</label>
-                    <input type="text" class="form-control" id="usr" name="txtSalarioBase" value="${coordenador.salarioBase}">
+                    <input type="text" class="form-control" id="usr" name="txtSalarioBase" value="${viceCoordenador.salarioBase}">
                 </div>
                 <div class="form-group">
                     <label for="usr">Salario Final:</label>
-                    <input type="text" class="form-control" id="usr" name="txtSalarioFinal" value="${coordenador.salarioFinal}" readonly>
+                    <input type="text" class="form-control" id="usr" name="txtSalarioFinal" value="${viceCoordenador.salarioFinal}" readonly>
                 </div>
                 <button type="submit" class="btn btn-default" name="btnConfirmar" value="Confirmar">Confirmar</button>
             </form>

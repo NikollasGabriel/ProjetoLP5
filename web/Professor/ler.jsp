@@ -28,6 +28,7 @@
                         <th>Idade</th>
                         <th>Numero de faltas</th>
                         <th>Nivel Ensino Superior</th>
+                        <th>TempoServico</th>
                         <th>Salário Base</th>
                         <th>Salário</th>
                         <th colspan=2>Ação:</th>
@@ -42,6 +43,7 @@
                             <td><c:out value="${professor.idadePessoa}"></c:out></td>
                             <td><c:out value="${professor.numeroFaltas}"></c:out></td>
                             <td><c:out value="${professor.nivelEnsinoSuperior}"></c:out></td>
+                            <td><c:out value="${professor.tempoServico}"></c:out></td>
                             <td><c:out value="${professor.salarioBase}"></c:out></td>
                             <td><c:out value="${professor.salarioFinal}"></c:out></td>
                             <td><a href="FrontController?action=PrepararEditarProfessor&txtIdPessoa=<c:out value="${professor.idPessoa}"/>"><i class="icon-edit"></i>Editar</a> </td>
