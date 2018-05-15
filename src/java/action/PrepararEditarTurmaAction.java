@@ -1,6 +1,7 @@
 package action;
 
 import Controller.Action;
+import Persistence.CoordenadorDAO;
 import Persistence.DisciplinaDAO;
 import Persistence.TurmaDAO;
 import java.io.IOException;
@@ -17,6 +18,7 @@ public class PrepararEditarTurmaAction implements Action {
         try {
             request.setAttribute("turma", TurmaDAO.getInstancia().obter(Integer.parseInt(request.getParameter("txtIdTurma"))));
             request.setAttribute("disciplinas", DisciplinaDAO.getInstancia().obterDisciplinas());
+            request.setAttribute("coordenadores", CoordenadorDAO.getInstancia().obterCoordenadores());
 
             RequestDispatcher view = request.getRequestDispatcher("Turma/editar.jsp");
             view.forward(request, response);

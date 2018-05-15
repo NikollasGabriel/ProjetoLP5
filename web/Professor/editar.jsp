@@ -28,11 +28,11 @@
                 </div>
                 <div class="form-group">
                     <label for="usr">Nome:</label>
-                    <input type="text" class="form-control" id="usr" name="txtNomePessoa" value="${professor.nomePessoa}">
+                    <input type="text" class="form-control" id="usr" name="txtNomeProfessor" value="${professor.nomePessoa}">
                 </div>
                 <div class="form-group">
                     <label for="usr">Idade:</label>
-                    <input type="text" class="form-control" id="usr" name="txtIdadePessoa" value="${professor.idadePessoa}">
+                    <input type="text" class="form-control" id="usr" name="txtIdadeProfessor" value="${professor.idadePessoa}">
                 </div>
                 <div class="form-group">
                     <label for="usr">Numero de faltas:</label>
@@ -49,10 +49,6 @@
                 <div class="form-group">
                     <label for="usr">Salario Base:</label>
                     <input type="text" class="form-control" id="usr" name="txtSalarioBase" value="${professor.salarioBase}">
-                </div>
-                <div class="form-group">
-                    <label for="usr">Salario Final:</label>
-                    <input type="text" class="form-control" id="usr" name="txtSalarioFinal" value="${professor.salarioFinal}" readonly>
                 </div>
                 <button type="submit" class="btn btn-default" name="btnConfirmar" value="Confirmar">Confirmar</button>
             </form>

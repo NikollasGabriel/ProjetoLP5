@@ -22,7 +22,7 @@ public class PrepararGravarCoordenadorAction implements Action {
      @Override
     public void execute(HttpServletRequest request, HttpServletResponse response) throws IOException {
         try {
-            request.setAttribute("viceCoordenadores", ViceCoordenadorDAO.getInstancia().obterViceCoordenadors());
+            request.setAttribute("viceCoordenadores", ViceCoordenadorDAO.getInstancia().obterViceCoordenadores());
 
             RequestDispatcher view = request.getRequestDispatcher("Coordenador/gravar.jsp");
 

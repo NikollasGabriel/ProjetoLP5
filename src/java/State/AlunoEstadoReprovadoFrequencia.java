@@ -27,6 +27,7 @@ public class AlunoEstadoReprovadoFrequencia implements AlunoEstado {
 
     @Override
     public String aprovadoFrequencia(Aluno a) {
+        a.setSituacao(new AlunoEstadoAprovadoFrequencia());
         return "Aluno já reprovado por frequencia";
     }
 

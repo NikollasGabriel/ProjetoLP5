@@ -32,7 +32,7 @@ public class TurmaDAO {
         try {
             conn = connector.getConnection();
 
-            String sql = "INSERT INTO turma (periodo, tamanho, Disciplina_idDisciplina, Coodenador_idCoordenador) VALUES (?, ?, ?, ?)";
+            String sql = "INSERT INTO turma (periodo, tamanho, Disciplina_idDisciplina, Coordenador_idCoordenador) VALUES (?, ?, ?, ?)";
             pstm = conn.prepareStatement(sql);
 
             pstm.setString(1, turma.getPeriodoTurma());
@@ -90,13 +90,14 @@ public class TurmaDAO {
                     rs.getString("nomeDisciplina"),
                     rs.getInt("numerocreditos"),
                     rs.getInt("numerovagas"));
-            
+
             Coordenador coordenador = new Coordenador(
                     null,
                     rs.getFloat("salarioBase"),
+                    rs.getInt("tempoServico"),
                     rs.getInt("idCoordenador"),
-                    rs.getString("nome"),
-                    rs.getInt("idade")
+                    rs.getString("nomeCoordenador"),
+                    rs.getInt("idadeCoordenador")
             );
 
             turma = new Turma(
@@ -129,11 +130,6 @@ public class TurmaDAO {
 
             ResultSet rs = st.executeQuery("SELECT * FROM turma join disciplina on disciplina.idDisciplina = turma.Disciplina_idDisciplina join coordenador on coordenador.idCoordenador = turma.Coordenador_idCoordenador");
 
-            /*Disciplina disciplina = new Disciplina(
-                    rs.getInt("idDisciplina"),
-                    rs.getString("nome"),
-                    rs.getInt("numeroCreditos"),
-                    rs.getInt("numeroVagas"));*/
             while (rs.next()) {
 
                 Disciplina disciplina = new Disciplina(
@@ -141,22 +137,23 @@ public class TurmaDAO {
                         rs.getString("nomeDisciplina"),
                         rs.getInt("numeroCreditos"),
                         rs.getInt("numeroVagas"));
-                
+
                 Coordenador coordenador = new Coordenador(
-                    null,
-                    rs.getFloat("salarioBase"),
-                    rs.getInt("idCoordenador"),
-                    rs.getString("nome"),
-                    rs.getInt("idade")
-            );
+                        null,
+                        rs.getFloat("salarioBase"),
+                        rs.getInt("tempoServico"),
+                        rs.getInt("idCoordenador"),
+                        rs.getString("nomeCoordenador"),
+                        rs.getInt("idadeCoordenador")
+                );
 
                 Turma turma = new Turma(
-                    rs.getInt("idTurma"),
-                    rs.getString("periodo"),
-                    rs.getInt("tamanho"),
-                    disciplina,
-                    coordenador
-            );
+                        rs.getInt("idTurma"),
+                        rs.getString("periodo"),
+                        rs.getInt("tamanho"),
+                        disciplina,
+                        coordenador
+                );
 
                 turmas.add(turma);
             }

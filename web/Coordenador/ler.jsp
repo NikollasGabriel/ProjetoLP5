@@ -26,9 +26,9 @@
                         <th>Id</th>
                         <th>Nome</th>
                         <th>Idade</th>
-                        <th>TempoServico</th>
+                        <th>Tempo de Serviço</th>
                         <th>Salário Base</th>
-                        <th>Salário</th>
+                        <th>Salário com abono</th>
                         <th>Vice</th>
                         <th colspan=2>Ação:</th>
 
@@ -37,15 +37,15 @@
                 <tbody>
                     <c:forEach items="${coordenadores}" var="coordenador">
                         <tr>
-                            <td><c:out value="${coordenador.idCoordenador}"></c:out></td>
-                            <td><c:out value="${coordenador.nome}"></c:out></td>
-                            <td><c:out value="${coordenador.idade}"></c:out></td>
+                            <td><c:out value="${coordenador.idPessoa}"></c:out></td>
+                            <td><c:out value="${coordenador.nomePessoa}"></c:out></td>
+                            <td><c:out value="${coordenador.idadePessoa}"></c:out></td>
                             <td><c:out value="${coordenador.tempoServico}"></c:out></td>
                             <td><c:out value="${coordenador.salarioBase}"></c:out></td>
                             <td><c:out value="${coordenador.salarioFinal}"></c:out></td>
-                            <td><c:out value="${coordenador.viceCoordenador.nome}"></c:out></td>
-                            <td><a href="FrontController?action=EditarCoordenador&txtIdCoordenador=<c:out value="${coordenador.idCoordenador}"/>"><i class="icon-edit"></i>Editar</a> </td>
-                            <td><a href="FrontController?action=EditarCoordenador&txtIdCoordenador=<c:out value="${coordenador.idCoordenador}"/>"><i class="icon-remove"></i>Excluir</a> </td>
+                            <td><c:out value="${coordenador.viceCoordenador.nomePessoa}"></c:out></td>
+                            <td><a href="FrontController?action=PrepararEditarCoordenador&txtIdCoordenador=<c:out value="${coordenador.idPessoa}"/>"><i class="icon-edit"></i>Editar</a> </td>
+                            <td><a href="FrontController?action=PrepararApagarCoordenador&txtIdCoordenador=<c:out value="${coordenador.idPessoa}"/>"><i class="icon-remove"></i>Excluir</a> </td>
                         </tr>
                     </c:forEach>
                 </tbody>

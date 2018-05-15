@@ -84,7 +84,7 @@ public class ObserverAlunoProvaDAO {
 
     }
 
-    public void editaNotapublic(Aluno aluno) throws SQLException, ClassNotFoundException {
+    public void editaNota(Aluno aluno) throws SQLException, ClassNotFoundException {
 
         Connection conn = null;
         PreparedStatement pstm = null;

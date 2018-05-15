@@ -23,32 +23,28 @@
             <form action="FrontController?action=GravarCoordenador" method="post" name="frmGravarCoordenador" onsubmit="">
 
                 <div class="form-group">
-                    <label for="usr">IdViceCoordenador:</label>
-                    <input type="text" class="form-control" id="usr" name="txtIdCoordenador">
-                </div>
-                <div class="form-group">
                     <label for="usr">Nome:</label>
-                    <input type="text" class="form-control" id="usr" name="txtNome">
+                    <input type="text" class="form-control" id="usr" name="txtNomeCoordenador">
                 </div>
                 <div class="form-group">
                     <label for="usr">Idade:</label>
-                    <input type="text" class="form-control" id="usr" name="txtIdade">
+                    <input type="text" class="form-control" id="usr" name="txtIdadeCoordenador">
                 </div>
                 <div class="form-group">
-                    <label for="usr">TempoServico:</label>
+                    <label for="usr">Tempo de Serviço:</label>
                     <input type="text" class="form-control" id="usr" name="txtTempoServico">
                 </div>
                 <div class="form-group">
-                    <label for="usr">Salario:</label>
+                    <label for="usr">Salario base:</label>
                     <input type="text" class="form-control" id="usr" name="txtSalarioBase">
                 </div>
                 <div class="form-group">
                     <label for="usr">ViceCoordenador:</label>
                     <select class="selectpicker" name="txtIdViceCoordenador">
-                        <option value="0" <c:if test="${viceCoordenador.idViceCoordenador != null}"> selected</c:if>></option>
+                        <option value="0" <c:if test="${viceCoordenador.idPessoa != null}"> selected</c:if>></option>
                         <c:forEach items="${viceCoordenadores}" var="viceCoordenador">
-                            <option value="${viceCoordenador.idViceCoordenador}">
-                                ${viceCoordenador.periodoViceCoordenador}
+                            <option value="${viceCoordenador.idPessoa}">
+                                ${viceCoordenador.nomePessoa}
                             </option>
                         </c:forEach>
                     </select>

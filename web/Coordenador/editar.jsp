@@ -11,7 +11,7 @@
         <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
         <script src="./js/bootstrap.min.js"></script>
 
-        <title>Editar ViceCoordenador</title>                                                                        
+        <title>Editar Coordenador</title>                                                                        
     </head>
     <body>
         <nav>
@@ -20,19 +20,19 @@
         <div class="container">
             <h1>Editar Coordenador</h1>
 
-            <form action="FrontController?action=EditarViceCoordenador" method="post" name="frmEditarCoordenador" onsubmit="">
+            <form action="FrontController?action=EditarCoordenador" method="post" name="frmEditarCoordenador" onsubmit="">
 
                 <div class="form-group">
                     <label for="usr">Id:</label>
-                    <input type="text" class="form-control" id="usr" name="txtIdCoordenador" value="${coordenador.idCoordenador}" readonly>
+                    <input type="text" class="form-control" id="usr" name="txtIdCoordenador" value="${coordenador.idPessoa}" readonly>
                 </div>
                 <div class="form-group">
                     <label for="usr">Nome:</label>
-                    <input type="text" class="form-control" id="usr" name="txtNome" value="${coordenador.nome}">
+                    <input type="text" class="form-control" id="usr" name="txtNomeCoordenador" value="${coordenador.nomePessoa}">
                 </div>
                 <div class="form-group">
                     <label for="usr">Idade:</label>
-                    <input type="text" class="form-control" id="usr" name="txtIdade" value="${coordenador.idade}">
+                    <input type="text" class="form-control" id="usr" name="txtIdadeCoordenador" value="${coordenador.idadePessoa}">
                 </div>
                 <div class="form-group">
                     <label for="usr">Tempo de Servico:</label>
@@ -43,16 +43,12 @@
                     <input type="text" class="form-control" id="usr" name="txtSalarioBase" value="${coordenador.salarioBase}">
                 </div>
                 <div class="form-group">
-                    <label for="usr">Salario Final:</label>
-                    <input type="text" class="form-control" id="usr" name="txtSalarioFinal" value="${coordenador.salarioFinal}" readonly>
-                </div>
-                <div class="form-group">
-                    <label for="usr">ViceCoordenador:</label>
+                    <label for="usr">Vice-Coordenador:</label>
                     <select class="selectpicker" name="txtIdViceCoordenador">
-                        <option value="0" <c:if test="${viceCoordenador.idViceCoordenador != null}"> selected</c:if>></option>
+                        <option value="0" <c:if test="${viceCoordenador.idPessoa != null}"> selected</c:if>></option>
                         <c:forEach items="${viceCoordenadores}" var="viceCoordenador">
-                            <option value="${viceCoordenador.idViceCoordenador}" <c:if test="${viceCoordenador.idViceCoordenador == coordenador.idViceCoordenador}"> selected</c:if>>
-                                ${viceCoordenador.nome}
+                            <option value="${viceCoordenador.idPessoa}" <c:if test="${viceCoordenador.idPessoa == coordenador.viceCoordenador.idPessoa}"> selected</c:if>>
+                                ${viceCoordenador.nomePessoa}
                             </option>
                         </c:forEach>
                     </select>

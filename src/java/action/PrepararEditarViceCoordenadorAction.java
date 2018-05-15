@@ -14,7 +14,7 @@ public class PrepararEditarViceCoordenadorAction implements Action {
     @Override
     public void execute(HttpServletRequest request, HttpServletResponse response) throws IOException {
         try {
-            request.setAttribute("coordenador", ViceCoordenadorDAO.getInstancia().obter(Integer.parseInt(request.getParameter("txtIdViceCoordenador"))));
+            request.setAttribute("viceCoordenador", ViceCoordenadorDAO.getInstancia().obter(Integer.parseInt(request.getParameter("txtIdViceCoordenador"))));
             
             RequestDispatcher view = request.getRequestDispatcher("ViceCoordenador/editar.jsp");
             view.forward(request, response);

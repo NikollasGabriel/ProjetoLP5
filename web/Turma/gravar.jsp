@@ -11,14 +11,14 @@
         <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
         <script src="./js/bootstrap.min.js"></script>
 
-        <title>Cadastrar Disciplina</title>                                                                        
+        <title>Cadastrar Turmas</title>                                                                        
     </head>
     <body>
         <nav>
             <object width="100%" height="65px" data="./menu.jsp"></object>
         </nav>
         <div class="container">
-            <h1>Cadastro Turmas</h1>
+            <h1>Cadastrar Turmas</h1>
 
             <form action="FrontController?action=GravarTurma" method="post" name="frmManterTurma" onsubmit="">
 
@@ -37,6 +37,17 @@
                         <c:forEach items="${disciplinas}" var="disciplina">
                             <option value="${disciplina.idDisciplina}">
                                 ${disciplina.nomeDisciplina}
+                            </option>
+                        </c:forEach>
+                    </select>
+                </div>
+                <div class="form-group">
+                    <label for="usr">Coordenador:</label>
+                    <select class="selectpicker" name="txtIdCoordenador">
+                        <option value="0" <c:if test="${coordenador.idPessoa != null}"> selected</c:if>></option>
+                        <c:forEach items="${coordenadores}" var="coordenador">
+                            <option value="${coordenador.idPessoa}">
+                                ${coordenador.nomePessoa}
                             </option>
                         </c:forEach>
                     </select>

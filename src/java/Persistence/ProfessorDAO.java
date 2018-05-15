@@ -39,7 +39,7 @@ public class ProfessorDAO {
         try {
             conn = connector.getConnection();
 
-            String sql = "INSERT INTO professor (nomeProfessor, idade, numeroFaltas, nivelEnsinoSuperior, salarioBase, tempoServico) VALUES (?, ?, ?, ?, ?, ?)";
+            String sql = "INSERT INTO professor (nomeProfessor, idadeProfessor, numeroFaltas, nivelEnsinoSuperior, salarioBase, tempoServico) VALUES (?, ?, ?, ?, ?, ?)";
             pstm = conn.prepareStatement(sql);
 
             pstm.setString(1, professor.getNomePessoa());
@@ -101,7 +101,7 @@ public class ProfessorDAO {
                         rs.getInt("tempoServico"),
                         rs.getInt("idPessoa"),
                         rs.getString("nomeProfessor"),
-                        rs.getInt("idade")    
+                        rs.getInt("idadeProfessor")    
                 );
 
         } catch (SQLException ex) {
@@ -135,7 +135,7 @@ public class ProfessorDAO {
                         rs.getInt("tempoServico"),
                         rs.getInt("idPessoa"),
                         rs.getString("nomeProfessor"),
-                        rs.getInt("idade")    
+                        rs.getInt("idadeProfessor")    
                 );
 
                 professors.add(professor);
@@ -159,7 +159,7 @@ public class ProfessorDAO {
             conn = connector.getConnection();
 
             String sql = "UPDATE professor AS p SET"
-                    + " nomeProfessor = ?, idade = ?, numeroFaltas = ?, nivelEnsinoSuperior = ? salarioBase =? tempoServico =? WHERE p.idPessoa = ?";
+                    + " nomeProfessor = ?, idadeProfessor = ?, numeroFaltas = ?, nivelEnsinoSuperior = ?, salarioBase =?, tempoServico =? WHERE p.idPessoa = ?";
 
             pstm = conn.prepareStatement(sql);
 

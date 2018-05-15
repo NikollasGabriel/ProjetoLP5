@@ -95,12 +95,12 @@ public class ProvaDAO {
             Aluno pessoa = new Aluno(
                     rs.getInt("idPessoa"),
                     rs.getString("nomeAluno"),
-                    rs.getInt("idade"),
+                    rs.getInt("idadeAluno"),
                     null,
                     rs.getInt("numeroFaltas"),
                     rs.getFloat("mediaNotas"),
                     rs.getString("situacao"));
-            
+
             Professor pessoaProfessor = new Professor(
                     rs.getInt("numeroFaltas"),
                     rs.getString("nivelEnsinoSuperior"),
@@ -108,15 +108,15 @@ public class ProvaDAO {
                     rs.getInt("tempoServico"),
                     rs.getInt("idPessoa"),
                     rs.getString("nomeProfessor"),
-                    rs.getInt("idade")
+                    rs.getInt("idadeProfessor")
             );
-            
+
             prova = new Prova(
-                        rs.getInt("idProva"),
-                        rs.getInt("valor"),
-                        pessoa,
-                        pessoaProfessor,
-                        disciplina);
+                    rs.getInt("idProva"),
+                    rs.getInt("valor"),
+                    pessoa,
+                    pessoaProfessor,
+                    disciplina);
 
         } catch (SQLException ex) {
             throw ex;
@@ -149,24 +149,24 @@ public class ProvaDAO {
                         rs.getInt("numeroVagas"));
 
                 Aluno pessoa = new Aluno(
-                    rs.getInt("idPessoa"),
-                    rs.getString("nomeAluno"),
-                    rs.getInt("idade"),
-                    null,
-                    rs.getInt("numeroFaltas"),
-                    rs.getFloat("mediaNotas"),
-                    rs.getString("situacao"));
-                
+                        rs.getInt("idPessoa"),
+                        rs.getString("nomeAluno"),
+                        rs.getInt("idadeAluno"),
+                        null,
+                        rs.getInt("numeroFaltas"),
+                        rs.getFloat("mediaNotas"),
+                        rs.getString("situacao"));
+
                 Professor pessoaProfessor = new Professor(
-                    rs.getInt("numeroFaltas"),
-                    rs.getString("nivelEnsinoSuperior"),
-                    rs.getFloat("salarioBase"),
-                    rs.getInt("tempoServico"),
-                    rs.getInt("idPessoa"),
-                    rs.getString("nomeProfessor"),
-                    rs.getInt("idade")
+                        rs.getInt("numeroFaltas"),
+                        rs.getString("nivelEnsinoSuperior"),
+                        rs.getFloat("salarioBase"),
+                        rs.getInt("tempoServico"),
+                        rs.getInt("idPessoa"),
+                        rs.getString("nomeProfessor"),
+                        rs.getInt("idadeProfessor")
                 );
-                
+
                 Prova prova = new Prova(
                         rs.getInt("idProva"),
                         rs.getInt("valor"),

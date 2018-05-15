@@ -44,15 +44,11 @@
                 </div>
                 <div class="form-group">
                     <label for="usr">Tempo de Servico:</label>
-                    <input type="text" class="form-control" id="usr" name="txtTempoServico" value="${professor.tempoServico}">
+                    <input type="text" class="form-control" id="usr" name="txtTempoServico" value="${professor.tempoServico}" readonly>
                 </div>
                 <div class="form-group">
                     <label for="usr">Salario Base:</label>
                     <input type="text" class="form-control" id="usr" name="txtSalario" value="${professor.salarioBase}" readonly>
-                </div>
-                <div class="form-group">
-                    <label for="usr">Salario:</label>
-                    <input type="text" class="form-control" id="usr" name="txtSalario" value="${professor.salarioFinal}" readonly>
                 </div>
                 <button type="submit" class="btn btn-default" name="btnConfirmar" value="Confirmar">Confirmar</button>
             </form>

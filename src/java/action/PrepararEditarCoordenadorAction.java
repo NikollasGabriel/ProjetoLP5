@@ -16,7 +16,7 @@ public class PrepararEditarCoordenadorAction implements Action {
     public void execute(HttpServletRequest request, HttpServletResponse response) throws IOException {
         try {
             request.setAttribute("coordenador", CoordenadorDAO.getInstancia().obter(Integer.parseInt(request.getParameter("txtIdCoordenador"))));
-            request.setAttribute("viceCoordenadores", ViceCoordenadorDAO.getInstancia().obterViceCoordenadors());
+            request.setAttribute("viceCoordenadores", ViceCoordenadorDAO.getInstancia().obterViceCoordenadores());
             
             RequestDispatcher view = request.getRequestDispatcher("Coordenador/editar.jsp");
             view.forward(request, response);

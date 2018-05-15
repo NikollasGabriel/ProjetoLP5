@@ -40,7 +40,7 @@ public class AlunoDAO {
         try {
             conn = connector.getConnection();
 
-            String sql = "INSERT INTO aluno (nomeAluno, idade, Turma_idTurma, numeroFaltas, mediaNotas, situacao) VALUES (?, ?, ?, ?, ?, ?)";
+            String sql = "INSERT INTO aluno (nomeAluno, idadeAluno, Turma_idTurma, numeroFaltas, mediaNotas, situacao) VALUES (?, ?, ?, ?, ?, ?)";
             pstm = conn.prepareStatement(sql);
 
             pstm.setString(1, aluno.getNomePessoa());
@@ -99,7 +99,7 @@ public class AlunoDAO {
             aluno = new Aluno(
                     rs.getInt("idPessoa"),
                     rs.getString("nomeAluno"),
-                    rs.getInt("idade"),
+                    rs.getInt("idadeAluno"),
                     turma,
                     rs.getInt("numeroFaltas"),
                     rs.getFloat("mediaNotas"),
@@ -134,7 +134,7 @@ public class AlunoDAO {
                 Aluno aluno = new Aluno(
                         rs.getInt("idPessoa"),
                         rs.getString("nomeAluno"),
-                        rs.getInt("idade"),
+                        rs.getInt("idadeAluno"),
                         turma,
                         rs.getInt("numeroFaltas"),
                         rs.getFloat("mediaNotas"),
@@ -161,7 +161,7 @@ public class AlunoDAO {
             conn = connector.getConnection();
 
             String sql = "UPDATE aluno AS p SET"
-                    + " nomeAluno = ?, idade = ?, Turma_idTurma = ?, numeroFaltas = ?, mediaNotas = ?, situacao = ? WHERE p.idPessoa = ?";
+                    + " nomeAluno = ?, idadeAluno = ?, Turma_idTurma = ?, numeroFaltas = ?, mediaNotas = ?, situacao = ? WHERE p.idPessoa = ?";
 
             pstm = conn.prepareStatement(sql);
 

@@ -24,35 +24,31 @@
 
                 <div class="form-group">
                     <label for="usr">Id:</label>
-                    <input type="text" class="form-control" id="usr" name="txtIdCoordenador" value="${coordenador.idCoordenador}" readonly>
+                    <input type="text" class="form-control" id="usr" name="txtIdCoordenador" value="${coordenador.idPessoa}" readonly>
                 </div>
                 <div class="form-group">
                     <label for="usr">Nome:</label>
-                    <input type="text" class="form-control" id="usr" name="txtNomePessoa" value="${coordenador.nome}" readonly>
+                    <input type="text" class="form-control" id="usr" name="txtNomeCoordenador" value="${coordenador.nomePessoa}" readonly>
                 </div>
                 <div class="form-group">
                     <label for="usr">Idade:</label>
-                    <input type="text" class="form-control" id="usr" name="txtIdadePessoa" value="${coordenador.idade}" readonly>
+                    <input type="text" class="form-control" id="usr" name="txtIdadeCoordenador" value="${coordenador.idadePessoa}" readonly>
                 </div>
                 <div class="form-group">
                     <label for="usr">Tempo de Servico:</label>
-                    <input type="text" class="form-control" id="usr" name="txtTempoServico" value="${coordenador.tempoServico}">
+                    <input type="text" class="form-control" id="usr" name="txtTempoServico" value="${coordenador.tempoServico}" readonly>
                 </div>
                 <div class="form-group">
                     <label for="usr">Salario Base:</label>
                     <input type="text" class="form-control" id="usr" name="txtSalario" value="${coordenador.salarioBase}" readonly>
                 </div>
                 <div class="form-group">
-                    <label for="usr">Salario:</label>
-                    <input type="text" class="form-control" id="usr" name="txtSalario" value="${coordenador.salarioFinal}" readonly>
-                </div>
-                <div class="form-group">
                     <label for="usr">ViceCoordenador:</label>
                     <select class="selectpicker" name="txtIdViceCoordenador" readonly>
-                        <option value="0" <c:if test="${viceCoordenador.idViceCoordenador != null}"> selected</c:if>></option>
+                        <option value="0" <c:if test="${viceCoordenador.idPessoa != null}"> selected</c:if>></option>
                         <c:forEach items="${viceCoordenadores}" var="viceCoordenador">
-                            <option value="${viceCoordenador.idViceCoordenador}" <c:if test="${viceCoordenador.idViceCoordenador == coordenador.viceCoordenador.idViceCoordenador}"> selected</c:if>>
-                                ${viceCoordenador.nome}
+                            <option value="${viceCoordenador.idPessoa}" <c:if test="${viceCoordenador.idPessoa == coordenador.viceCoordenador.idPessoa}"> selected</c:if>>
+                                ${viceCoordenador.nomePessoa}
                             </option>
                         </c:forEach>
                     </select>

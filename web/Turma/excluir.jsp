@@ -45,6 +45,17 @@
                         </c:forEach>
                     </select>
                 </div>
+                <div class="form-group">
+                    <label for="usr">Coordenador:</label>
+                    <select class="selectpicker" name="txtIdCoordenador" readonly>
+                        <option value="0" <c:if test="${coordenador.idPessoa != null}"> selected</c:if>></option>
+                        <c:forEach items="${coordenadores}" var="coordenador">
+                            <option value="${coordenador.idPessoa}" <c:if test="${coordenador.idPessoa == turma.coordenador.idPessoa}"> selected</c:if>>
+                                ${coordenador.nomePessoa}
+                            </option>
+                        </c:forEach>
+                    </select>
+                </div>
                 <button type="submit" class="btn btn-default" name="btnConfirmar" value="Confirmar">Confirmar</button>
             </form>
         </div>

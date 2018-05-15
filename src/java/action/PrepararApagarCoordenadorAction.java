@@ -15,8 +15,8 @@ public class PrepararApagarCoordenadorAction implements Action {
     @Override
     public void execute(HttpServletRequest request, HttpServletResponse response) throws IOException {
         try {
-            request.setAttribute("cordenador", CoordenadorDAO.getInstancia().obter(Integer.parseInt(request.getParameter("txtIdCoordenador"))));
-            request.setAttribute("viceCoordenadores", ViceCoordenadorDAO.getInstancia().obterViceCoordenadors());
+            request.setAttribute("coordenador", CoordenadorDAO.getInstancia().obter(Integer.parseInt(request.getParameter("txtIdCoordenador"))));
+            request.setAttribute("viceCoordenadores", ViceCoordenadorDAO.getInstancia().obterViceCoordenadores());
 
             RequestDispatcher view = request.getRequestDispatcher("Coordenador/excluir.jsp");
             view.forward(request, response);

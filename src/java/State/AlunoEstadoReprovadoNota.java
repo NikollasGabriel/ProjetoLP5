@@ -22,6 +22,7 @@ public class AlunoEstadoReprovadoNota implements AlunoEstado {
 
     @Override
     public String aprovadoNota(Aluno a) {
+        a.setSituacao(new AlunoEstadoAprovadoNota());
         return "Aluno já foi reprovado por nota";
     }
 

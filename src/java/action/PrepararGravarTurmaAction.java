@@ -1,6 +1,7 @@
 package action;
 
 import Controller.Action;
+import Persistence.CoordenadorDAO;
 import Persistence.DisciplinaDAO;
 import java.io.IOException;
 import java.sql.SQLException;
@@ -15,6 +16,7 @@ public class PrepararGravarTurmaAction implements Action {
     public void execute(HttpServletRequest request, HttpServletResponse response) throws IOException {
         try {
             request.setAttribute("disciplinas", DisciplinaDAO.getInstancia().obterDisciplinas());
+            request.setAttribute("coordenadores", CoordenadorDAO.getInstancia().obterCoordenadores());
 
             RequestDispatcher view = request.getRequestDispatcher("Turma/gravar.jsp");
 

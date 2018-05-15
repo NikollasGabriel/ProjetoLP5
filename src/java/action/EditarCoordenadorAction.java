@@ -22,8 +22,8 @@ public class EditarCoordenadorAction implements Action {
                 Float.parseFloat(request.getParameter("txtSalarioBase")),
                 Integer.parseInt(request.getParameter("txtTempoServico")),
                 Integer.parseInt(request.getParameter("txtIdCoordenador")),
-                request.getParameter("txtNomePessoa"),
-                Integer.parseInt(request.getParameter("txtIdadePessoa"))
+                request.getParameter("txtNomeCoordenador"),
+                Integer.parseInt(request.getParameter("txtIdadeCoordenador"))
         );
 
         try {

@@ -20,6 +20,7 @@ import java.util.List;
  * @author asus note
  */
 public class CoordenadorDAO {
+
     private static CoordenadorDAO instancia = new CoordenadorDAO();
 
     public CoordenadorDAO() {
@@ -39,7 +40,7 @@ public class CoordenadorDAO {
         try {
             conn = connector.getConnection();
 
-            String sql = "INSERT INTO coordenador (nome, idade, salarioBase, tempoServico, ViceCoordenador_idViceCoordenador) VALUES (?, ?, ?, ?, ?)";
+            String sql = "INSERT INTO coordenador (nomeCoordenador, idadeCoordenador, salarioBase, tempoServico, ViceCoordenador_idViceCoordenador) VALUES (?, ?, ?, ?, ?)";
             pstm = conn.prepareStatement(sql);
 
             pstm.setString(1, coordenador.getNomePessoa());
@@ -66,7 +67,7 @@ public class CoordenadorDAO {
         try {
             conn = connector.getConnection();
 
-            String sql = "DELETE FROM coordenador WHERE idPessoa = ?";
+            String sql = "DELETE FROM coordenador WHERE idCoordenador = ?";
             pstm = conn.prepareStatement(sql);
 
             pstm.setInt(1, coordenador.getIdPessoa());
@@ -93,16 +94,16 @@ public class CoordenadorDAO {
             ResultSet rs = st.executeQuery("SELECT * FROM coordenador join vicecoordenador on vicecoordenador.idViceCoordenador = coordenador.ViceCoordenador_idViceCoordenador WHERE idCoordenador =" + idPessoa);
             rs.first();
 
-            ViceCoordenador viceCoordenador = new ViceCoordenador((float) 0.0,rs.getInt("idViceCoordenador"),rs.getString("nome"),0);
-            
+            ViceCoordenador viceCoordenador = new ViceCoordenador((float) 0.0, rs.getInt("tempoServico"),rs.getInt("idViceCoordenador"), rs.getString("nomeViceCoordenador"), 0);
+
             coordenador = new Coordenador(
                     viceCoordenador,
                     rs.getFloat("salarioBase"),
                     rs.getInt("tempoServico"),
                     rs.getInt("idCoordenador"),
-                    rs.getString("nome"),
-                    rs.getInt("idade")
-                    );
+                    rs.getString("nomeCoordenador"),
+                    rs.getInt("idadeCoordenador")
+            );
 
         } catch (SQLException ex) {
             throw ex;
@@ -113,7 +114,7 @@ public class CoordenadorDAO {
         return coordenador;
     }
 
-    public List<Coordenador> obterCoordenadors() throws ClassNotFoundException, SQLException {
+    public List<Coordenador> obterCoordenadores() throws ClassNotFoundException, SQLException {
 
         Connection conn = null;
         Statement st = null;
@@ -124,20 +125,20 @@ public class CoordenadorDAO {
             conn = connector.getConnection();
             st = conn.createStatement();
 
-            ResultSet rs = st.executeQuery("SELECT * FROM join vicecoordenador on vicecoordenador.idViceCoordenador = coordenador.ViceCoordenador_idViceCoordenador");
+            ResultSet rs = st.executeQuery("SELECT * FROM coordenador join vicecoordenador on vicecoordenador.idViceCoordenador = coordenador.ViceCoordenador_idViceCoordenador");
 
             while (rs.next()) {
 
-                ViceCoordenador viceCoordenador = new ViceCoordenador((float) 0.0,rs.getInt("idViceCoordenador"),rs.getString("nome"),0);
+                ViceCoordenador viceCoordenador = new ViceCoordenador((float) 0.0, rs.getInt("idViceCoordenador"), rs.getString("nomeViceCoordenador"), 0);
 
                 Coordenador coordenador = new Coordenador(
-                    viceCoordenador,
-                    rs.getFloat("salarioBase"),
-                    rs.getInt("tempoServico"),
-                    rs.getInt("idCoordenador"),
-                    rs.getString("nome"),
-                    rs.getInt("idade")
-                    );
+                        viceCoordenador,
+                        rs.getFloat("salarioBase"),
+                        rs.getInt("tempoServico"),
+                        rs.getInt("idCoordenador"),
+                        rs.getString("nomeCoordenador"),
+                        rs.getInt("idadeCoordenador")
+                );
 
                 coordenadors.add(coordenador);
             }
@@ -160,7 +161,7 @@ public class CoordenadorDAO {
             conn = connector.getConnection();
 
             String sql = "UPDATE coordenador AS p SET"
-                    + " nome = ?, idade = ?, salarioBase=?, tempoServico=?, ViceCoordenador_ViceCoordenador=? WHERE p.idCoordenador = ?";
+                    + " nomeCoordenador = ?, idadeCoordenador = ?, salarioBase=?, tempoServico=?, ViceCoordenador_idViceCoordenador=? WHERE p.idCoordenador = ?";
 
             pstm = conn.prepareStatement(sql);
 

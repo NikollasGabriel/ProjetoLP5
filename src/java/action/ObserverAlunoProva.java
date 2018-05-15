@@ -57,14 +57,55 @@ public class ObserverAlunoProva implements Observer {
                         aluno.getSituacao().reprovadoNota(aluno); // Mudança de estado condicional
                     }
 
+                    aluno.setMediaNotas(media);
+
                     observerDAO.editaSituacaoAluno(aluno);
-                    observerDAO.editaNotapublic(aluno);
+                    observerDAO.editaNota(aluno);
 
                 }
             } catch (SQLException | ClassNotFoundException ex) {
                 ex.printStackTrace();
             }
 
+        } else if (instanciaEdita instanceof EditarProvaAction) {
+
+            EditarProvaAction observable = (EditarProvaAction) instanciaEdita;
+            int idAluno = observable.prova.getAluno().getIdPessoa();
+            float media = 0;
+            ObserverAlunoProvaDAO observerDAO = ObserverAlunoProvaDAO.getInstancia();
+
+            List<Prova> provas = new ArrayList<>();
+
+            try {
+
+                provas = observerDAO.obterProvasOfAluno(idAluno);
+
+                if (provas.size() == 3) {
+
+                    for (Prova p : provas) {
+                        media = media + p.getValor();
+                    }
+
+                    media = media / 3;
+
+                    Aluno aluno = AlunoDAO.getInstancia().obter(idAluno);
+
+                    if (media >= 60) {
+                        aluno.getSituacao().aprovadoNota(aluno); // Mudança de estado condicional
+
+                    } else {
+                        aluno.getSituacao().reprovadoNota(aluno); // Mudança de estado condicional
+                    }
+
+                    aluno.setMediaNotas(media);
+
+                    observerDAO.editaSituacaoAluno(aluno);
+                    observerDAO.editaNota(aluno);
+
+                }
+            } catch (SQLException | ClassNotFoundException ex) {
+                ex.printStackTrace();
+            }
         } else {
 
             EditarAlunoAction observable = (EditarAlunoAction) instanciaEdita;

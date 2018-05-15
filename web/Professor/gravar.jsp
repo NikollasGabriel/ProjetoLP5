@@ -39,11 +39,11 @@
                     <input type="text" class="form-control" id="usr" name="txtNivelEnsinoSuperior">
                 </div>
                 <div class="form-group">
-                    <label for="usr">TempoServico:</label>
+                    <label for="usr">Tempo de Servico:</label>
                     <input type="text" class="form-control" id="usr" name="txtTempoServico">
                 </div>
                 <div class="form-group">
-                    <label for="usr">Salario:</label>
+                    <label for="usr">Salario Base:</label>
                     <input type="text" class="form-control" id="usr" name="txtSalarioBase">
                 </div>
                 <button type="submit" class="btn btn-default" name="btnConfirmar" value="Confirmar">Confirmar</button>

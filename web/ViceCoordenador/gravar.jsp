@@ -11,35 +11,31 @@
         <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
         <script src="./js/bootstrap.min.js"></script>
 
-        <title>Cadastrar Coordenador</title>                                                                        
+        <title>Cadastrar Vice-Coordenador</title>                                                                        
     </head>
     <body>
         <nav>
             <object width="100%" height="65px" data="./menu.jsp"></object>
         </nav>
         <div class="container">
-            <h1>Cadastrar Coordenador</h1>
+            <h1>Cadastrar Vice-Coordenador</h1>
 
-            <form action="FrontController?action=GravarCoordenador" method="post" name="frmGravarCoordenador" onsubmit="">
+            <form action="FrontController?action=GravarViceCoordenador" method="post" name="frmGravarCoordenador" onsubmit="">
 
-                <div class="form-group">
-                    <label for="usr">IdViceCoordenador:</label>
-                    <input type="text" class="form-control" id="usr" name="txtIdCoordenador">
-                </div>
                 <div class="form-group">
                     <label for="usr">Nome:</label>
-                    <input type="text" class="form-control" id="usr" name="txtNome">
+                    <input type="text" class="form-control" id="usr" name="txtNomePessoa">
                 </div>
                 <div class="form-group">
                     <label for="usr">Idade:</label>
-                    <input type="text" class="form-control" id="usr" name="txtIdade">
+                    <input type="text" class="form-control" id="usr" name="txtIdadePessoa">
                 </div>
                 <div class="form-group">
                     <label for="usr">TempoServico:</label>
                     <input type="text" class="form-control" id="usr" name="txtTempoServico">
                 </div>
                 <div class="form-group">
-                    <label for="usr">Salario:</label>
+                    <label for="usr">Salario Base:</label>
                     <input type="text" class="form-control" id="usr" name="txtSalarioBase">
                 </div>
                 <button type="submit" class="btn btn-default" name="btnConfirmar" value="Confirmar">Confirmar</button>

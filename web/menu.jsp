@@ -70,7 +70,7 @@
                 <a href="FrontController?action=LerCoordenador" target="_parent">Coordenador</a>
             </li>
             <li>
-                <a href="FrontController?action=LerViceCoordenador" target="_parent">ViceCoordenador</a>
+                <a href="FrontController?action=LerViceCoordenador" target="_parent">Vice-Coordenador</a>
             </li>
         </ul>
     </body>

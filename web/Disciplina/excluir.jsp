@@ -18,7 +18,7 @@
             <object width="100%" height="65px" data="./menu.jsp"></object>
         </nav>
         <div class="container">
-            <h1>Exclusão Disciplina</h1>
+            <h1>Excluir Disciplina</h1>
 
             <form action="FrontController?action=ApagarDisciplina" method="post" name="frmManterDisciplina" onsubmit="">
 

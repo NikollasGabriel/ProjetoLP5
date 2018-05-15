@@ -23,7 +23,7 @@ public class LerViceCoordenadorAction implements Action{
     public void execute(HttpServletRequest request, HttpServletResponse response) throws IOException {
         try {
 
-            request.setAttribute("viceCordenadores", ViceCoordenadorDAO.getInstancia().obterViceCoordenadors());
+            request.setAttribute("viceCoordenadores", ViceCoordenadorDAO.getInstancia().obterViceCoordenadores());
 
             RequestDispatcher view = request.getRequestDispatcher("ViceCoordenador/ler.jsp");
             view.forward(request, response);

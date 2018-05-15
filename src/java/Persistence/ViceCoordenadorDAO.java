@@ -19,6 +19,7 @@ import java.util.List;
  * @author asus note
  */
 public class ViceCoordenadorDAO {
+
     private static ViceCoordenadorDAO instancia = new ViceCoordenadorDAO();
 
     public ViceCoordenadorDAO() {
@@ -38,7 +39,7 @@ public class ViceCoordenadorDAO {
         try {
             conn = connector.getConnection();
 
-            String sql = "INSERT INTO vicecoordenador (nome, idade, salarioBase, tempoServico) VALUES (?, ?, ?, ?)";
+            String sql = "INSERT INTO vicecoordenador (nomeViceCoordenador, idadeViceCoordenador, salarioBase, tempoServico) VALUES (?, ?, ?, ?)";
             pstm = conn.prepareStatement(sql);
 
             pstm.setString(1, viceCoordenador.getNomePessoa());
@@ -64,7 +65,7 @@ public class ViceCoordenadorDAO {
         try {
             conn = connector.getConnection();
 
-            String sql = "DELETE FROM vicecoordenador WHERE idPessoa = ?";
+            String sql = "DELETE FROM vicecoordenador WHERE idViceCoordenador = ?";
             pstm = conn.prepareStatement(sql);
 
             pstm.setInt(1, viceCoordenador.getIdPessoa());
@@ -91,14 +92,13 @@ public class ViceCoordenadorDAO {
             ResultSet rs = st.executeQuery("SELECT * FROM vicecoordenador WHERE idViceCoordenador =" + idPessoa);
             rs.first();
 
-            
             viceCoordenador = new ViceCoordenador(
                     rs.getFloat("salarioBase"),
                     rs.getInt("tempoServico"),
                     rs.getInt("idViceCoordenador"),
-                    rs.getString("nome"),
-                    rs.getInt("idade")
-                    );
+                    rs.getString("nomeViceCoordenador"),
+                    rs.getInt("idadeViceCoordenador")
+            );
 
         } catch (SQLException ex) {
             throw ex;
@@ -109,7 +109,7 @@ public class ViceCoordenadorDAO {
         return viceCoordenador;
     }
 
-    public List<ViceCoordenador> obterViceCoordenadors() throws ClassNotFoundException, SQLException {
+    public List<ViceCoordenador> obterViceCoordenadores() throws ClassNotFoundException, SQLException {
 
         Connection conn = null;
         Statement st = null;
@@ -120,17 +120,17 @@ public class ViceCoordenadorDAO {
             conn = connector.getConnection();
             st = conn.createStatement();
 
-            ResultSet rs = st.executeQuery("SELECT * FROM join vicevicecoordenador on viceviceCoordenador.idViceViceCoordenador = viceCoordenador.ViceViceCoordenador_idViceViceCoordenador");
+            ResultSet rs = st.executeQuery("SELECT * FROM vicecoordenador");
 
             while (rs.next()) {
 
                 ViceCoordenador viceCoordenador = new ViceCoordenador(
-                    rs.getFloat("salarioBase"),
-                    rs.getInt("tempoServico"),
-                    rs.getInt("idViceCoordenador"),
-                    rs.getString("nome"),
-                    rs.getInt("idade")
-                    );
+                        rs.getFloat("salarioBase"),
+                        rs.getInt("tempoServico"),
+                        rs.getInt("idViceCoordenador"),
+                        rs.getString("nomeViceCoordenador"),
+                        rs.getInt("idadeViceCoordenador")
+                );
 
                 viceCoordenadors.add(viceCoordenador);
             }
@@ -153,7 +153,7 @@ public class ViceCoordenadorDAO {
             conn = connector.getConnection();
 
             String sql = "UPDATE vicecoordenador AS p SET"
-                    + " nome = ?, idade = ?, salarioBase=?, tempoServico=? WHERE p.idViceCoordenador = ?";
+                    + " nomeViceCoordenador = ?, idadeViceCoordenador = ?, salarioBase=?, tempoServico=? WHERE p.idViceCoordenador = ?";
 
             pstm = conn.prepareStatement(sql);
 
@@ -161,7 +161,7 @@ public class ViceCoordenadorDAO {
             pstm.setInt(2, viceCoordenador.getIdadePessoa());
             pstm.setFloat(3, viceCoordenador.getSalarioBase());
             pstm.setInt(4, viceCoordenador.getTempoServico());
-            pstm.setInt(6, viceCoordenador.getIdPessoa());
+            pstm.setInt(5, viceCoordenador.getIdPessoa());
 
             pstm.execute();
 

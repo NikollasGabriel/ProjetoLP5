@@ -18,7 +18,7 @@
             <object width="100%" height="65px" data="./menu.jsp"></object>
         </nav>
         <div class="container">
-            <h1>Cadastro Disciplina</h1>
+            <h1>Cadastrar Disciplina</h1>
 
             <form action="FrontController?action=GravarDisciplina" method="post" name="frmManterDisciplina" onsubmit="">
 

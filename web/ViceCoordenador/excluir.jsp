@@ -11,42 +11,37 @@
         <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
         <script src="./js/bootstrap.min.js"></script>
 
-        <title>Excluir ViceCoordenador</title>                                                                        
+        <title>Excluir Vice-Coordenador</title>                                                                        
     </head>
     <body>
         <nav>
             <object width="100%" height="65px" data="./menu.jsp"></object>
         </nav>
         <div class="container">
-            <h1>Excluir ViceCoordenador</h1>
+            <h1>Excluir Vice-Coordenador</h1>
 
             <form action="FrontController?action=ApagarViceCoordenador" method="post" name="frmApagarViceCoordenador" onsubmit="">
 
                 <div class="form-group">
                     <label for="usr">Id:</label>
-                    <input type="text" class="form-control" id="usr" name="txtIdViceCoordenador" value="${viceCoordenador.idViceCoordenador}" readonly>
+                    <input type="text" class="form-control" id="usr" name="txtIdViceCoordenador" value="${viceCoordenador.idPessoa}" readonly>
                 </div>
                 <div class="form-group">
                     <label for="usr">Nome:</label>
-                    <input type="text" class="form-control" id="usr" name="txtNomePessoa" value="${viceCoordenador.nome}" readonly>
+                    <input type="text" class="form-control" id="usr" name="txtNomeViceCoordenador" value="${viceCoordenador.nomePessoa}" readonly>
                 </div>
                 <div class="form-group">
                     <label for="usr">Idade:</label>
-                    <input type="text" class="form-control" id="usr" name="txtIdadePessoa" value="${viceCoordenador.idade}" readonly>
+                    <input type="text" class="form-control" id="usr" name="txtIdadeViceCoordenador" value="${viceCoordenador.idadePessoa}" readonly>
                 </div>
                 <div class="form-group">
                     <label for="usr">Tempo de Servico:</label>
-                    <input type="text" class="form-control" id="usr" name="txtTempoServico" value="${viceCoordenador.tempoServico}">
+                    <input type="text" class="form-control" id="usr" name="txtTempoServico" value="${viceCoordenador.tempoServico}" readonly>
                 </div>
                 <div class="form-group">
                     <label for="usr">Salario Base:</label>
                     <input type="text" class="form-control" id="usr" name="txtSalario" value="${viceCoordenador.salarioBase}" readonly>
-                </div>
-                <div class="form-group">
-                    <label for="usr">Salario:</label>
-                    <input type="text" class="form-control" id="usr" name="txtSalario" value="${viceCoordenador.salarioFinal}" readonly>
-                </div>
-                
+                </div>                
                 <button type="submit" class="btn btn-default" name="btnConfirmar" value="Confirmar">Confirmar</button>
             </form>
         </div>

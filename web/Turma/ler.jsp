@@ -12,7 +12,7 @@
         <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
         <script src="js/bootstrap.min.js"></script>
 
-        <title>Consulta Turmas</title>
+        <title>Consultar Turmas</title>
     </head>
     <body align="center">
         <nav>
@@ -27,6 +27,7 @@
                         <th>Periodo</th>
                         <th>Tamanho</th>
                         <th>Disciplina</th>
+                        <th>Coordenador</th>
                         <th colspan=2>Ação:</th>
 
                     </tr>
@@ -38,6 +39,7 @@
                             <td><c:out value="${turma.periodoTurma}"></c:out></td>
                             <td><c:out value="${turma.tamanhoTurma}"></c:out></td>
                             <td><c:out value="${turma.disciplina.nomeDisciplina}"></c:out></td>
+                             <td><c:out value="${turma.coordenador.nomePessoa}"></c:out></td>
                             <td><a href="FrontController?action=PrepararEditarTurma&txtIdTurma=<c:out value="${turma.idTurma}"/>"><i class="icon-edit"></i>Editar</a> </td>
                             <td><a href="FrontController?action=PrepararApagarTurma&txtIdTurma=<c:out value="${turma.idTurma}"/>"><i class="icon-remove"></i>Excluir</a> </td>
                         </tr>

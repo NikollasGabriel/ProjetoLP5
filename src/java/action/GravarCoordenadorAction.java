@@ -30,9 +30,8 @@ public class GravarCoordenadorAction implements Action{
                 new ViceCoordenador(Integer.parseInt(request.getParameter("txtIdViceCoordenador"))),
                 Float.parseFloat(request.getParameter("txtSalarioBase")),
                 Integer.parseInt(request.getParameter("txtTempoServico")),
-                Integer.parseInt(request.getParameter("txtIdCoordenador")),
-                request.getParameter("txtNomePessoa"),
-                Integer.parseInt(request.getParameter("txtIdadePessoa"))
+                request.getParameter("txtNomeCoordenador"),
+                Integer.parseInt(request.getParameter("txtIdadeCoordenador"))
         );
 
         try {

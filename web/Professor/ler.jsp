@@ -19,18 +19,18 @@
             <object width="100%" height="65px" data="./menu.jsp"></object>
         </nav>
         <div class="container">
-            <h1>Consultar Professors</h1>
+            <h1>Consultar Professores</h1>
             <table class="table table-hover">
                 <thead>
                     <tr>
                         <th>Id</th>
                         <th>Nome</th>
                         <th>Idade</th>
-                        <th>Numero de faltas</th>
-                        <th>Nivel Ensino Superior</th>
-                        <th>TempoServico</th>
+                        <th>Faltas</th>
+                        <th>Nivel de Ensino</th>
+                        <th>Tempo de Servico</th>
                         <th>Salário Base</th>
-                        <th>Salário</th>
+                        <th>Salário com Abono</th>
                         <th colspan=2>Ação:</th>
 
                     </tr>

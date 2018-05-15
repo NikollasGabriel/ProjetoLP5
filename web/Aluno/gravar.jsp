@@ -32,7 +32,7 @@
                 </div>
                 <div class="form-group">
                     <label for="usr">Numero de faltas:</label>
-                    <input type="text" class="form-control" id="usr" name="txtNumeroFaltas">
+                    <input type="text" class="form-control" id="usr" name="txtNumeroFaltas" value="0" readonly>
                 </div>
                 <div class="form-group">
                     <label for="usr">Media das Notas:</label>
@@ -40,7 +40,7 @@
                 </div>
                 <div class="form-group">
                     <label for="usr">Situação:</label>
-                    <input type="text" class="form-control" id="usr" name="txtSituacao" value="NaoAvaliado" readonly>
+                    <input type="text" class="form-control" id="usr" name="txtSituacao" value="Nao Avaliado" readonly>
                 </div>
                 <div class="form-group">
                     <label for="usr">Turma:</label>

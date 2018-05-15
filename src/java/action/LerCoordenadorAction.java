@@ -24,8 +24,8 @@ public class LerCoordenadorAction implements Action{
     public void execute(HttpServletRequest request, HttpServletResponse response) throws IOException {
         try {
 
-            request.setAttribute("viceCorendenadores", ViceCoordenadorDAO.getInstancia().obterViceCoordenadors());
-            request.setAttribute("cordenadores", CoordenadorDAO.getInstancia().obterCoordenadors());
+            request.setAttribute("viceCorendenadores", ViceCoordenadorDAO.getInstancia().obterViceCoordenadores());
+            request.setAttribute("coordenadores", CoordenadorDAO.getInstancia().obterCoordenadores());
 
             RequestDispatcher view = request.getRequestDispatcher("Coordenador/ler.jsp");
             view.forward(request, response);

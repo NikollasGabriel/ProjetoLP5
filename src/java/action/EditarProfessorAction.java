@@ -24,8 +24,8 @@ public class EditarProfessorAction implements Action {
                 Float.parseFloat(request.getParameter("txtSalarioBase")),
                 Integer.parseInt(request.getParameter("txtTempoServico")),
                 Integer.parseInt(request.getParameter("txtIdPessoa")),
-                request.getParameter("txtNomePessoa"),
-                Integer.parseInt(request.getParameter("txtIdadePessoa"))
+                request.getParameter("txtNomeProfessor"),
+                Integer.parseInt(request.getParameter("txtIdadeProfessor"))
         );
 
         try {
